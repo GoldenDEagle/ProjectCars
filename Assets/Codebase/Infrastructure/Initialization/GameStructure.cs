@@ -67,8 +67,15 @@ namespace Assets.Codebase.Infrastructure.Initialization
         private void CreatePresenters()
         {
             // Create presenter for each view
-            _presenters = new List<BasePresenter>();
-            _presenters.Add(new ExamplePresenter());
+            _presenters = new List<BasePresenter>
+            {
+                new ExamplePresenter(),
+                new TitlePresenter(),
+                new CarSelectionPresenter(),
+                new TrackSelectionPresenter(),
+                new IngamePresenter(),
+                new EndgamePresenter(),
+            };
 
             foreach (var presenter in _presenters)
             {

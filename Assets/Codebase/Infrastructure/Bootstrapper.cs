@@ -20,8 +20,8 @@ namespace Assets.Codebase.Infrastructure
             GameStructure structure = new GameStructure(_uiRoot, _launchParams);
 
             // Start the game
-            ServiceLocator.Container.Single<IViewCreatorService>().CreateView(ViewId.ExampleView);
-            ServiceLocator.Container.Single<IModelAccessService>().GameplayModel.LoadScene("City", () => ServiceLocator.Container.Single<IViewCreatorService>().CreateView(ViewId.ExampleView));
+            ServiceLocator.Container.Single<IModelAccessService>().GameplayModel.ActivateView(ViewId.Title);
+            //ServiceLocator.Container.Single<IModelAccessService>().GameplayModel.LoadScene("Menu", () => ServiceLocator.Container.Single<IViewCreatorService>().CreateView(ViewId.Title));
         }
     }
 }
