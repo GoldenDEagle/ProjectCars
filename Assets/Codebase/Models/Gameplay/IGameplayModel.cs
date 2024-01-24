@@ -1,4 +1,6 @@
-﻿using Assets.Codebase.Models.Base;
+﻿using Assets.Codebase.Data.Cars.Enemy;
+using Assets.Codebase.Data.Cars.Player;
+using Assets.Codebase.Models.Base;
 using Assets.Codebase.Models.Gameplay.Data;
 using Assets.Codebase.Views.Base;
 using System;
@@ -30,6 +32,10 @@ namespace Assets.Codebase.Models.Gameplay
         /// <param name="name"></param>
         /// <param name="onLoaded"></param>
         public void LoadScene(string name, Action onLoaded = null);
+
+        public PlayerCarInfo GetPlayerCarInfo(PlayerCarId carId);
+        public EnemyCarInfo GetEnemyCarInfo(EnemyCarId carId);
+
         public ReactiveProperty<GameState> State { get; }
 
         public void ChangeGameState(GameState state);
