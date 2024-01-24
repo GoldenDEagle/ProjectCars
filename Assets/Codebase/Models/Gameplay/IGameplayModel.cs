@@ -1,6 +1,7 @@
 ﻿using Assets.Codebase.Models.Base;
 using Assets.Codebase.Models.Gameplay.Data;
 using Assets.Codebase.Views.Base;
+using System;
 using UniRx;
 
 namespace Assets.Codebase.Models.Gameplay
@@ -23,6 +24,12 @@ namespace Assets.Codebase.Models.Gameplay
         /// </summary>
         /// <param name="viewId"></param>
         public void ActivateView(ViewId viewId);
+        /// <summary>
+        /// Loads scene async
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="onLoaded"></param>
+        public void LoadScene(string name, Action onLoaded = null);
         public ReactiveProperty<GameState> State { get; }
 
         public void ChangeGameState(GameState state);
