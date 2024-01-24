@@ -11,6 +11,7 @@ public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
 
     public void GoButtonClicked()
     {
+        GameplayModel.CreateNewRace();
         GameplayModel.LoadScene(SceneNames.CityTrack, () => GameplayModel.ActivateView(ViewId.Ingame));
     }
 }

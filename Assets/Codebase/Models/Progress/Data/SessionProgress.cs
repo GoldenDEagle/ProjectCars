@@ -1,4 +1,5 @@
-﻿using UniRx;
+﻿using Assets.Codebase.Data.Cars.Player;
+using UniRx;
 
 namespace Assets.Codebase.Models.Progress.Data
 {
@@ -12,6 +13,7 @@ namespace Assets.Codebase.Models.Progress.Data
         public ReactiveProperty<int> SampleValue;
         public ReactiveProperty<float> MusicVolume;
         public ReactiveProperty<float> SFXVolume;
+        public ReactiveProperty<PlayerCarId> SelectedCar;
 
         // .
 
@@ -23,6 +25,7 @@ namespace Assets.Codebase.Models.Progress.Data
             SampleValue = new ReactiveProperty<int>(0);
             MusicVolume = new ReactiveProperty<float>(0.5f);
             SFXVolume = new ReactiveProperty<float>(0.5f);
+            SelectedCar = new ReactiveProperty<PlayerCarId>(PlayerCarId.Haumea);
         }
 
         /// <summary>
@@ -34,6 +37,7 @@ namespace Assets.Codebase.Models.Progress.Data
             SampleValue = new ReactiveProperty<int>(progress.SampleValue);
             MusicVolume = new ReactiveProperty<float>();
             SFXVolume = new ReactiveProperty<float>();
+            SelectedCar = new ReactiveProperty<PlayerCarId>(progress.SelectedCar);
         }
     }
 }

@@ -9,6 +9,8 @@ using UniRx;
 using Assets.Codebase.Data.Cars.Player;
 using Assets.Codebase.Data.Cars.Enemy;
 using System.Linq;
+using Assets.Codebase.Gameplay.Racing;
+using System.Collections.Generic;
 
 namespace Assets.Codebase.Models.Gameplay
 {
@@ -20,6 +22,7 @@ namespace Assets.Codebase.Models.Gameplay
         // Internal
         private ReactiveProperty<GameState> _state;
         private ReactiveProperty<ViewId> _activeViewId;
+        private ReactiveProperty<Race> _activeRace;
         private Subject<ViewId> _onViewClosed;
         private SceneLoader _sceneLoader;
         private PlayerCarDescriptions _playerCarsDescription;
@@ -29,12 +32,14 @@ namespace Assets.Codebase.Models.Gameplay
         public ReactiveProperty<GameState> State => _state;
         public ReactiveProperty<ViewId> ActiveViewId => _activeViewId;
         public Subject<ViewId> OnViewClosed => _onViewClosed;
+        public ReactiveProperty<Race> ActiveRace => _activeRace;
 
         public GameplayModel()
         {
             _sceneLoader = new SceneLoader();
             _state = new ReactiveProperty<GameState>(GameState.None);
             _activeViewId = new ReactiveProperty<ViewId>(ViewId.None);
+            _activeRace = new ReactiveProperty<Race>();
             _onViewClosed = new Subject<ViewId>();
         }
 
@@ -73,6 +78,16 @@ namespace Assets.Codebase.Models.Gameplay
         public EnemyCarInfo GetEnemyCarInfo(EnemyCarId carId)
         {
             return _enemyCarsDescriptions.CarsList.FirstOrDefault(x => x.CarId == carId);
+        }
+
+        public void CreateNewRace()
+        {
+            if (_activeRace.Value != null)
+            {
+                _activeRace.Value = null;
+            }
+
+            _activeRace.Value = new Race(3, new List<EnemyCarId> { EnemyCarId.First, EnemyCarId.Second });
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Codebase.Data.Cars.Player;
+using System;
 
 namespace Assets.Codebase.Models.Progress.Data
 {
@@ -12,6 +13,7 @@ namespace Assets.Codebase.Models.Progress.Data
         public int SampleValue;
         public float MusicVolume;
         public float SFXVolume;
+        public PlayerCarId SelectedCar;
 
         public void SetValues(SessionProgress progress)
         {
@@ -19,6 +21,7 @@ namespace Assets.Codebase.Models.Progress.Data
             SampleValue = progress.SampleValue.Value;
             MusicVolume = progress.MusicVolume.Value;
             SFXVolume = progress.SFXVolume.Value;
+            SelectedCar = progress.SelectedCar.Value;
         }
     }
 }
