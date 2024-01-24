@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Codebase.Gameplay.Cars;
+using System;
 using UnityEngine;
 
 namespace Assets.Codebase.Data.Cars.Enemy
@@ -7,9 +8,9 @@ namespace Assets.Codebase.Data.Cars.Enemy
     public class EnemyCarInfo
     {
         [SerializeField] private EnemyCarId _carId;
-        [SerializeField] private GameObject _prefab;
+        [SerializeField] private EnemyCar _prefab;
 
         public EnemyCarId CarId => _carId;
-        public GameObject Prefab => _prefab;
+        public EnemyCar Prefab => _prefab;
     }
 }

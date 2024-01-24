@@ -281,6 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4194987739969035930}
+  - component: {fileID: 5977197963510527990}
   - component: {fileID: 4718704168513021931}
   m_Layer: 0
   m_Name: Haumea
@@ -310,6 +311,18 @@ Transform:
   - {fileID: 8030260566033498615}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 73.37, z: 0}
+--- !u!114 &5977197963510527990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1880472977977013641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82931e33ce0ac024aa8f814bb8653c98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4718704168513021931
 MonoBehaviour:
   m_ObjectHideFlags: 0

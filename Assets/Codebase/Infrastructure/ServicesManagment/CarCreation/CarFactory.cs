@@ -1,5 +1,6 @@
 ﻿using Assets.Codebase.Data.Cars.Enemy;
 using Assets.Codebase.Data.Cars.Player;
+using Assets.Codebase.Gameplay.Cars;
 using Assets.Codebase.Infrastructure.ServicesManagment.Assets;
 using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
 using DavidJalbert.TinyCarControllerAdvance;
@@ -19,17 +20,17 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.CarCreation
             _modelAccessService = modelAccess;
         }
 
-        public CarAIControl CreateEnemyCar(EnemyCarId carId)
+        public EnemyCar CreateEnemyCar(EnemyCarId carId)
         {
             var prefab = _modelAccessService.GameplayModel.GetEnemyCarInfo(carId).Prefab;
-            CarAIControl aiController = _assets.Instantiate(prefab).GetComponent<CarAIControl>();
-            return aiController;
+            EnemyCar enemyCar = _assets.Instantiate(prefab.gameObject).GetComponent<EnemyCar>();
+            return enemyCar;
         }
 
-        public TCCAPlayer CreatePlayerCar(PlayerCarId carId)
+        public PlayerCar CreatePlayerCar(PlayerCarId carId)
         {
             var prefab = _modelAccessService.GameplayModel.GetPlayerCarInfo(carId).Prefab;
-            TCCAPlayer carController = _assets.Instantiate(prefab).GetComponent<TCCAPlayer>();
+            PlayerCar carController = _assets.Instantiate(prefab.gameObject).GetComponent<PlayerCar>();
             return carController;
         }
     }

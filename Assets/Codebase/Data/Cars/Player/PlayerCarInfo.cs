@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Codebase.Gameplay.Cars;
+using System;
 using UnityEngine;
 
 namespace Assets.Codebase.Data.Cars.Player
@@ -8,10 +9,10 @@ namespace Assets.Codebase.Data.Cars.Player
     {
         [SerializeField] private PlayerCarId _carId;
         [SerializeField] private int _price;
-        [SerializeField] private GameObject _prefab;
+        [SerializeField] private PlayerCar _prefab;
 
         public PlayerCarId CarId => _carId;
         public int Price => _price;
-        public GameObject Prefab => _prefab;
+        public PlayerCar Prefab => _prefab;
     }
 }
