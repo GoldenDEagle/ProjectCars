@@ -8,4 +8,9 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
     {
         CorrespondingViewId = ViewId.CarSelection;
     }
+
+    public void ConfirmSelectionButtonClicked()
+    {
+        GameplayModel.ActivateView(ViewId.TrackSelection);
+    }
 }

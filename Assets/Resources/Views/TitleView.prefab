@@ -259,7 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95dafeea28b38ea4e9bea0a963937343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startButton: {fileID: 8673025950239529923}
+  _startButton: {fileID: 8778870063024698142}
 --- !u!1 &7376443027161502596
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 1557091817294772504}
   - component: {fileID: 1860078979453772087}
   - component: {fileID: 4820042457801037614}
-  - component: {fileID: 8673025950239529923}
+  - component: {fileID: 8778870063024698142}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8673025950239529923
+--- !u!114 &8778870063024698142
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -346,7 +346,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7376443027161502596}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 510bdc805196c044686dc850ed1f862d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
@@ -381,3 +381,5 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _playSoundOnClick: 0
+  _soundId: 0
