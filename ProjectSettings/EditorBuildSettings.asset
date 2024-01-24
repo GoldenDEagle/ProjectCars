@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Bootstrap.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: c70d163e26ade4d4c853f833c6373aa9
+  - enabled: 1
     path: Assets/Scenes/City.unity
     guid: cf1abe65285a26040a61fd3b64090139
+  - enabled: 1
+    path: Assets/Scenes/RedDesert.unity
+    guid: e1b793c40df980747b159fd6e9176269
   m_configObjects: {}
