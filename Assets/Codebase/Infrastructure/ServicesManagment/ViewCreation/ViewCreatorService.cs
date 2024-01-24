@@ -22,8 +22,9 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
         private const string ExampleViewPath = "Views/ExampleView";
         private const string TitleViewPath = "Views/TitleView";
         private const string CarSelectionViewPath = "Views/CarSelectionView";
-        private const string TrackSelectionViewPath = "Views/CarSelectionView";
+        private const string TrackSelectionViewPath = "Views/TrackSelectionView";
         private const string IngameViewPath = "Views/IngameView";
+        private const string EndgameViewPath = "Views/EndgameView";
 
         private IAssetProvider _assets;
 
@@ -53,6 +54,21 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
                     break;
                 case ViewId.ExampleView:
                     path = ExampleViewPath;
+                    break;
+                case ViewId.Title:
+                    path = TitleViewPath;
+                    break;
+                case ViewId.CarSelection:
+                    path = CarSelectionViewPath;
+                    break;
+                case ViewId.TrackSelection:
+                    path = TrackSelectionViewPath;
+                    break;
+                case ViewId.Ingame:
+                    path = IngameViewPath;
+                    break;
+                case ViewId.EndGame:
+                    path = EndgameViewPath;
                     break;
                 default:
                     throw new System.ArgumentException(nameof(viewId));
