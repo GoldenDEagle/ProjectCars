@@ -196,6 +196,11 @@ namespace UnityStandardAssets.Utility
             }
         }
 
+        public int GetIndexOfTheWaypoint(Transform waypoint)
+        {
+            return Array.IndexOf(waypointList.items, waypoint);
+        }
+
 
         [Serializable]
         public class WaypointList

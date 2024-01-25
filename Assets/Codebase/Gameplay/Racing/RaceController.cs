@@ -2,6 +2,7 @@
 using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
 using DavidJalbert.TinyCarControllerAdvance;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Utility;
@@ -17,7 +18,10 @@ namespace Assets.Codebase.Gameplay.Racing
         [SerializeField] private TCCAMobileInput _mobileInput;
 
         private List<EnemyCar> _enemyCars;
-        private PlayerCar _playerCar; 
+        private PlayerCar _playerCar;
+        private bool _isRaceActive = false;
+
+        private int _playerPosition;
 
         private IModelAccessService _models;
 
@@ -29,6 +33,9 @@ namespace Assets.Codebase.Gameplay.Racing
         private void Start()
         {
             SpawnCars();
+            _playerPosition = _enemyCars.Count;
+            _isRaceActive = true;
+            StartCoroutine(PositionTracker());
         }
 
         private void SpawnCars()
@@ -46,6 +53,34 @@ namespace Assets.Codebase.Gameplay.Racing
                 enemy.WaypointTracker.AttachCircuit(_waypointCircuit);
                 enemy.gameObject.SetActive(true);
             }
+        }
+
+        private IEnumerator PositionTracker()
+        {
+            while (_isRaceActive)
+            {
+                yield return new WaitForSeconds(1f);
+                CheckPositions();
+                Debug.Log($"Player position: {_playerPosition}");
+            }
+        }
+
+        private void CheckPositions()
+        {
+            int tempPlayerPosition = _enemyCars.Count + 1;
+            var playerWaypointIndex =  _waypointCircuit.GetIndexOfTheWaypoint(_playerCar.GetClosestWaypoint(_waypointCircuit.waypointList.items));
+
+            List<int> enemiesWaypoints = new List<int>();
+            foreach (var enemy in _enemyCars)
+            {
+                var enemyWaypoint = _waypointCircuit.GetIndexOfTheWaypoint(enemy.GetClosestWaypoint(_waypointCircuit.waypointList.items));
+                if (playerWaypointIndex > enemyWaypoint)
+                {
+                    tempPlayerPosition--;
+                }
+            }
+
+            _playerPosition = tempPlayerPosition;
         }
     }
 }
