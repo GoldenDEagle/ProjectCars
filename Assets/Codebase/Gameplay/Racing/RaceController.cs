@@ -80,6 +80,19 @@ namespace Assets.Codebase.Gameplay.Racing
             List<int> enemiesWaypoints = new List<int>();
             foreach (var enemy in _enemyCars)
             {
+                // if lap difference
+                if (_playerCar.LapNumber > enemy.LapNumber)
+                {
+                    tempPlayerPosition--;
+                    continue;
+                }
+                else if (_playerCar.LapNumber > enemy.LapNumber)
+                {
+                    continue;
+                }
+                
+                // if on the same lap
+
                 var enemyWaypoint = _waypointCircuit.GetIndexOfTheWaypoint(enemy.GetClosestWaypoint(_waypointCircuit.waypointList.items));
                 if (playerWaypointIndex > enemyWaypoint)
                 {
