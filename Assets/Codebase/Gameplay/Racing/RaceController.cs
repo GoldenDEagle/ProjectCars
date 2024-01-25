@@ -1,6 +1,7 @@
 ﻿using Assets.Codebase.Gameplay.Cars;
 using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
+using Assets.Codebase.Views.Base;
 using DavidJalbert.TinyCarControllerAdvance;
 using System.Collections;
 using System.Collections.Generic;
@@ -147,8 +148,15 @@ namespace Assets.Codebase.Gameplay.Racing
         private void FinishRace()
         {
             StopCoroutine(_positionChecker);
+            _isRaceActive = false;
+            _standartInput.enabled = false;
+            _playerCar.CarController.setMotor(0f);
+
+            // Save race results in model
 
             Debug.Log("Race Finished!");
+
+            _models.GameplayModel.ActivateView(ViewId.EndGame);
         }
     }
 }

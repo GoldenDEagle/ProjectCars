@@ -4,5 +4,6 @@ namespace Assets.Codebase.Presenters.Endgame
 {
     public interface IEndgamePresenter : IPresenter
     {
+        public void ContinueButtonClicked();
     }
 }
