@@ -34,9 +34,11 @@ namespace Assets.Codebase.Gameplay.Racing
         private void SpawnCars()
         {
             _playerCar = _carSpawner.SpawnPlayer();
+            _playerCar.WaypointTracker.AttachCircuit(_waypointCircuit);
             _camera.carController = _playerCar.CarController;
             _standartInput.carController = _playerCar.CarController;
             _mobileInput.carController = _playerCar.CarController;
+            _playerCar.gameObject.SetActive(true);
 
             _enemyCars = _carSpawner.SpawnEnemies();
             foreach (var enemy in _enemyCars)
