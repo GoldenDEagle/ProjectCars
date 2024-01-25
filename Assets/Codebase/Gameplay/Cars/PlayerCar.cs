@@ -1,17 +1,28 @@
 ﻿using DavidJalbert.TinyCarControllerAdvance;
+using UniRx;
 using UnityEngine;
 using UnityStandardAssets.Utility;
 
 namespace Assets.Codebase.Gameplay.Cars
 {
-    public class PlayerCar : MonoBehaviour
+    public class PlayerCar : MonoBehaviour, ICar
     {
         [SerializeField] private TCCAPlayer _carController;
         [SerializeField] private WaypointProgressTracker _waypointTracker;
 
+        private int _lapNumber = 1;
+
         public TCCAPlayer CarController => _carController;
         public WaypointProgressTracker WaypointTracker => _waypointTracker;
 
+        public int LapNumber => _lapNumber;
+        public Subject<int> OnLapCompleted;
+
+        public void AddLap()
+        {
+            _lapNumber++;
+            OnLapCompleted?.OnNext(_lapNumber);
+        }
 
         public Transform GetClosestWaypoint(Transform[] waypoints)
         {

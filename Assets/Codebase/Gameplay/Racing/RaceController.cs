@@ -16,6 +16,7 @@ namespace Assets.Codebase.Gameplay.Racing
         [SerializeField] private TCCACamera _camera;
         [SerializeField] private TCCAStandardInput _standartInput;
         [SerializeField] private TCCAMobileInput _mobileInput;
+        [SerializeField] private Finish _finish;
 
         private List<EnemyCar> _enemyCars;
         private PlayerCar _playerCar;
@@ -53,6 +54,12 @@ namespace Assets.Codebase.Gameplay.Racing
                 enemy.WaypointTracker.AttachCircuit(_waypointCircuit);
                 enemy.gameObject.SetActive(true);
             }
+
+            List<ICar> cars = new List<ICar>();
+            cars.Add(_playerCar);
+            cars.AddRange(_enemyCars);
+
+            _finish.SetCars(cars);
         }
 
         private IEnumerator PositionTracker()
@@ -61,7 +68,7 @@ namespace Assets.Codebase.Gameplay.Racing
             {
                 yield return new WaitForSeconds(1f);
                 CheckPositions();
-                Debug.Log($"Player position: {_playerPosition}");
+                Debug.Log($"Player position: {_playerPosition}, Lap: {_playerCar.LapNumber}");
             }
         }
 

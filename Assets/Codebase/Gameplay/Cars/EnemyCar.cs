@@ -4,13 +4,20 @@ using UnityStandardAssets.Utility;
 
 namespace Assets.Codebase.Gameplay.Cars
 {
-    public class EnemyCar : MonoBehaviour
+    public class EnemyCar : MonoBehaviour, ICar
     {
         [SerializeField] private EnemyCarId _carId;
         [SerializeField] private WaypointProgressTracker _waypointTracker;
 
-        public WaypointProgressTracker WaypointTracker => _waypointTracker;
+        private int _lapNumber = 1;
 
+        public WaypointProgressTracker WaypointTracker => _waypointTracker;
+        public int LapNumber => _lapNumber;
+
+        public void AddLap()
+        {
+            _lapNumber++;
+        }
 
         public Transform GetClosestWaypoint(Transform[] waypoints)
         {

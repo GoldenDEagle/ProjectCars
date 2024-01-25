@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 6348723449636664572}
   m_Layer: 0
   m_Name: Car Sedan
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -513,6 +513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _carController: {fileID: 6348723449636664572}
+  _waypointTracker: {fileID: 0}
 --- !u!114 &6348723449636664572
 MonoBehaviour:
   m_ObjectHideFlags: 0
