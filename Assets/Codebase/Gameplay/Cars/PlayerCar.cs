@@ -16,7 +16,7 @@ namespace Assets.Codebase.Gameplay.Cars
         public WaypointProgressTracker WaypointTracker => _waypointTracker;
 
         public int LapNumber => _lapNumber;
-        public Subject<int> OnLapCompleted;
+        public Subject<int> OnLapCompleted = new Subject<int>();
 
         public void AddLap()
         {

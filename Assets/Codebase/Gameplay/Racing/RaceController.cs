@@ -4,6 +4,7 @@ using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
 using DavidJalbert.TinyCarControllerAdvance;
 using System.Collections;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 using UnityStandardAssets.Utility;
 
@@ -21,6 +22,7 @@ namespace Assets.Codebase.Gameplay.Racing
         private List<EnemyCar> _enemyCars;
         private PlayerCar _playerCar;
         private bool _isRaceActive = false;
+        private Coroutine _positionChecker;
 
         private int _playerPosition;
 
@@ -41,6 +43,7 @@ namespace Assets.Codebase.Gameplay.Racing
         {
             _playerCar = _carSpawner.SpawnPlayer();
             _playerCar.WaypointTracker.AttachCircuit(_waypointCircuit);
+            _playerCar.OnLapCompleted.Subscribe(lap => PlayerPassedLap(lap));
             _camera.carController = _playerCar.CarController;
             _standartInput.carController = _playerCar.CarController;
             _mobileInput.carController = _playerCar.CarController;
@@ -97,7 +100,7 @@ namespace Assets.Codebase.Gameplay.Racing
             {
                 enemy.AIControl.enabled = true;
             }
-            StartCoroutine(PositionTracker());
+            _positionChecker = StartCoroutine(PositionTracker());
         }
 
         private void CheckPositions()
@@ -133,7 +136,19 @@ namespace Assets.Codebase.Gameplay.Racing
 
         private void PlayerPassedLap(int lapNumber)
         {
-            // Finish race if all laps completed
+            if (lapNumber > _models.GameplayModel.ActiveRace.Value.TotalLaps)
+            {
+                FinishRace();
+            }
+
+            // Update Lap counter
+        }
+
+        private void FinishRace()
+        {
+            StopCoroutine(_positionChecker);
+
+            Debug.Log("Race Finished!");
         }
     }
 }

@@ -87,7 +87,7 @@ namespace Assets.Codebase.Models.Gameplay
                 _activeRace.Value = null;
             }
 
-            _activeRace.Value = new Race(3, new List<EnemyCarId> { EnemyCarId.First, EnemyCarId.Second });
+            _activeRace.Value = new Race(1, new List<EnemyCarId> { EnemyCarId.First, EnemyCarId.Second });
         }
     }
 }

@@ -6,13 +6,14 @@ namespace Assets.Codebase.Gameplay.Racing
     public class Race
     {
         private List<EnemyCarId> _enemiesList;
-        private int _lapsCount;
+        private int _totalLaps;
 
         public List<EnemyCarId> EnemiesList => _enemiesList;
+        public int TotalLaps => _totalLaps;
 
         public Race(int lapsCount, List<EnemyCarId> enemies)
         {
-            _lapsCount = lapsCount;
+            _totalLaps = lapsCount;
             _enemiesList = enemies;
         }
     }
