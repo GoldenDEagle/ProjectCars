@@ -34,9 +34,7 @@ namespace Assets.Codebase.Gameplay.Racing
         private void Start()
         {
             SpawnCars();
-            _playerPosition = _enemyCars.Count;
-            _isRaceActive = true;
-            StartCoroutine(PositionTracker());
+            StartCoroutine(RacingCountdown());
         }
 
         private void SpawnCars()
@@ -72,6 +70,36 @@ namespace Assets.Codebase.Gameplay.Racing
             }
         }
 
+        private IEnumerator RacingCountdown()
+        {
+            int time = 3;
+
+            while (time > 0)
+            {
+                Debug.Log($"Race in {time}");
+                yield return new WaitForSeconds(1f);
+                time--;
+            }
+
+            Debug.Log("Start!");
+            StartRace();
+
+            yield return new WaitForSeconds(1f);
+            // Remove counter
+        }
+
+        private void StartRace()
+        {
+            _playerPosition = 1;
+            _isRaceActive = true;
+            _standartInput.enabled = true;
+            foreach (var enemy in _enemyCars)
+            {
+                enemy.AIControl.enabled = true;
+            }
+            StartCoroutine(PositionTracker());
+        }
+
         private void CheckPositions()
         {
             int tempPlayerPosition = _enemyCars.Count + 1;
@@ -101,6 +129,11 @@ namespace Assets.Codebase.Gameplay.Racing
             }
 
             _playerPosition = tempPlayerPosition;
+        }
+
+        private void PlayerPassedLap(int lapNumber)
+        {
+            // Finish race if all laps completed
         }
     }
 }
