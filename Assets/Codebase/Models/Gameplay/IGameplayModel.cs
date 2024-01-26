@@ -1,5 +1,6 @@
 ﻿using Assets.Codebase.Data.Cars.Enemy;
 using Assets.Codebase.Data.Cars.Player;
+using Assets.Codebase.Data.Tracks;
 using Assets.Codebase.Gameplay.Racing;
 using Assets.Codebase.Models.Base;
 using Assets.Codebase.Models.Gameplay.Data;
@@ -40,6 +41,7 @@ namespace Assets.Codebase.Models.Gameplay
 
         public PlayerCarInfo GetPlayerCarInfo(PlayerCarId carId);
         public EnemyCarInfo GetEnemyCarInfo(EnemyCarId carId);
+        public TrackInfo GetTrackInfo(TrackId trackId);
         /// <summary>
         /// Creates new race and sets it as active race
         /// </summary>

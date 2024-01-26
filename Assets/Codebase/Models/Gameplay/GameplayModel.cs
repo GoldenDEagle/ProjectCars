@@ -11,6 +11,7 @@ using Assets.Codebase.Data.Cars.Enemy;
 using System.Linq;
 using Assets.Codebase.Gameplay.Racing;
 using System.Collections.Generic;
+using Assets.Codebase.Data.Tracks;
 
 namespace Assets.Codebase.Models.Gameplay
 {
@@ -18,6 +19,7 @@ namespace Assets.Codebase.Models.Gameplay
     {
         private const string EnemyCarsDescriptionPath = "Cars/Descriptions/EnemyCarsDescription";
         private const string PlayerCarsDescriptionPath = "Cars/Descriptions/PlayerCarsDescription";
+        private const string TrackDescriptionPath = "Cars/Tracks/TrackDescriptions";
 
         // Internal
         private ReactiveProperty<GameState> _state;
@@ -27,6 +29,7 @@ namespace Assets.Codebase.Models.Gameplay
         private SceneLoader _sceneLoader;
         private PlayerCarDescriptions _playerCarsDescription;
         private EnemyCarDescriptions _enemyCarsDescriptions;
+        private TrackDescriptions _trackDescriptions;
 
         // Public properties
         public ReactiveProperty<GameState> State => _state;
@@ -48,6 +51,7 @@ namespace Assets.Codebase.Models.Gameplay
             var assetProvider = ServiceLocator.Container.Single<IAssetProvider>();
             _enemyCarsDescriptions = assetProvider.LoadResource<EnemyCarDescriptions>(EnemyCarsDescriptionPath);
             _playerCarsDescription = assetProvider.LoadResource<PlayerCarDescriptions>(PlayerCarsDescriptionPath);
+            _trackDescriptions = assetProvider.LoadResource<TrackDescriptions>(TrackDescriptionPath);
         }
 
         public void ActivateView(ViewId viewId)
@@ -74,10 +78,13 @@ namespace Assets.Codebase.Models.Gameplay
         {
             return _playerCarsDescription.CarsList.FirstOrDefault(x => x.CarId == carId);
         }
-
         public EnemyCarInfo GetEnemyCarInfo(EnemyCarId carId)
         {
             return _enemyCarsDescriptions.CarsList.FirstOrDefault(x => x.CarId == carId);
+        }
+        public TrackInfo GetTrackInfo(TrackId trackId)
+        {
+            return _trackDescriptions.Tracks.FirstOrDefault(x => x.TrackId == trackId);
         }
 
         public void CreateNewRace()
