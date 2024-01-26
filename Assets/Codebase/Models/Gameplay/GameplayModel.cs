@@ -91,14 +91,14 @@ namespace Assets.Codebase.Models.Gameplay
             return _trackDescriptions.Tracks;
         }
 
-        public void CreateNewRace()
+        public void CreateNewRace(TrackId trackId)
         {
             if (_activeRace.Value != null)
             {
                 _activeRace.Value = null;
             }
 
-            _activeRace.Value = new Race(1, new List<EnemyCarId> { EnemyCarId.First, EnemyCarId.Second });
+            _activeRace.Value = new Race(trackId, 1, new List<EnemyCarId> { EnemyCarId.First, EnemyCarId.Second });
         }
     }
 }

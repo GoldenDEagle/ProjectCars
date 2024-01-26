@@ -30,7 +30,7 @@ public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
 
     public void GoButtonClicked()
     {
-        GameplayModel.CreateNewRace();
+        GameplayModel.CreateNewRace(_availableTracks[_selectedTrackIndex].TrackId);
         GameplayModel.LoadScene(_availableTracks[_selectedTrackIndex].TrackSceneName, () => GameplayModel.ActivateView(ViewId.Ingame));
     }
 

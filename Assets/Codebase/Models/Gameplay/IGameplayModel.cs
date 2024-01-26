@@ -47,7 +47,7 @@ namespace Assets.Codebase.Models.Gameplay
         /// <summary>
         /// Creates new race and sets it as active race
         /// </summary>
-        public void CreateNewRace();
+        public void CreateNewRace(TrackId trackId);
 
         public ReactiveProperty<GameState> State { get; }
 
