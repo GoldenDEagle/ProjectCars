@@ -96,7 +96,7 @@ namespace Assets.Codebase.Gameplay.Racing
         {
             _playerPosition = 1;
             _isRaceActive = true;
-            _standartInput.enabled = true;
+            SetInputState(true);
             foreach (var enemy in _enemyCars)
             {
                 enemy.AIControl.enabled = true;
@@ -150,7 +150,7 @@ namespace Assets.Codebase.Gameplay.Racing
         {
             StopCoroutine(_positionChecker);
             _isRaceActive = false;
-            _standartInput.enabled = false;
+            SetInputState(false);
             _playerCar.CarController.setMotor(0f);
 
             // Save race results in model
@@ -159,6 +159,19 @@ namespace Assets.Codebase.Gameplay.Racing
             Debug.Log("Race Finished!");
 
             _models.GameplayModel.ActivateView(ViewId.EndGame);
+        }
+
+
+        private void SetInputState(bool isEnabled)
+        {
+            if (_models.GameplayModel.IsMobile)
+            {
+                _mobileInput.gameObject.SetActive(isEnabled);
+            }
+            else
+            {
+                _standartInput.enabled = isEnabled;
+            }
         }
     }
 }

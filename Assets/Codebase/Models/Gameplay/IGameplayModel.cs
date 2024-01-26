@@ -17,6 +17,10 @@ namespace Assets.Codebase.Models.Gameplay
     public interface IGameplayModel : IModel
     {
         /// <summary>
+        /// Is platform mobile
+        /// </summary>
+        public bool IsMobile { get; }
+        /// <summary>
         /// Currently active view
         /// </summary>
         public ReactiveProperty<ViewId> ActiveViewId { get; }

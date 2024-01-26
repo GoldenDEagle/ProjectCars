@@ -18,5 +18,9 @@
         /// </summary>
         /// <param name="adsEnabled"></param>
         public void SetAdsStatus(bool adsEnabled);
+
+
+
+        public bool IsDeviceMobile();
     }
 }

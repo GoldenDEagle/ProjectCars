@@ -12,6 +12,7 @@ using System.Linq;
 using Assets.Codebase.Gameplay.Racing;
 using System.Collections.Generic;
 using Assets.Codebase.Data.Tracks;
+using Assets.Codebase.Infrastructure.ServicesManagment.Ads;
 
 namespace Assets.Codebase.Models.Gameplay
 {
@@ -30,12 +31,14 @@ namespace Assets.Codebase.Models.Gameplay
         private PlayerCarDescriptions _playerCarsDescription;
         private EnemyCarDescriptions _enemyCarsDescriptions;
         private TrackDescriptions _trackDescriptions;
+        private bool _isMobile;
 
         // Public properties
         public ReactiveProperty<GameState> State => _state;
         public ReactiveProperty<ViewId> ActiveViewId => _activeViewId;
         public Subject<ViewId> OnViewClosed => _onViewClosed;
         public ReactiveProperty<Race> ActiveRace => _activeRace;
+        public bool IsMobile => _isMobile;
 
         public GameplayModel()
         {
@@ -52,6 +55,7 @@ namespace Assets.Codebase.Models.Gameplay
             _enemyCarsDescriptions = assetProvider.LoadResource<EnemyCarDescriptions>(EnemyCarsDescriptionPath);
             _playerCarsDescription = assetProvider.LoadResource<PlayerCarDescriptions>(PlayerCarsDescriptionPath);
             _trackDescriptions = assetProvider.LoadResource<TrackDescriptions>(TrackDescriptionPath);
+            _isMobile = ServiceLocator.Container.Single<IAdsService>().IsDeviceMobile();
         }
 
         public void ActivateView(ViewId viewId)

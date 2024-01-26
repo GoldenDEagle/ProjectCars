@@ -43,5 +43,11 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
                 GP_Ads.ShowRewarded();
             }
         }
+
+
+        public bool IsDeviceMobile()
+        {
+            return GP_Device.IsMobile();
+        }
     }
 }
