@@ -5059,11 +5059,11 @@ MonoBehaviour:
     name: Vertical
     invert: 1
   steerRightInput:
-    type: 2
+    type: 1
     name: Horizontal
     invert: 0
   steerLeftInput:
-    type: 2
+    type: 1
     name: Horizontal
     invert: 1
   handbrakeInput:
@@ -13376,7 +13376,7 @@ MonoBehaviour:
   topDownAngle: {x: 45, y: 0, z: 0}
   topDownSpeed: 50
   thirdPersonOffsetStart: {x: 0, y: 0.5, z: 0}
-  thirdPersonOffsetEnd: {x: 0, y: 1, z: -3}
+  thirdPersonOffsetEnd: {x: 0, y: 1, z: -4}
   thirdPersonAngle: {x: 10, y: 0, z: 0}
   thirdPersonSkinWidth: 0.1
   interpolationUpToSpeed: 50
