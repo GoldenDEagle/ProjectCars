@@ -68,9 +68,9 @@ namespace Assets.Codebase.Gameplay.Racing
         {
             while (_isRaceActive)
             {
-                yield return new WaitForSeconds(1f);
                 CheckPositions();
                 Debug.Log($"Player position: {_playerPosition}, Lap: {_playerCar.LapNumber}");
+                yield return new WaitForSeconds(1f);
             }
         }
 

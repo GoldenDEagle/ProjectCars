@@ -10,13 +10,16 @@ namespace Assets.Codebase.Gameplay.Cars
         [SerializeField] private TCCAPlayer _carController;
         [SerializeField] private WaypointProgressTracker _waypointTracker;
 
+        private Transform _closestWaypoint;
         private int _lapNumber = 1;
 
         public TCCAPlayer CarController => _carController;
         public WaypointProgressTracker WaypointTracker => _waypointTracker;
+        public Transform ClosestWaypoint => _closestWaypoint;
 
         public int LapNumber => _lapNumber;
         public Subject<int> OnLapCompleted = new Subject<int>();
+        
 
         public void AddLap()
         {
@@ -40,6 +43,7 @@ namespace Assets.Codebase.Gameplay.Cars
                 }
             }
 
+            _closestWaypoint = bestTarget;
             return bestTarget;
         }
     }

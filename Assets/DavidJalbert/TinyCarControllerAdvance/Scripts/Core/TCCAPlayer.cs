@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Codebase.Gameplay.Cars;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace DavidJalbert.TinyCarControllerAdvance
 {
     public class TCCAPlayer : MonoBehaviour
     {
+        private PlayerCar playerCar;
+
         private TCCABody carBody;
         private TCCAWheel[] wheels;
         private GameObject tempContainer;
@@ -29,6 +32,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
 
         void Awake()
         {
+            playerCar = GetComponent<PlayerCar>();
             carBody = GetComponentInChildren<TCCABody>();
             carBody.initialize(this);
 
@@ -238,6 +242,11 @@ namespace DavidJalbert.TinyCarControllerAdvance
         public Vector3 getInitialPosition()
         {
             return initialPosition;
+        }
+
+        public Vector3 getRespawnPosition()
+        {
+            return playerCar.ClosestWaypoint.position;
         }
 
         public Quaternion getInitialRotation()
