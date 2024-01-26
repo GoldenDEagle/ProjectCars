@@ -6,6 +6,7 @@ using Assets.Codebase.Models.Base;
 using Assets.Codebase.Models.Gameplay.Data;
 using Assets.Codebase.Views.Base;
 using System;
+using System.Collections.Generic;
 using UniRx;
 
 namespace Assets.Codebase.Models.Gameplay
@@ -42,6 +43,7 @@ namespace Assets.Codebase.Models.Gameplay
         public PlayerCarInfo GetPlayerCarInfo(PlayerCarId carId);
         public EnemyCarInfo GetEnemyCarInfo(EnemyCarId carId);
         public TrackInfo GetTrackInfo(TrackId trackId);
+        public List<TrackInfo> GetTracks();
         /// <summary>
         /// Creates new race and sets it as active race
         /// </summary>

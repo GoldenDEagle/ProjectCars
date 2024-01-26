@@ -19,7 +19,7 @@ namespace Assets.Codebase.Models.Gameplay
     {
         private const string EnemyCarsDescriptionPath = "Cars/Descriptions/EnemyCarsDescription";
         private const string PlayerCarsDescriptionPath = "Cars/Descriptions/PlayerCarsDescription";
-        private const string TrackDescriptionPath = "Cars/Tracks/TrackDescriptions";
+        private const string TrackDescriptionPath = "Tracks/TrackDescriptions";
 
         // Internal
         private ReactiveProperty<GameState> _state;
@@ -85,6 +85,10 @@ namespace Assets.Codebase.Models.Gameplay
         public TrackInfo GetTrackInfo(TrackId trackId)
         {
             return _trackDescriptions.Tracks.FirstOrDefault(x => x.TrackId == trackId);
+        }
+        public List<TrackInfo> GetTracks()
+        {
+            return _trackDescriptions.Tracks;
         }
 
         public void CreateNewRace()
