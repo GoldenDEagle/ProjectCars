@@ -211,6 +211,10 @@ namespace UnityStandardAssets.Vehicles.Car
             }
         }
 
+        public void SetPosition(Transform targetTransform)
+        {
+            m_Rigidbody.Move(targetTransform.position, targetTransform.rotation);
+        }
 
         public void SetTarget(Transform target)
         {

@@ -100,6 +100,7 @@ namespace Assets.Codebase.Gameplay.Racing
             foreach (var enemy in _enemyCars)
             {
                 enemy.AIControl.enabled = true;
+                enemy.StartCheckingMovement();
             }
             _positionChecker = StartCoroutine(PositionTracker());
         }
@@ -112,6 +113,8 @@ namespace Assets.Codebase.Gameplay.Racing
             List<int> enemiesWaypoints = new List<int>();
             foreach (var enemy in _enemyCars)
             {
+                var enemyWaypoint = _waypointCircuit.GetIndexOfTheWaypoint(enemy.GetClosestWaypoint(_waypointCircuit.waypointList.items));
+
                 // if lap difference
                 if (_playerCar.LapNumber > enemy.LapNumber)
                 {
@@ -124,8 +127,6 @@ namespace Assets.Codebase.Gameplay.Racing
                 }
                 
                 // if on the same lap
-
-                var enemyWaypoint = _waypointCircuit.GetIndexOfTheWaypoint(enemy.GetClosestWaypoint(_waypointCircuit.waypointList.items));
                 if (playerWaypointIndex > enemyWaypoint)
                 {
                     tempPlayerPosition--;

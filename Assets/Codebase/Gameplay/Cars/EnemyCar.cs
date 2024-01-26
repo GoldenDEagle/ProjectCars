@@ -1,4 +1,5 @@
 ﻿using Assets.Codebase.Data.Cars.Enemy;
+using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.Utility;
 using UnityStandardAssets.Vehicles.Car;
@@ -12,10 +13,17 @@ namespace Assets.Codebase.Gameplay.Cars
         [SerializeField] private CarAIControl _aiControl;
 
         private int _lapNumber = 1;
+        private Coroutine _movementCheckRoutine;
+        private Transform _closestWaypoint;
 
         public WaypointProgressTracker WaypointTracker => _waypointTracker;
         public CarAIControl AIControl => _aiControl;
         public int LapNumber => _lapNumber;
+
+        public void StartCheckingMovement()
+        {
+            _movementCheckRoutine = StartCoroutine(CheckMovementRoutine());
+        }
 
         public void AddLap()
         {
@@ -38,7 +46,24 @@ namespace Assets.Codebase.Gameplay.Cars
                 }
             }
 
+            _closestWaypoint = bestTarget;
             return bestTarget;
+        }
+
+        private IEnumerator CheckMovementRoutine()
+        {
+            while (true)
+            {
+                var initialPosition = transform.position;
+
+                yield return new WaitForSeconds(3f);
+                
+                // if position didn't change significantly => reset position
+                if ((transform.position - initialPosition).magnitude < 1f)
+                {
+                    _aiControl.SetPosition(_closestWaypoint);
+                }
+            }
         }
     }
 }
