@@ -5664,7 +5664,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9725707, y: 1.3897082, z: 1.392374}
+  m_Size: {x: 0.88, y: 1.15, z: 1.35}
   m_Center: {x: 0.0066150655, y: -0.39398718, z: 0.079256095}
 --- !u!23 &379354920881841367
 MeshRenderer:
@@ -5825,15 +5825,15 @@ MonoBehaviour:
   m_MaximumSteerAngle: 25
   m_SteerHelper: 0.774
   m_TractionControl: 1
-  m_FullTorqueOverAllWheels: 2000
+  m_FullTorqueOverAllWheels: 1500
   m_ReverseTorque: 150
   m_MaxHandbrakeTorque: 100000000
   m_Downforce: 100
   m_SpeedType: 0
-  m_Topspeed: 70
+  m_Topspeed: 50
   m_RevRangeBoundary: 1
   m_SlipLimit: 0.4
-  m_BrakeTorque: 20000
+  m_BrakeTorque: 15000
 --- !u!114 &2773184794495482081
 MonoBehaviour:
   m_ObjectHideFlags: 0

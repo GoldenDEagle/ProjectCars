@@ -118,7 +118,7 @@ namespace Assets.Codebase.Gameplay.Racing
                     tempPlayerPosition--;
                     continue;
                 }
-                else if (_playerCar.LapNumber > enemy.LapNumber)
+                else if (_playerCar.LapNumber < enemy.LapNumber)
                 {
                     continue;
                 }
