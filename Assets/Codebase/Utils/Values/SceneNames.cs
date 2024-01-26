@@ -6,7 +6,6 @@
         public static readonly string Menu = "Menu";
         public static readonly string CityTrack = "City";
         public static readonly string RedDesertTrack = "RedDesert";
-        public static readonly string DesertTrack = "Desert";
         public static readonly string MountainsTrack = "Mountains";
     }
 }
