@@ -155,6 +155,7 @@ namespace Assets.Codebase.Gameplay.Racing
 
             // Save race results in model
 
+            _models.GameplayModel.ActiveRace.Value.WriteRaceResult(_playerPosition);
             Debug.Log("Race Finished!");
 
             _models.GameplayModel.ActivateView(ViewId.EndGame);
