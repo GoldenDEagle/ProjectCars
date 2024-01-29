@@ -60,7 +60,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
                 {
                     carController.immobilize();
                     carController.setPosition(carController.getRespawnPosition() + Vector3.up);
-                    carController.setRotation(carController.getInitialRotation());
+                    carController.setRotation(carController.getRespawnRotation());
 
                     foreach (TrailRenderer t in carController.GetComponentsInChildren<TrailRenderer>())
                     {

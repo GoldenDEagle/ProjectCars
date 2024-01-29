@@ -249,6 +249,11 @@ namespace DavidJalbert.TinyCarControllerAdvance
             return playerCar.ClosestWaypoint.position;
         }
 
+        public Quaternion getRespawnRotation()
+        {
+            return playerCar.ClosestWaypoint.rotation;
+        }
+
         public Quaternion getInitialRotation()
         {
             return initialRotation;
