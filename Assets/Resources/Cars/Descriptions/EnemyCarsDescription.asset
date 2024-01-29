@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _carsList:
   - _carId: 0
-    _prefab: {fileID: 1798516171937908723, guid: c7eb8454f45e43a4080601ef4f8a88f4, type: 3}
+    _prefab: {fileID: -1194319528498776257, guid: a580ad472336c6d4b9902e78185012b5, type: 3}
   - _carId: 1
-    _prefab: {fileID: 2451283533735704318, guid: 0a341d39cb25d8b4f8196df95905d32c, type: 3}
+    _prefab: {fileID: -86987760083803839, guid: 7dd1fb798a08f1f43bf3c3b05722ae17, type: 3}
