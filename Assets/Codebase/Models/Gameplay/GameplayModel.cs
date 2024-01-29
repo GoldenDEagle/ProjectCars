@@ -82,6 +82,10 @@ namespace Assets.Codebase.Models.Gameplay
         {
             return _playerCarsDescription.CarsList.FirstOrDefault(x => x.CarId == carId);
         }
+        public List<PlayerCarInfo> GetListOfAvailablePlayerCars()
+        {
+            return _playerCarsDescription.CarsList;
+        }
         public EnemyCarInfo GetEnemyCarInfo(EnemyCarId carId)
         {
             return _enemyCarsDescriptions.CarsList.FirstOrDefault(x => x.CarId == carId);

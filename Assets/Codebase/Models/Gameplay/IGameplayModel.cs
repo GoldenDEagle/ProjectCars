@@ -45,6 +45,7 @@ namespace Assets.Codebase.Models.Gameplay
         public void LoadScene(string name, Action onLoaded = null);
 
         public PlayerCarInfo GetPlayerCarInfo(PlayerCarId carId);
+        public List<PlayerCarInfo> GetListOfAvailablePlayerCars();
         public EnemyCarInfo GetEnemyCarInfo(EnemyCarId carId);
         public TrackInfo GetTrackInfo(TrackId trackId);
         public List<TrackInfo> GetTracks();
