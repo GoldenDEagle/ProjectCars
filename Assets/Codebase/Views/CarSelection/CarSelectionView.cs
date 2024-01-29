@@ -1,6 +1,7 @@
 ﻿using Assets.Codebase.Presenter.Base;
 using Assets.Codebase.Presenters.CarSelection;
 using Assets.Codebase.Views.Base;
+using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,8 @@ namespace Assets.Codebase.Views.CarSelection
     public class CarSelectionView : BaseView
     {
         [SerializeField] private Button _confirmSelectionButton;
+        [SerializeField] private Button _leftArrowButton;
+        [SerializeField] private Button _rightArrowButton;
 
         private ICarSelectionPresenter _presenter;
 
@@ -23,6 +26,8 @@ namespace Assets.Codebase.Views.CarSelection
         protected override void SubscribeToUserInput()
         {
             _confirmSelectionButton.OnClickAsObservable().Subscribe(_ => _presenter.ConfirmSelectionButtonClicked()).AddTo(CompositeDisposable);
+            _leftArrowButton.OnClickAsObservable().Subscribe(_ => _presenter.LeftArrowClicked()).AddTo(CompositeDisposable);
+            _rightArrowButton.OnClickAsObservable().Subscribe(_ => _presenter.RightArrowClicked()).AddTo(CompositeDisposable);
         }
     }
 }

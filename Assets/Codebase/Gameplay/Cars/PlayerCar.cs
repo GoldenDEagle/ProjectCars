@@ -15,6 +15,7 @@ namespace Assets.Codebase.Gameplay.Cars
         private Transform _closestWaypoint;
         private int _lapNumber = 1;
 
+        public PlayerCarId CarId => _carId;
         public TCCAPlayer CarController => _carController;
         public WaypointProgressTracker WaypointTracker => _waypointTracker;
         public Transform ClosestWaypoint => _closestWaypoint;

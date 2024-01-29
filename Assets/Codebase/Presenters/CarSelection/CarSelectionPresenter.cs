@@ -13,4 +13,14 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
     {
         GameplayModel.ActivateView(ViewId.TrackSelection);
     }
+
+    public void RightArrowClicked()
+    {
+
+    }
+
+    public void LeftArrowClicked()
+    {
+
+    }
 }
