@@ -3,6 +3,14 @@
     public enum PlayerCarId
     {
         Haumea,
-        Pickup,
+        Antiope,
+        Aurora94,
+        Centauri,
+        Eridanus,
+        Europa,
+        Juno,
+        Phaethon,
+        Stellar,
+        Vesta,
     }
 }

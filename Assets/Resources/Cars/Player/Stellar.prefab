@@ -791,6 +791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82931e33ce0ac024aa8f814bb8653c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _carId: 8
   _carController: {fileID: 2038926638049158322}
   _waypointTracker: {fileID: 0}
 --- !u!114 &2038926638049158322

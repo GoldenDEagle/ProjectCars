@@ -18,4 +18,28 @@ MonoBehaviour:
     _prefab: {fileID: 5977197963510527990, guid: 315052b7db052e24d96ef16085ca4ed9, type: 3}
   - _carId: 1
     _price: 100
-    _prefab: {fileID: 6661409587803541170, guid: 0571f44754a07774c8129f39aef779f6, type: 3}
+    _prefab: {fileID: 1375349069320465123, guid: 1a58b147fe4fed344a1fda80c406bf12, type: 3}
+  - _carId: 2
+    _price: 100
+    _prefab: {fileID: 7662035272512868792, guid: 578b571dbca2222449fb2b4e65d8194a, type: 3}
+  - _carId: 3
+    _price: 100
+    _prefab: {fileID: 7177818758726484847, guid: d3c3fee2a1a5f774f97368953a69fcc9, type: 3}
+  - _carId: 4
+    _price: 100
+    _prefab: {fileID: 6704725357457548826, guid: 44fd83ec1aa3fe841b12d3a057e05c00, type: 3}
+  - _carId: 5
+    _price: 100
+    _prefab: {fileID: 8371259204232148951, guid: 2650aca6d62400d41b8fdc4320902e58, type: 3}
+  - _carId: 6
+    _price: 100
+    _prefab: {fileID: 7222718450273558857, guid: 5e836a6a79fe46542b73efd11756db9c, type: 3}
+  - _carId: 7
+    _price: 100
+    _prefab: {fileID: 8055445295446214214, guid: 5a444b324d134154f84687b0e548a673, type: 3}
+  - _carId: 8
+    _price: 100
+    _prefab: {fileID: 4814177461195152801, guid: 20cbee737e8752644a1483c326e21d4d, type: 3}
+  - _carId: 9
+    _price: 100
+    _prefab: {fileID: 6025800936831583672, guid: e0acd5fa07fc3954a948b0b55b6d499e, type: 3}

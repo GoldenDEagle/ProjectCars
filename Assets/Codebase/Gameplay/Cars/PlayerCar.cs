@@ -1,4 +1,5 @@
-﻿using DavidJalbert.TinyCarControllerAdvance;
+﻿using Assets.Codebase.Data.Cars.Player;
+using DavidJalbert.TinyCarControllerAdvance;
 using UniRx;
 using UnityEngine;
 using UnityStandardAssets.Utility;
@@ -7,6 +8,7 @@ namespace Assets.Codebase.Gameplay.Cars
 {
     public class PlayerCar : MonoBehaviour, ICar
     {
+        [SerializeField] private PlayerCarId _carId;
         [SerializeField] private TCCAPlayer _carController;
         [SerializeField] private WaypointProgressTracker _waypointTracker;
 
