@@ -85,6 +85,7 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
 
         ProgressModel.ModifyCoinAmount(-price);
         ProgressModel.UnlockNewCar(_availableCars[_selectedCarIndex].CarId);
+        ProgressModel.SaveProgress();
         UpdateButtonStates();
     }
 

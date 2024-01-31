@@ -32,6 +32,7 @@ public class EndgamePresenter : BasePresenter, IEndgamePresenter
     public void ContinueButtonClicked()
     {
         ProgressModel.ModifyCoinAmount(GameplayModel.CurrentReward.Value);
+        ProgressModel.SaveProgress();
         GameplayModel.LoadScene(SceneNames.Menu, () => GameplayModel.ActivateView(ViewId.CarSelection));
     }
 }
