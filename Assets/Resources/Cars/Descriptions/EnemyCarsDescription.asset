@@ -14,6 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _carsList:
   - _carId: 0
-    _prefab: {fileID: 1798516171937908723, guid: c7eb8454f45e43a4080601ef4f8a88f4, type: 3}
+    _prefab: {fileID: 3536992502020631340, guid: 83ad5ff932f26e14ba094ce25f4da9be, type: 3}
   - _carId: 1
-    _prefab: {fileID: 2451283533735704318, guid: 0a341d39cb25d8b4f8196df95905d32c, type: 3}
+    _prefab: {fileID: 9139851111230693748, guid: bb42190d9569a084bb20a97e61a5847a, type: 3}
+  - _carId: 2
+    _prefab: {fileID: 6877698027775619626, guid: ff750aaa488520844ba416ea8a7cbccf, type: 3}
+  - _carId: 3
+    _prefab: {fileID: 4732610017976318371, guid: 0a341d39cb25d8b4f8196df95905d32c, type: 3}
+  - _carId: 4
+    _prefab: {fileID: 6207272068000198829, guid: 8d0b8cdc38abd7a4793b09a6039721e5, type: 3}
+  - _carId: 5
+    _prefab: {fileID: 1798516171937908723, guid: c7eb8454f45e43a4080601ef4f8a88f4, type: 3}
+  - _carId: 6
+    _prefab: {fileID: 8704698280542621277, guid: 7dd1fb798a08f1f43bf3c3b05722ae17, type: 3}
+  - _carId: 7
+    _prefab: {fileID: 8428585314340785144, guid: ffdad4b3fae18274fbd006d888838de8, type: 3}

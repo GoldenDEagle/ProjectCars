@@ -13,6 +13,9 @@ using Assets.Codebase.Gameplay.Racing;
 using System.Collections.Generic;
 using Assets.Codebase.Data.Tracks;
 using Assets.Codebase.Infrastructure.ServicesManagment.Ads;
+using Assets.Codebase.Utils.Extensions;
+using Unity.VisualScripting;
+using UnityEngine;
 
 namespace Assets.Codebase.Models.Gameplay
 {
@@ -31,6 +34,7 @@ namespace Assets.Codebase.Models.Gameplay
         private PlayerCarDescriptions _playerCarsDescription;
         private EnemyCarDescriptions _enemyCarsDescriptions;
         private TrackDescriptions _trackDescriptions;
+        private List<EnemyCarId> _availableEnemyIds;
         private bool _isMobile;
 
         // Public properties
@@ -106,7 +110,23 @@ namespace Assets.Codebase.Models.Gameplay
                 _activeRace.Value = null;
             }
 
-            _activeRace.Value = new Race(trackId, 1, new List<EnemyCarId> { EnemyCarId.First, EnemyCarId.Second });
+            if (_availableEnemyIds == null)
+            {
+                CollectAllEnemyIds();
+            }
+
+            _availableEnemyIds.Shuffle();
+
+            _activeRace.Value = new Race(trackId, 1, _availableEnemyIds.Take(5).ToList());
+        }
+
+        private void CollectAllEnemyIds()
+        {
+            _availableEnemyIds = new List<EnemyCarId>();
+            foreach (var enemy in _enemyCarsDescriptions.CarsList)
+            {
+                _availableEnemyIds.Add(enemy.CarId);
+            }
         }
     }
 }
