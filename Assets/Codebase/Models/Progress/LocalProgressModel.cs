@@ -64,5 +64,19 @@ namespace Assets.Codebase.Models.Progress
             var progress = PlayerPrefs.GetString(ProgressKey).ToDeserealized<PersistantProgress>();
             SessionProgress = new SessionProgress(progress);
         }
+
+
+        public void ModifyCoinAmount(int delta)
+        {
+            var newAmount = SessionProgress.TotalCoins.Value + delta;
+            
+            if (newAmount < 0)
+            {
+                Debug.Log("New coin amount is negative!");
+                return;
+            }
+
+            SessionProgress.TotalCoins.Value = newAmount;
+        }
     }
 }

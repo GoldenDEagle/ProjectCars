@@ -1,21 +1,20 @@
-﻿using Assets.Codebase.Infrastructure.Initialization;
-using Assets.Codebase.Infrastructure.ServicesManagment.Assets;
+﻿using Assets.Codebase.Data.Cars.Enemy;
+using Assets.Codebase.Data.Cars.Player;
+using Assets.Codebase.Data.Tracks;
+using Assets.Codebase.Gameplay.Racing;
+using Assets.Codebase.Infrastructure.Initialization;
 using Assets.Codebase.Infrastructure.ServicesManagment;
+using Assets.Codebase.Infrastructure.ServicesManagment.Ads;
+using Assets.Codebase.Infrastructure.ServicesManagment.Assets;
 using Assets.Codebase.Models.Base;
 using Assets.Codebase.Models.Gameplay.Data;
+using Assets.Codebase.Utils.Extensions;
+using Assets.Codebase.Utils.Values;
 using Assets.Codebase.Views.Base;
 using System;
-using UniRx;
-using Assets.Codebase.Data.Cars.Player;
-using Assets.Codebase.Data.Cars.Enemy;
-using System.Linq;
-using Assets.Codebase.Gameplay.Racing;
 using System.Collections.Generic;
-using Assets.Codebase.Data.Tracks;
-using Assets.Codebase.Infrastructure.ServicesManagment.Ads;
-using Assets.Codebase.Utils.Extensions;
-using Unity.VisualScripting;
-using UnityEngine;
+using System.Linq;
+using UniRx;
 
 namespace Assets.Codebase.Models.Gameplay
 {
@@ -30,6 +29,7 @@ namespace Assets.Codebase.Models.Gameplay
         private ReactiveProperty<ViewId> _activeViewId;
         private ReactiveProperty<Race> _activeRace;
         private Subject<ViewId> _onViewClosed;
+        private ReactiveProperty<int> _currentReward;
         private SceneLoader _sceneLoader;
         private PlayerCarDescriptions _playerCarsDescription;
         private EnemyCarDescriptions _enemyCarsDescriptions;
@@ -42,6 +42,7 @@ namespace Assets.Codebase.Models.Gameplay
         public ReactiveProperty<ViewId> ActiveViewId => _activeViewId;
         public Subject<ViewId> OnViewClosed => _onViewClosed;
         public ReactiveProperty<Race> ActiveRace => _activeRace;
+        public ReactiveProperty<int> CurrentReward => _currentReward;
         public bool IsMobile => _isMobile;
 
         public GameplayModel()
@@ -51,6 +52,7 @@ namespace Assets.Codebase.Models.Gameplay
             _activeViewId = new ReactiveProperty<ViewId>(ViewId.None);
             _activeRace = new ReactiveProperty<Race>();
             _onViewClosed = new Subject<ViewId>();
+            _currentReward = new ReactiveProperty<int>(0);
         }
 
         public void InitModel()
@@ -117,9 +119,25 @@ namespace Assets.Codebase.Models.Gameplay
 
             _availableEnemyIds.Shuffle();
 
-            _activeRace.Value = new Race(trackId, 1, _availableEnemyIds.Take(5).ToList());
+            _activeRace.Value = new Race(trackId, 2, _availableEnemyIds.Take(5).ToList());
         }
 
+        public int CalculateReward()
+        {
+            var race = _activeRace.Value;
+
+            if (race == null) { return 0; }
+
+            int positionReward = (race.EnemiesList.Count - race.Result.Position + 2) * Calculations.RewardPerPosition;
+            int totalReward = positionReward + (int)(positionReward * 0.5f * (race.TotalLaps - 1));
+            _currentReward.Value = totalReward;
+
+            return totalReward;
+        }
+
+
+
+        /////////////////// Internal /////////////////
         private void CollectAllEnemyIds()
         {
             _availableEnemyIds = new List<EnemyCarId>();

@@ -22,5 +22,11 @@ namespace Assets.Codebase.Models.Progress
         /// Loads data from saving place.
         /// </summary>
         public void LoadProgress();
+
+        /// <summary>
+        /// Use this to add/remove coins
+        /// </summary>
+        /// <param name="delta"></param>
+        public void ModifyCoinAmount(int delta);
     }
 }

@@ -8,6 +8,7 @@ using UniRx;
 public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
 {
     public ReactiveProperty<PlayerCarId> DisplayedCar { get; private set; }
+    public ReactiveProperty<string> TotalCoinsString { get; private set; }
 
     private List<PlayerCarInfo> _availableCars;
     private int _selectedCarIndex;
@@ -16,12 +17,20 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
     {
         CorrespondingViewId = ViewId.CarSelection;
         DisplayedCar = new ReactiveProperty<PlayerCarId>();
+        TotalCoinsString = new ReactiveProperty<string>();
+    }
+
+    protected override void SubscribeToModelChanges()
+    {
+        base.SubscribeToModelChanges();
+        ProgressModel.SessionProgress.TotalCoins.Subscribe(value => TotalCoinsString.Value = "Coins: " + value).AddTo(CompositeDisposable);
     }
 
     public override void CreateView()
     {
         base.CreateView();
 
+        //TotalCoinsString.Value = "Coins: " + ProgressModel.SessionProgress.TotalCoins.Value;
         _availableCars = GameplayModel.GetListOfAvailablePlayerCars();
         DisplayedCar.Value = ProgressModel.SessionProgress.SelectedCar.Value;
         _selectedCarIndex = _availableCars.FindIndex(x => x.CarId == DisplayedCar.Value);

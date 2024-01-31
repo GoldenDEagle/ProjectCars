@@ -14,6 +14,7 @@ namespace Assets.Codebase.Models.Progress.Data
         public float MusicVolume;
         public float SFXVolume;
         public PlayerCarId SelectedCar;
+        public int TotalCoins;
 
         public void SetValues(SessionProgress progress)
         {
@@ -22,6 +23,7 @@ namespace Assets.Codebase.Models.Progress.Data
             MusicVolume = progress.MusicVolume.Value;
             SFXVolume = progress.SFXVolume.Value;
             SelectedCar = progress.SelectedCar.Value;
+            TotalCoins = progress.TotalCoins.Value;
         }
     }
 }

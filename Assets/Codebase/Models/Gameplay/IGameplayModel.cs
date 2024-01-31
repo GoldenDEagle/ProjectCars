@@ -33,6 +33,10 @@ namespace Assets.Codebase.Models.Gameplay
         /// </summary>
         public ReactiveProperty<Race> ActiveRace { get; }
         /// <summary>
+        /// Last race reward
+        /// </summary>
+        public ReactiveProperty<int> CurrentReward { get; }
+        /// <summary>
         /// Use to switch between views (deactivates all others)
         /// </summary>
         /// <param name="viewId"></param>
@@ -53,6 +57,11 @@ namespace Assets.Codebase.Models.Gameplay
         /// Creates new race and sets it as active race
         /// </summary>
         public void CreateNewRace(TrackId trackId);
+        /// <summary>
+        /// Calculates reward
+        /// </summary>
+        /// <returns></returns>
+        public int CalculateReward();
 
         public ReactiveProperty<GameState> State { get; }
 

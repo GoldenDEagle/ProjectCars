@@ -12,6 +12,7 @@ namespace Assets.Codebase.Views.Endgame
     public class EndgameView : BaseView
     {
         [SerializeField] private TMP_Text _positionText;
+        [SerializeField] private TMP_Text _rewardText;
         [SerializeField] private Button _continueButton;
 
         private IEndgamePresenter _presenter;
@@ -27,6 +28,7 @@ namespace Assets.Codebase.Views.Endgame
         {
             base.SubscribeToPresenterEvents();
             _presenter.PositionString.SubscribeToTMPText(_positionText);
+            _presenter.CoinRewardString.SubscribeToTMPText(_rewardText);
         }
 
         protected override void SubscribeToUserInput()

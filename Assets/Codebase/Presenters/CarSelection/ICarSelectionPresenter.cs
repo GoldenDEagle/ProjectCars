@@ -6,6 +6,7 @@ namespace Assets.Codebase.Presenters.CarSelection
 {
     public interface ICarSelectionPresenter : IPresenter
     {
+        public ReactiveProperty<string> TotalCoinsString { get; }
         public ReactiveProperty<PlayerCarId> DisplayedCar { get; }
 
         public void ConfirmSelectionButtonClicked();

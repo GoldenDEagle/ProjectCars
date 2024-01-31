@@ -14,6 +14,7 @@ namespace Assets.Codebase.Models.Progress.Data
         public ReactiveProperty<float> MusicVolume;
         public ReactiveProperty<float> SFXVolume;
         public ReactiveProperty<PlayerCarId> SelectedCar;
+        public ReactiveProperty<int> TotalCoins;
 
         // .
 
@@ -26,6 +27,7 @@ namespace Assets.Codebase.Models.Progress.Data
             MusicVolume = new ReactiveProperty<float>(0.5f);
             SFXVolume = new ReactiveProperty<float>(0.5f);
             SelectedCar = new ReactiveProperty<PlayerCarId>(PlayerCarId.Haumea);
+            TotalCoins = new ReactiveProperty<int>(0);
         }
 
         /// <summary>
@@ -38,6 +40,7 @@ namespace Assets.Codebase.Models.Progress.Data
             MusicVolume = new ReactiveProperty<float>();
             SFXVolume = new ReactiveProperty<float>();
             SelectedCar = new ReactiveProperty<PlayerCarId>(progress.SelectedCar);
+            TotalCoins = new ReactiveProperty<int>(progress.TotalCoins);
         }
     }
 }
