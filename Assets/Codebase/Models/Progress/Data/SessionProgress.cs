@@ -1,4 +1,5 @@
 ﻿using Assets.Codebase.Data.Cars.Player;
+using System.Collections.Generic;
 using UniRx;
 
 namespace Assets.Codebase.Models.Progress.Data
@@ -15,6 +16,7 @@ namespace Assets.Codebase.Models.Progress.Data
         public ReactiveProperty<float> SFXVolume;
         public ReactiveProperty<PlayerCarId> SelectedCar;
         public ReactiveProperty<int> TotalCoins;
+        public List<PlayerCarId> UnlockedCars;
 
         // .
 
@@ -28,6 +30,7 @@ namespace Assets.Codebase.Models.Progress.Data
             SFXVolume = new ReactiveProperty<float>(0.5f);
             SelectedCar = new ReactiveProperty<PlayerCarId>(PlayerCarId.Haumea);
             TotalCoins = new ReactiveProperty<int>(0);
+            UnlockedCars = new List<PlayerCarId> { PlayerCarId.Haumea };
         }
 
         /// <summary>
@@ -41,6 +44,7 @@ namespace Assets.Codebase.Models.Progress.Data
             SFXVolume = new ReactiveProperty<float>();
             SelectedCar = new ReactiveProperty<PlayerCarId>(progress.SelectedCar);
             TotalCoins = new ReactiveProperty<int>(progress.TotalCoins);
+            UnlockedCars = new List<PlayerCarId>(progress.UnlockedCars);
         }
     }
 }

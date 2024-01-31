@@ -7,6 +7,9 @@ using UniRx;
 
 public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
 {
+    public ReactiveProperty<bool> ConfirmSelectionButtonActiveState { get; private set; }
+    public ReactiveProperty<bool> BuyButtonActiveState { get; private set; }
+    public ReactiveProperty<string> BuyButtonString { get; private set; }
     public ReactiveProperty<PlayerCarId> DisplayedCar { get; private set; }
     public ReactiveProperty<string> TotalCoinsString { get; private set; }
 
@@ -18,6 +21,9 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
         CorrespondingViewId = ViewId.CarSelection;
         DisplayedCar = new ReactiveProperty<PlayerCarId>();
         TotalCoinsString = new ReactiveProperty<string>();
+        BuyButtonString = new ReactiveProperty<string>();
+        BuyButtonActiveState = new ReactiveProperty<bool>();
+        ConfirmSelectionButtonActiveState = new ReactiveProperty<bool>();
     }
 
     protected override void SubscribeToModelChanges()
@@ -34,6 +40,7 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
         _availableCars = GameplayModel.GetListOfAvailablePlayerCars();
         DisplayedCar.Value = ProgressModel.SessionProgress.SelectedCar.Value;
         _selectedCarIndex = _availableCars.FindIndex(x => x.CarId == DisplayedCar.Value);
+        UpdateButtonStates();
     }
 
     public void ConfirmSelectionButtonClicked()
@@ -52,6 +59,7 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
         }
 
         DisplayedCar.Value = _availableCars[_selectedCarIndex].CarId;
+        UpdateButtonStates();
     }
 
     public void LeftArrowClicked()
@@ -64,5 +72,26 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
         }
 
         DisplayedCar.Value = _availableCars[_selectedCarIndex].CarId;
+        UpdateButtonStates();
+    }
+
+    public void BuyButtonClicked()
+    {
+
+    }
+
+    private void UpdateButtonStates()
+    {
+        if (ProgressModel.SessionProgress.UnlockedCars.Contains(DisplayedCar.Value))
+        {
+            BuyButtonActiveState.Value = false;
+            ConfirmSelectionButtonActiveState.Value = true;
+            return;
+        }
+
+        var price = _availableCars[_selectedCarIndex].Price;
+        BuyButtonString.Value = "Buy\n" + price;
+        BuyButtonActiveState.Value = true;
+        ConfirmSelectionButtonActiveState.Value = false;
     }
 }

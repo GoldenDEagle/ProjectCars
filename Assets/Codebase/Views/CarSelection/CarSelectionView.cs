@@ -14,6 +14,8 @@ namespace Assets.Codebase.Views.CarSelection
     public class CarSelectionView : BaseView
     {
         [SerializeField] private TMP_Text _totalCoinsText;
+        [SerializeField] private TMP_Text _buyButtonText;
+        [SerializeField] private Button _buyButton;
         [SerializeField] private Button _confirmSelectionButton;
         [SerializeField] private Button _leftArrowButton;
         [SerializeField] private Button _rightArrowButton;
@@ -30,7 +32,10 @@ namespace Assets.Codebase.Views.CarSelection
         protected override void SubscribeToPresenterEvents()
         {
             base.SubscribeToPresenterEvents();
+            _presenter.ConfirmSelectionButtonActiveState.Subscribe(value => _confirmSelectionButton.gameObject.SetActive(value)).AddTo(CompositeDisposable);
+            _presenter.BuyButtonActiveState.Subscribe(value => _buyButton.gameObject.SetActive(value)).AddTo(CompositeDisposable);
             _presenter.TotalCoinsString.SubscribeToTMPText(_totalCoinsText).AddTo(CompositeDisposable);
+            _presenter.BuyButtonString.SubscribeToTMPText(_buyButtonText).AddTo(CompositeDisposable);
         }
 
         protected override void SubscribeToUserInput()
@@ -38,6 +43,7 @@ namespace Assets.Codebase.Views.CarSelection
             _confirmSelectionButton.OnClickAsObservable().Subscribe(_ => _presenter.ConfirmSelectionButtonClicked()).AddTo(CompositeDisposable);
             _leftArrowButton.OnClickAsObservable().Subscribe(_ => _presenter.LeftArrowClicked()).AddTo(CompositeDisposable);
             _rightArrowButton.OnClickAsObservable().Subscribe(_ => _presenter.RightArrowClicked()).AddTo(CompositeDisposable);
+            _buyButton.OnClickAsObservable().Subscribe(_ => _presenter.BuyButtonClicked()).AddTo(CompositeDisposable);
         }
     }
 }

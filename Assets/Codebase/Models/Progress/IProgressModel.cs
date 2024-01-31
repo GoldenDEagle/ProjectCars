@@ -1,4 +1,5 @@
-﻿using Assets.Codebase.Models.Base;
+﻿using Assets.Codebase.Data.Cars.Player;
+using Assets.Codebase.Models.Base;
 using Assets.Codebase.Models.Progress.Data;
 
 namespace Assets.Codebase.Models.Progress
@@ -28,5 +29,10 @@ namespace Assets.Codebase.Models.Progress
         /// </summary>
         /// <param name="delta"></param>
         public void ModifyCoinAmount(int delta);
+        /// <summary>
+        /// Use this to add new unlocked car
+        /// </summary>
+        /// <param name="carId"></param>
+        public void UnlockNewCar(PlayerCarId carId);
     }
 }

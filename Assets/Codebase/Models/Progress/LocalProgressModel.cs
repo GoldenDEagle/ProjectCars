@@ -1,4 +1,5 @@
-﻿using Assets.Codebase.Models.Base;
+﻿using Assets.Codebase.Data.Cars.Player;
+using Assets.Codebase.Models.Base;
 using Assets.Codebase.Models.Progress.Data;
 using Assets.Codebase.Utils.Extensions;
 using UnityEngine;
@@ -66,6 +67,8 @@ namespace Assets.Codebase.Models.Progress
         }
 
 
+
+        //////// Working with progress properties //////////
         public void ModifyCoinAmount(int delta)
         {
             var newAmount = SessionProgress.TotalCoins.Value + delta;
@@ -77,6 +80,13 @@ namespace Assets.Codebase.Models.Progress
             }
 
             SessionProgress.TotalCoins.Value = newAmount;
+        }
+
+        public void UnlockNewCar(PlayerCarId carId)
+        {
+            if (SessionProgress.UnlockedCars.Contains(carId)) return;
+
+            SessionProgress.UnlockedCars.Add(carId);
         }
     }
 }

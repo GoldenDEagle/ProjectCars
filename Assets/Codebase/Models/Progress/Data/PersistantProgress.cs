@@ -1,5 +1,6 @@
 ﻿using Assets.Codebase.Data.Cars.Player;
 using System;
+using System.Collections.Generic;
 
 namespace Assets.Codebase.Models.Progress.Data
 {
@@ -15,6 +16,7 @@ namespace Assets.Codebase.Models.Progress.Data
         public float SFXVolume;
         public PlayerCarId SelectedCar;
         public int TotalCoins;
+        public List<PlayerCarId> UnlockedCars;
 
         public void SetValues(SessionProgress progress)
         {
@@ -24,6 +26,7 @@ namespace Assets.Codebase.Models.Progress.Data
             SFXVolume = progress.SFXVolume.Value;
             SelectedCar = progress.SelectedCar.Value;
             TotalCoins = progress.TotalCoins.Value;
+            UnlockedCars = progress.UnlockedCars;
         }
     }
 }
