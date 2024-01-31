@@ -77,7 +77,15 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
 
     public void BuyButtonClicked()
     {
+        var price = _availableCars[_selectedCarIndex].Price;
+        if (price > ProgressModel.SessionProgress.TotalCoins.Value)
+        {
+            return;
+        }
 
+        ProgressModel.ModifyCoinAmount(-price);
+        ProgressModel.UnlockNewCar(_availableCars[_selectedCarIndex].CarId);
+        UpdateButtonStates();
     }
 
     private void UpdateButtonStates()
