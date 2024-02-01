@@ -153,6 +153,8 @@ namespace Assets.Codebase.Models.Gameplay
 
         public void PauseGame()
         {
+            if (State.Value == GameState.Pause) return;
+
             State.Value = GameState.Pause;
             AudioListener.pause = true;
             Time.timeScale = 0;

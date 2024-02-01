@@ -70,6 +70,8 @@ namespace Assets.Codebase.Models.Gameplay
         /// Increase level reward (i.e. after watching ad)
         /// </summary>
         public void IncreaseReward();
+        public void PauseGame();
+        public void UnPauseGame(GameState newGameState = GameState.Menu);
 
         public ReactiveProperty<GameState> State { get; }
 

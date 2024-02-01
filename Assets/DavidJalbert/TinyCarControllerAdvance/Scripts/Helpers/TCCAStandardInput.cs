@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using Assets.Codebase.Infrastructure.ServicesManagment;
+using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,8 +43,11 @@ namespace DavidJalbert.TinyCarControllerAdvance
         public InputValue boostInput = new InputValue() { type = InputType.Key, name = "left shift", invert = false };
         [Tooltip("Input type to reset the vehicle to its original position.")]
         public InputValue respawnInput = new InputValue() { type = InputType.Key, name = "r", invert = false };
+        [Tooltip("Input type to pause game.")]
+        public InputValue pauseInput = new InputValue() { type = InputType.Key, name = "Esc", invert = false };
 
         private float respawnPreviousValue = 0;
+        private float pausePreviousValue = 0;
 
         void Update()
         {
@@ -53,8 +58,24 @@ namespace DavidJalbert.TinyCarControllerAdvance
                 bool handbrake = getInput(handbrakeInput) >= 0.5f;
                 float boostDelta = getInput(boostInput);
                 float respawnValue = getInput(respawnInput);
+                float pauseValue = getInput(pauseInput);
                 bool respawn = respawnValue >= 0.5f && respawnPreviousValue < 0.5f;
+                bool pause = pauseValue >= 0.5f && pausePreviousValue < 0.5f;
                 respawnPreviousValue = respawnValue;
+                pausePreviousValue = pauseValue;
+
+                if (pause)
+                {
+                    var gameplayModel = ServiceLocator.Container.Single<IModelAccessService>().GameplayModel;
+                    if (gameplayModel.State.Value != Assets.Codebase.Models.Gameplay.Data.GameState.Pause)
+                    {
+                        gameplayModel.PauseGame();
+                    }
+                    else
+                    {
+                        gameplayModel.UnPauseGame();
+                    }
+                }
 
                 if (respawn)
                 {
