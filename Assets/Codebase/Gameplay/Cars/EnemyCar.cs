@@ -65,5 +65,10 @@ namespace Assets.Codebase.Gameplay.Cars
                 }
             }
         }
+
+        public void RespawnAtClosestWaypoint()
+        {
+            _aiControl.SetPosition(_closestWaypoint);
+        }
     }
 }

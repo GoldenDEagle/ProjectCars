@@ -5763,7 +5763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d51235865317d40ad714945d01237d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _carId: 5
+  _carId: 0
   _waypointTracker: {fileID: 2713530202367008393}
   _aiControl: {fileID: 2773184794495482081}
 --- !u!54 &648515156619027706

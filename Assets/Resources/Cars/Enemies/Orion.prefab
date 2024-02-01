@@ -5900,7 +5900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d51235865317d40ad714945d01237d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _carId: 3
+  _carId: 0
   _waypointTracker: {fileID: 71950191844363691}
   _aiControl: {fileID: 5039176131356575028}
 --- !u!54 &4051738169161719098
