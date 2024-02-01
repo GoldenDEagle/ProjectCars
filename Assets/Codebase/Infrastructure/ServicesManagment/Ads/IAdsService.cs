@@ -1,10 +1,16 @@
-﻿namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
+﻿using UniRx;
+
+namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
 {
     /// <summary>
     /// Managing ads.
     /// </summary>
     public interface IAdsService : IService
     {
+        /// <summary>
+        /// Fired when rewarded was watched successfully
+        /// </summary>
+        public Subject<Unit> OnRewardedSuccess { get; }
         // Rewarded Ad
         public bool CheckIfRewardedIsAvailable();
         public void ShowRewarded();

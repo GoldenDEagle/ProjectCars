@@ -1,4 +1,5 @@
 ﻿using GamePush;
+using UniRx;
 using UnityEngine;
 
 namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
@@ -6,6 +7,13 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
     public class GamePushAdService : IAdsService
     {
         private bool _adsEnabled = true;
+        public Subject<Unit> OnRewardedSuccess { get; private set; }
+
+        public GamePushAdService()
+        {
+            OnRewardedSuccess = new Subject<Unit>();
+            GP_Ads.OnRewardedReward += RewardedSuccess;
+        }
 
         public void SetAdsStatus(bool adsEnabled)
         {
@@ -38,11 +46,14 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
 
         public void ShowRewarded()
         {
-            if (CheckIfRewardedIsAvailable())
-            {
-                GP_Ads.ShowRewarded();
-            }
+            GP_Ads.ShowRewarded();
         }
+
+        private void RewardedSuccess(string key)
+        {
+            OnRewardedSuccess?.OnNext(Unit.Default);
+        }
+
 
 
         public bool IsDeviceMobile()

@@ -119,7 +119,7 @@ namespace Assets.Codebase.Models.Gameplay
 
             _availableEnemyIds.Shuffle();
 
-            _activeRace.Value = new Race(trackId, 2, _availableEnemyIds.Take(5).ToList());
+            _activeRace.Value = new Race(trackId, 1, _availableEnemyIds.Take(5).ToList());
         }
 
         public int CalculateReward()
@@ -133,6 +133,11 @@ namespace Assets.Codebase.Models.Gameplay
             _currentReward.Value = totalReward;
 
             return totalReward;
+        }
+
+        public void IncreaseReward()
+        {
+            _currentReward.Value *= 2;
         }
 
 

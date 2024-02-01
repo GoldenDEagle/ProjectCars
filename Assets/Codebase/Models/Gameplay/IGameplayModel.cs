@@ -62,6 +62,10 @@ namespace Assets.Codebase.Models.Gameplay
         /// </summary>
         /// <returns></returns>
         public int CalculateReward();
+        /// <summary>
+        /// Increase level reward (i.e. after watching ad)
+        /// </summary>
+        public void IncreaseReward();
 
         public ReactiveProperty<GameState> State { get; }
 
