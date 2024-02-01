@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82931e33ce0ac024aa8f814bb8653c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _carId: 0
   _carController: {fileID: 4718704168513021931}
   _waypointTracker: {fileID: 3917519582969377148}
 --- !u!114 &4718704168513021931
@@ -363,8 +364,8 @@ MonoBehaviour:
   steeringDelta: 0
   boostDelta: 0
   applyHandbrake: 0
-  boostMaxSpeedMultiplier: 2
-  boostAccelerationMultiplier: 2
+  boostMaxSpeedMultiplier: 3
+  boostAccelerationMultiplier: 3
 --- !u!1 &2244711696240542949
 GameObject:
   m_ObjectHideFlags: 0

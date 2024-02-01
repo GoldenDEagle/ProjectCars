@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Codebase.Gameplay.Input;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -30,12 +31,19 @@ namespace DavidJalbert.TinyCarControllerAdvance
         public RectTransform brakePedal;
         [Tooltip("The UI graphic container and touch area for the boost button.")]
         public RectTransform boostButton;
+        [Tooltip("Object which is clicked to trigger boost.")]
+        public ClickHandler boostClickableObject;
+        [Tooltip("Object which is clicked to trigger respawn.")]
+        public ClickHandler respawnClickableObject;
 
         private GraphicRaycaster raycaster;
         private Graphic steeringWheelGraphic;
         private Graphic gasPedalGraphic;
         private Graphic brakePedalGraphic;
         private Graphic boostButtonGraphic;
+
+        private int _boostClickCounter = 0;
+        private Coroutine _boostClickResetter;
 
         void Start()
         {
@@ -49,6 +57,19 @@ namespace DavidJalbert.TinyCarControllerAdvance
             gasPedalGraphic = gasPedal.GetComponentInChildren<Graphic>();
             brakePedalGraphic = brakePedal.GetComponentInChildren<Graphic>();
             boostButtonGraphic = boostButton.GetComponentInChildren<Graphic>();
+            if (boostButtonGraphic != null) boostButtonGraphic.color = colorIdle;
+        }
+
+        private void OnEnable()
+        {
+            boostClickableObject.OnClick += BoostClicked;
+            respawnClickableObject.OnClick += RespawnClicked;
+        }
+
+        private void OnDisable()
+        {
+            boostClickableObject.OnClick -= BoostClicked;
+            respawnClickableObject.OnClick -= RespawnClicked;
         }
 
         void Update()
@@ -147,18 +168,59 @@ namespace DavidJalbert.TinyCarControllerAdvance
                     carController.setHandbrake(false);
                 }
 
-                if (boostButtonTouched)
-                {
-                    if (boostButtonGraphic != null) boostButtonGraphic.color = colorTouched;
-                    carController.setBoost(1);
-                    carController.setMotor(1);
-                }
-                else
-                {
-                    if (boostButtonGraphic != null) boostButtonGraphic.color = colorIdle;
-                    carController.setBoost(0);
-                }
+                //if (boostButtonTouched)
+                //{
+                //    if (boostButtonGraphic != null) boostButtonGraphic.color = colorTouched;
+                //    carController.setBoost(1);
+                //    carController.setMotor(1);
+                //}
+                //else
+                //{
+                //    if (boostButtonGraphic != null) boostButtonGraphic.color = colorIdle;
+                //    carController.setBoost(0);
+                //}
             }
+        }
+
+
+        private void RespawnClicked()
+        {
+            carController.immobilize();
+            carController.setPosition(carController.getRespawnPosition() + Vector3.up);
+            carController.setRotation(carController.getRespawnRotation());
+
+            foreach (TrailRenderer t in carController.GetComponentsInChildren<TrailRenderer>())
+            {
+                t.Clear();
+            }
+        }
+
+        private void BoostClicked()
+        {
+            _boostClickCounter++;
+            if (_boostClickCounter >= 2) 
+            {
+                carController.setBoost(1);
+                carController.setMotor(1);
+            }
+            else
+            {
+                carController.setBoost(0);
+            }
+
+            if (_boostClickResetter != null)
+            {
+                StopCoroutine(_boostClickResetter);
+                _boostClickResetter = null;
+            }
+
+            _boostClickResetter = StartCoroutine(ResetBoostClickCountAfterDelay());
+        }
+
+        private IEnumerator ResetBoostClickCountAfterDelay()
+        {
+            yield return new WaitForSeconds(0.5f);
+            _boostClickCounter = 0;
         }
     }
 }

@@ -63372,6 +63372,7 @@ GameObject:
   - component: {fileID: 3177375048076151145}
   - component: {fileID: 3080464328359495702}
   - component: {fileID: 1275852715224528826}
+  - component: {fileID: 3177375048076151146}
   m_Layer: 5
   m_Name: Gas Pedal
   m_TagString: Untagged
@@ -64726,6 +64727,8 @@ MonoBehaviour:
   gasPedal: {fileID: 3177375048076151145}
   brakePedal: {fileID: 8488902527691751939}
   boostButton: {fileID: 2947906178122983281}
+  boostClickableObject: {fileID: 3177375048076151146}
+  respawnClickableObject: {fileID: 8722123421235308743}
 --- !u!1 &2701148270523453436
 GameObject:
   m_ObjectHideFlags: 0
@@ -65011,6 +65014,18 @@ RectTransform:
   m_AnchoredPosition: {x: -150, y: 150}
   m_SizeDelta: {x: 191, y: 238}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3177375048076151146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487035256839180542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a4f38794573e645902eba8c1669464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3277750516745484900
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67995,7 +68010,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -68130,13 +68145,26 @@ GameObject:
   - component: {fileID: 2947906178122983281}
   - component: {fileID: 7943524844240538807}
   - component: {fileID: 1260581279434180643}
+  - component: {fileID: 8722123421235308743}
   m_Layer: 5
-  m_Name: Boost Button
+  m_Name: Respawn Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8722123421235308743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8722123421235308742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88a4f38794573e645902eba8c1669464, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8810676089878669252
 MonoBehaviour:
   m_ObjectHideFlags: 0
