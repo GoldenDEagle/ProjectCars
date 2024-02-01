@@ -11,6 +11,14 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
         /// Fired when rewarded was watched successfully
         /// </summary>
         public Subject<Unit> OnRewardedSuccess { get; }
+        /// <summary>
+        /// Fired every time ad starts
+        /// </summary>
+        public Subject<Unit> OnAdStarted { get; }
+        /// <summary>
+        /// Fired every time ad finishes
+        /// </summary>
+        public Subject<Unit> OnAdEnded { get; }
         // Rewarded Ad
         public bool CheckIfRewardedIsAvailable();
         public void ShowRewarded();

@@ -29,6 +29,10 @@ namespace Assets.Codebase.Models.Gameplay
         /// </summary>
         public Subject<ViewId> OnViewClosed { get; }
         /// <summary>
+        /// Fired after game state was changed
+        /// </summary>
+        public Subject<GameState> OnGameStateChanged { get; }
+        /// <summary>
         /// Current race
         /// </summary>
         public ReactiveProperty<Race> ActiveRace { get; }

@@ -15,6 +15,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UniRx;
+using UnityEngine;
 
 namespace Assets.Codebase.Models.Gameplay
 {
@@ -29,6 +30,7 @@ namespace Assets.Codebase.Models.Gameplay
         private ReactiveProperty<ViewId> _activeViewId;
         private ReactiveProperty<Race> _activeRace;
         private Subject<ViewId> _onViewClosed;
+        private Subject<GameState> _onGameStateChanged; 
         private ReactiveProperty<int> _currentReward;
         private SceneLoader _sceneLoader;
         private PlayerCarDescriptions _playerCarsDescription;
@@ -41,6 +43,7 @@ namespace Assets.Codebase.Models.Gameplay
         public ReactiveProperty<GameState> State => _state;
         public ReactiveProperty<ViewId> ActiveViewId => _activeViewId;
         public Subject<ViewId> OnViewClosed => _onViewClosed;
+        public Subject<GameState> OnGameStateChanged => _onGameStateChanged;
         public ReactiveProperty<Race> ActiveRace => _activeRace;
         public ReactiveProperty<int> CurrentReward => _currentReward;
         public bool IsMobile => _isMobile;
@@ -48,10 +51,11 @@ namespace Assets.Codebase.Models.Gameplay
         public GameplayModel()
         {
             _sceneLoader = new SceneLoader();
-            _state = new ReactiveProperty<GameState>(GameState.None);
+            _state = new ReactiveProperty<GameState>(GameState.Bootstrap);
             _activeViewId = new ReactiveProperty<ViewId>(ViewId.None);
             _activeRace = new ReactiveProperty<Race>();
             _onViewClosed = new Subject<ViewId>();
+            _onGameStateChanged = new Subject<GameState>();
             _currentReward = new ReactiveProperty<int>(0);
         }
 
@@ -61,7 +65,11 @@ namespace Assets.Codebase.Models.Gameplay
             _enemyCarsDescriptions = assetProvider.LoadResource<EnemyCarDescriptions>(EnemyCarsDescriptionPath);
             _playerCarsDescription = assetProvider.LoadResource<PlayerCarDescriptions>(PlayerCarsDescriptionPath);
             _trackDescriptions = assetProvider.LoadResource<TrackDescriptions>(TrackDescriptionPath);
-            _isMobile = ServiceLocator.Container.Single<IAdsService>().IsDeviceMobile();
+
+            var adService = ServiceLocator.Container.Single<IAdsService>();
+            _isMobile = adService.IsDeviceMobile();
+            adService.OnAdStarted.Subscribe(_ => PauseGame()).AddTo(CompositeDisposable);
+            adService.OnAdEnded.Subscribe(_ => UnPauseGame()).AddTo(CompositeDisposable);
         }
 
         public void ActivateView(ViewId viewId)
@@ -75,7 +83,10 @@ namespace Assets.Codebase.Models.Gameplay
 
         public void ChangeGameState(GameState state)
         {
+            if (State.Value == state) return;
+
             State.Value = state;
+            _onGameStateChanged?.OnNext(state);
         }
 
         public void LoadScene(string name, Action onLoaded = null)
@@ -140,7 +151,19 @@ namespace Assets.Codebase.Models.Gameplay
             _currentReward.Value *= 2;
         }
 
+        public void PauseGame()
+        {
+            State.Value = GameState.Pause;
+            AudioListener.pause = true;
+            Time.timeScale = 0;
+        }
 
+        public void UnPauseGame(GameState newGameState = GameState.Menu)
+        {
+            State.Value = newGameState;
+            AudioListener.pause = false;
+            Time.timeScale = 1;
+        }
 
         /////////////////// Internal /////////////////
         private void CollectAllEnemyIds()

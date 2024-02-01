@@ -8,11 +8,17 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
     {
         private bool _adsEnabled = true;
         public Subject<Unit> OnRewardedSuccess { get; private set; }
+        public Subject<Unit> OnAdStarted { get; private set; }
+        public Subject<Unit> OnAdEnded { get; private set; }
 
         public GamePushAdService()
         {
+            OnAdStarted = new Subject<Unit>();
+            OnAdEnded = new Subject<Unit>();
             OnRewardedSuccess = new Subject<Unit>();
             GP_Ads.OnRewardedReward += RewardedSuccess;
+            GP_Game.OnPause += AdStarted;
+            GP_Game.OnResume += AdEneded;
         }
 
         public void SetAdsStatus(bool adsEnabled)
@@ -54,7 +60,15 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
             OnRewardedSuccess?.OnNext(Unit.Default);
         }
 
+        private void AdStarted()
+        {
+            OnAdStarted?.OnNext(Unit.Default);
+        }
 
+        private void AdEneded()
+        {
+            OnAdEnded?.OnNext(Unit.Default);
+        }
 
         public bool IsDeviceMobile()
         {
