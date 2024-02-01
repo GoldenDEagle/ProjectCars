@@ -364,8 +364,8 @@ MonoBehaviour:
   steeringDelta: 0
   boostDelta: 0
   applyHandbrake: 0
-  boostMaxSpeedMultiplier: 3
-  boostAccelerationMultiplier: 3
+  boostMaxSpeedMultiplier: 2
+  boostAccelerationMultiplier: 2
 --- !u!1 &2244711696240542949
 GameObject:
   m_ObjectHideFlags: 0

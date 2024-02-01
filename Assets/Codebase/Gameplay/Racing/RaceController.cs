@@ -37,6 +37,7 @@ namespace Assets.Codebase.Gameplay.Racing
         private void Start()
         {
             SpawnCars();
+            _camera.resetCamera();
             StartCoroutine(RacingCountdown());
         }
 

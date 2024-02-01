@@ -42,7 +42,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
 
         private Rigidbody cameraBody;
 
-        private void Start()
+        private void Awake()
         {
             cameraBody = GetComponentInChildren<Rigidbody>();
             if (cameraBody == null)
@@ -50,7 +50,10 @@ namespace DavidJalbert.TinyCarControllerAdvance
                 cameraBody = gameObject.AddComponent<Rigidbody>();
                 cameraBody.hideFlags = HideFlags.NotEditable;
             }
+        }
 
+        private void Start()
+        {
             cameraBody.isKinematic = false;
             cameraBody.useGravity = false;
             cameraBody.drag = 0;
