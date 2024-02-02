@@ -29,7 +29,7 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
     protected override void SubscribeToModelChanges()
     {
         base.SubscribeToModelChanges();
-        ProgressModel.SessionProgress.TotalCoins.Subscribe(value => TotalCoinsString.Value = "Coins: " + value).AddTo(CompositeDisposable);
+        ProgressModel.SessionProgress.TotalCoins.Subscribe(value => TotalCoinsString.Value = value.ToString()).AddTo(CompositeDisposable);
     }
 
     public override void CreateView()
@@ -99,7 +99,7 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
         }
 
         var price = _availableCars[_selectedCarIndex].Price;
-        BuyButtonString.Value = "Buy\n" + price;
+        BuyButtonString.Value = price.ToString();
         BuyButtonActiveState.Value = true;
         ConfirmSelectionButtonActiveState.Value = false;
     }

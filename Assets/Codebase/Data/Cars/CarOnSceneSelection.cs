@@ -28,6 +28,7 @@ namespace Assets.Codebase.Data.Cars
         {
             var presenter = _presenterService.GetPresenter(ViewId.CarSelection) as ICarSelectionPresenter;
             presenter.DisplayedCar.Subscribe(value => ShowSelectedCar(value)).AddTo(_disposables);
+            presenter.OnCloseView.Subscribe(_ => HideAllCars()).AddTo(_disposables);
         }
 
         private void OnDisable()
@@ -47,6 +48,14 @@ namespace Assets.Codebase.Data.Cars
                 {
                     car.gameObject.SetActive(false);
                 }
+            }
+        }
+
+        private void HideAllCars()
+        {
+            foreach (var car in _availableCars)
+            {
+                car.gameObject.SetActive(false);
             }
         }
     }
