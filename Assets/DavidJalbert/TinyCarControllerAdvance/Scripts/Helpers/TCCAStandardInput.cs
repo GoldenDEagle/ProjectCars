@@ -1,6 +1,7 @@
 ﻿using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
 using Assets.Codebase.Models.Gameplay.Data;
+using Assets.Codebase.Views.Base;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -45,7 +46,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
         [Tooltip("Input type to reset the vehicle to its original position.")]
         public InputValue respawnInput = new InputValue() { type = InputType.Key, name = "r", invert = false };
         [Tooltip("Input type to pause game.")]
-        public InputValue pauseInput = new InputValue() { type = InputType.Key, name = "Esc", invert = false };
+        public InputValue pauseInput = new InputValue() { type = InputType.Key, name = "escape", invert = false };
 
         private float respawnPreviousValue = 0;
         private float pausePreviousValue = 0;
@@ -71,10 +72,12 @@ namespace DavidJalbert.TinyCarControllerAdvance
                     if (gameplayModel.State.Value != GameState.Pause)
                     {
                         gameplayModel.PauseGame();
+                        gameplayModel.ActivateView(ViewId.Pause);
                     }
                     else
                     {
                         gameplayModel.UnPauseGame(GameState.Race);
+                        gameplayModel.ActivateView(ViewId.Ingame);
                     }
                 }
 

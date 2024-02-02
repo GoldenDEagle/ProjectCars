@@ -11,6 +11,7 @@ using Assets.Codebase.Models.Gameplay;
 using Assets.Codebase.Models.Progress;
 using Assets.Codebase.Presenters.Base;
 using Assets.Codebase.Presenters.Example;
+using Assets.Codebase.Presenters.Pause;
 using GamePush;
 using System.Collections.Generic;
 using UnityEngine;
@@ -76,6 +77,7 @@ namespace Assets.Codebase.Infrastructure.Initialization
                 new TrackSelectionPresenter(),
                 new IngamePresenter(),
                 new EndgamePresenter(),
+                new PausePresenter(),
             };
 
             foreach (var presenter in _presenters)

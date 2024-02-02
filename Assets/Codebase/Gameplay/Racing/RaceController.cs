@@ -70,7 +70,7 @@ namespace Assets.Codebase.Gameplay.Racing
             while (_isRaceActive)
             {
                 CheckPositions();
-                Debug.Log($"Player position: {_playerPosition}, Lap: {_playerCar.LapNumber}");
+                //Debug.Log($"Player position: {_playerPosition}, Lap: {_playerCar.LapNumber}");
                 yield return new WaitForSeconds(1f);
             }
         }
@@ -128,7 +128,7 @@ namespace Assets.Codebase.Gameplay.Racing
                 }
                 
                 // if on the same lap
-                if (playerWaypointIndex > enemyWaypoint)
+                if (playerWaypointIndex >= enemyWaypoint)
                 {
                     tempPlayerPosition--;
                 }

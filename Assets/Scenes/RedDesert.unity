@@ -8103,6 +8103,10 @@ MonoBehaviour:
     type: 3
     name: r
     invert: 0
+  pauseInput:
+    type: 3
+    name: escape
+    invert: 0
 --- !u!1 &555899515
 GameObject:
   m_ObjectHideFlags: 0

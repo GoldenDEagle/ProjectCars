@@ -23,7 +23,8 @@ public class IngamePresenter : BasePresenter, IIngamePresenter
         base.CreateView();
         _numberOfEnemies = GameplayModel.ActiveRace.Value.EnemiesList.Count;
         _numberOfLaps = GameplayModel.ActiveRace.Value.TotalLaps;
-        CalculatePosition(1);
+        CalculatePosition(GameplayModel.CurrentPosition.Value);
+        CalculateLaps(GameplayModel.CurrentLap.Value);
     }
 
     protected override void SubscribeToModelChanges()

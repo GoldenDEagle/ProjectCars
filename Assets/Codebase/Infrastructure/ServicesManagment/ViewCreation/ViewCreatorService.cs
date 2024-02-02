@@ -25,6 +25,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
         private const string TrackSelectionViewPath = "Views/TrackSelectionView";
         private const string IngameViewPath = "Views/IngameView";
         private const string EndgameViewPath = "Views/EndgameView";
+        private const string PauseViewPath = "Views/PauseView";
 
         private IAssetProvider _assets;
 
@@ -69,6 +70,9 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
                     break;
                 case ViewId.EndGame:
                     path = EndgameViewPath;
+                    break;
+                case ViewId.Pause:
+                    path = PauseViewPath;
                     break;
                 default:
                     throw new System.ArgumentException(nameof(viewId));

@@ -47655,6 +47655,10 @@ MonoBehaviour:
     type: 3
     name: r
     invert: 0
+  pauseInput:
+    type: 3
+    name: escape
+    invert: 0
 --- !u!1001 &2013015561
 PrefabInstance:
   m_ObjectHideFlags: 0

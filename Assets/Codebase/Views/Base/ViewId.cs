@@ -10,5 +10,6 @@
         TrackSelection = 4,
         Ingame = 5,
         EndGame = 6,
+        Pause = 7,
     }
 }
