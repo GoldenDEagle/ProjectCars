@@ -1,4 +1,8 @@
 ﻿using Assets.Codebase.Gameplay.Input;
+using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
+using Assets.Codebase.Infrastructure.ServicesManagment;
+using Assets.Codebase.Models.Gameplay.Data;
+using Assets.Codebase.Views.Base;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,18 +33,23 @@ namespace DavidJalbert.TinyCarControllerAdvance
         public RectTransform gasPedal;
         [Tooltip("The UI graphic container and touch area for the brake pedal.")]
         public RectTransform brakePedal;
-        [Tooltip("The UI graphic container and touch area for the boost button.")]
-        public RectTransform boostButton;
+        [Tooltip("The UI graphic container and touch area for the respawn button.")]
+        public RectTransform respawnButton;
+        [Tooltip("The UI graphic container and touch area for the pause button.")]
+        public RectTransform pauseButton;
         [Tooltip("Object which is clicked to trigger boost.")]
         public ClickHandler boostClickableObject;
         [Tooltip("Object which is clicked to trigger respawn.")]
         public ClickHandler respawnClickableObject;
+        [Tooltip("Object which is clicked to trigger pause.")]
+        public ClickHandler pauseClickableObject;
 
         private GraphicRaycaster raycaster;
         private Graphic steeringWheelGraphic;
         private Graphic gasPedalGraphic;
         private Graphic brakePedalGraphic;
-        private Graphic boostButtonGraphic;
+        private Graphic respawnButtonGraphic;
+        private Graphic pauseButtonGraphic;
 
         private int _boostClickCounter = 0;
         private Coroutine _boostClickResetter;
@@ -56,20 +65,25 @@ namespace DavidJalbert.TinyCarControllerAdvance
             steeringWheelGraphic = steeringWheel.GetComponentInChildren<Graphic>();
             gasPedalGraphic = gasPedal.GetComponentInChildren<Graphic>();
             brakePedalGraphic = brakePedal.GetComponentInChildren<Graphic>();
-            boostButtonGraphic = boostButton.GetComponentInChildren<Graphic>();
-            if (boostButtonGraphic != null) boostButtonGraphic.color = colorIdle;
+            respawnButtonGraphic = respawnButton.GetComponentInChildren<Graphic>();
+            pauseButtonGraphic = pauseButton.GetComponentInChildren<Graphic>();
+
+            if (pauseButtonGraphic != null) pauseButtonGraphic.color = colorIdle;
+            if (respawnButtonGraphic != null) respawnButtonGraphic.color = colorIdle;
         }
 
         private void OnEnable()
         {
             boostClickableObject.OnClick += BoostClicked;
             respawnClickableObject.OnClick += RespawnClicked;
+            pauseClickableObject.OnClick += PauseClicked;
         }
 
         private void OnDisable()
         {
             boostClickableObject.OnClick -= BoostClicked;
             respawnClickableObject.OnClick -= RespawnClicked;
+            pauseClickableObject.OnClick -= PauseClicked;
         }
 
         void Update()
@@ -123,7 +137,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
                         {
                             brakePedalTouched = true;
                         }
-                        else if (boostButton != null && result.gameObject == boostButton.gameObject)
+                        else if (respawnButton != null && result.gameObject == respawnButton.gameObject)
                         {
                             boostButtonTouched = true;
                         }
@@ -182,6 +196,20 @@ namespace DavidJalbert.TinyCarControllerAdvance
             }
         }
 
+        private void PauseClicked()
+        {
+            var gameplayModel = ServiceLocator.Container.Single<IModelAccessService>().GameplayModel;
+            if (gameplayModel.State.Value != GameState.Pause)
+            {
+                gameplayModel.PauseGame();
+                gameplayModel.ActivateView(ViewId.Pause);
+            }
+            else
+            {
+                gameplayModel.UnPauseGame(GameState.Race);
+                gameplayModel.ActivateView(ViewId.Ingame);
+            }
+        }
 
         private void RespawnClicked()
         {
