@@ -24856,6 +24856,8 @@ MonoBehaviour:
   steeringWheel: {fileID: 1833894606}
   steeringWheelTouchArea: {fileID: 1216833746}
   steeringWheelMultiplier: 1
+  rightCorner: {fileID: 459685690}
+  leftCorner: {fileID: 446581229}
   gasPedal: {fileID: 1484875379}
   brakePedal: {fileID: 1838747283}
   respawnButton: {fileID: 816523064}

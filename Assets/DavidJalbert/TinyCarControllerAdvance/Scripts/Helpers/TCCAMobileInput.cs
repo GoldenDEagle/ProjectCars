@@ -29,6 +29,8 @@ namespace DavidJalbert.TinyCarControllerAdvance
         [Tooltip("The value by which to multiply the value of the steering. Useful if you want to clamp the steering to its min/max value.")]
         public float steeringWheelMultiplier = 2f;
 
+        public RectTransform rightCorner;
+        public RectTransform leftCorner;
         [Tooltip("The UI graphic container and touch area for the gas pedal.")]
         public RectTransform gasPedal;
         [Tooltip("The UI graphic container and touch area for the brake pedal.")]
@@ -249,6 +251,12 @@ namespace DavidJalbert.TinyCarControllerAdvance
         {
             yield return new WaitForSeconds(0.5f);
             _boostClickCounter = 0;
+        }
+
+        public void ShowInput(bool isShown)
+        {
+            rightCorner.gameObject.SetActive(isShown);
+            leftCorner.gameObject.SetActive(isShown);
         }
     }
 }
