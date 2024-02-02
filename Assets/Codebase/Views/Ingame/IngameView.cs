@@ -25,6 +25,7 @@ namespace Assets.Codebase.Views.Ingame
         {
             base.SubscribeToPresenterEvents();
             _presenter.PositionString.SubscribeToTMPText(_positionText).AddTo(CompositeDisposable);
+            _presenter.LapString.SubscribeToTMPText(_lapText).AddTo(CompositeDisposable);
         }
 
         protected override void SubscribeToUserInput()

@@ -1,5 +1,6 @@
 ﻿using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
+using Assets.Codebase.Models.Gameplay.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,13 +68,13 @@ namespace DavidJalbert.TinyCarControllerAdvance
                 if (pause)
                 {
                     var gameplayModel = ServiceLocator.Container.Single<IModelAccessService>().GameplayModel;
-                    if (gameplayModel.State.Value != Assets.Codebase.Models.Gameplay.Data.GameState.Pause)
+                    if (gameplayModel.State.Value != GameState.Pause)
                     {
                         gameplayModel.PauseGame();
                     }
                     else
                     {
-                        gameplayModel.UnPauseGame();
+                        gameplayModel.UnPauseGame(GameState.Race);
                     }
                 }
 

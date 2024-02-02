@@ -30,6 +30,7 @@ namespace Assets.Codebase.Models.Gameplay
         private ReactiveProperty<ViewId> _activeViewId;
         private ReactiveProperty<Race> _activeRace;
         private ReactiveProperty<int> _currentPosition;
+        private ReactiveProperty<int> _currentLap;
         private Subject<ViewId> _onViewClosed;
         private Subject<GameState> _onGameStateChanged; 
         private ReactiveProperty<int> _currentReward;
@@ -48,6 +49,7 @@ namespace Assets.Codebase.Models.Gameplay
         public ReactiveProperty<Race> ActiveRace => _activeRace;
         public ReactiveProperty<int> CurrentReward => _currentReward;
         public ReactiveProperty<int> CurrentPosition => _currentPosition;
+        public ReactiveProperty<int> CurrentLap => _currentLap;
         public bool IsMobile => _isMobile;
 
         public GameplayModel()
@@ -60,6 +62,7 @@ namespace Assets.Codebase.Models.Gameplay
             _onGameStateChanged = new Subject<GameState>();
             _currentReward = new ReactiveProperty<int>(0);
             _currentPosition = new ReactiveProperty<int>(1);
+            _currentLap = new ReactiveProperty<int>(1);
         }
 
         public void InitModel()

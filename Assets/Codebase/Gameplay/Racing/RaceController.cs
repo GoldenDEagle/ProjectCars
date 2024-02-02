@@ -146,6 +146,7 @@ namespace Assets.Codebase.Gameplay.Racing
             }
 
             // Update Lap counter
+            _models.GameplayModel.CurrentLap.Value = lapNumber;
         }
 
         private void FinishRace()
