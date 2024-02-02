@@ -37,6 +37,10 @@ namespace Assets.Codebase.Models.Gameplay
         /// </summary>
         public ReactiveProperty<Race> ActiveRace { get; }
         /// <summary>
+        /// Current positon in race
+        /// </summary>
+        public ReactiveProperty<int> CurrentPosition { get; }
+        /// <summary>
         /// Last race reward
         /// </summary>
         public ReactiveProperty<int> CurrentReward { get; }

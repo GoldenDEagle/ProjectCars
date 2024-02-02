@@ -135,6 +135,7 @@ namespace Assets.Codebase.Gameplay.Racing
             }
 
             _playerPosition = tempPlayerPosition;
+            _models.GameplayModel.CurrentPosition.Value = _playerPosition;
         }
 
         private void PlayerPassedLap(int lapNumber)
