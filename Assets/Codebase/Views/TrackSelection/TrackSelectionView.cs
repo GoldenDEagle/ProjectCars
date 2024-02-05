@@ -1,4 +1,5 @@
 ﻿using Assets.Codebase.Presenter.Base;
+using Assets.Codebase.Utils.UI;
 using Assets.Codebase.Views.Base;
 using UniRx;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Assets.Codebase.Views.TrackSelection
         [SerializeField] private Image _trackImage;
         [SerializeField] private Button _rightArrow;
         [SerializeField] private Button _leftArrow;
+        [SerializeField] private SoundButton _soundButton;
 
         private ITrackSelectionPresenter _presenter;
 
@@ -27,12 +29,19 @@ namespace Assets.Codebase.Views.TrackSelection
             _goButton.OnClickAsObservable().Subscribe(_ => _presenter.GoButtonClicked()).AddTo(CompositeDisposable);
             _rightArrow.OnClickAsObservable().Subscribe(_ => _presenter.RightArrowClicked()).AddTo(CompositeDisposable);
             _leftArrow.OnClickAsObservable().Subscribe(_ => _presenter.LeftArrowClicked()).AddTo(CompositeDisposable);
+            _soundButton.Button.OnClickAsObservable().Subscribe(_ => SoundButtonClicked()).AddTo(CompositeDisposable);
         }
 
         protected override void SubscribeToPresenterEvents()
         {
             base.SubscribeToPresenterEvents();
             _presenter.SelectedTrackIcon.Subscribe(value => { _trackImage.sprite = value; }).AddTo(CompositeDisposable);
+        }
+
+        private void SoundButtonClicked()
+        {
+            _presenter.SoundButtonClicked();
+            _soundButton.SetIcon();
         }
     }
 }

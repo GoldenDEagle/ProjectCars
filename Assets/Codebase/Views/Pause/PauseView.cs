@@ -1,5 +1,6 @@
 ﻿using Assets.Codebase.Presenter.Base;
 using Assets.Codebase.Presenters.Pause;
+using Assets.Codebase.Utils.UI;
 using Assets.Codebase.Views.Base;
 using UniRx;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Assets.Codebase.Views.Pause
         [SerializeField] private Button _continueButton;
         [SerializeField] private Button _restartButton;
         [SerializeField] private Button _quitButton;
+        [SerializeField] private SoundButton _soundButton;
 
         private IPausePresenter _presenter;
 
@@ -27,6 +29,13 @@ namespace Assets.Codebase.Views.Pause
             _continueButton.OnClickAsObservable().Subscribe(_ => _presenter.ContinueClicked()).AddTo(CompositeDisposable);
             _restartButton.OnClickAsObservable().Subscribe(_ => _presenter.RestartClicked()).AddTo(CompositeDisposable);
             _quitButton.OnClickAsObservable().Subscribe(_ => _presenter.QuitClicked()).AddTo(CompositeDisposable);
+            _soundButton.Button.OnClickAsObservable().Subscribe(_ => SoundButtonClicked()).AddTo(CompositeDisposable);
+        }
+
+        private void SoundButtonClicked()
+        {
+            _presenter.SoundButtonClicked();
+            _soundButton.SetIcon();
         }
     }
 }

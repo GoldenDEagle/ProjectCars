@@ -38,6 +38,11 @@ namespace Assets.Codebase.Presenters.Pause
             GameplayModel.LoadScene(SceneManager.GetActiveScene().name, OnLevelReloaded);
         }
 
+        public void SoundButtonClicked()
+        {
+            ProgressModel.SwitchSound();
+        }
+
         private void OnMenuLoaded()
         {
             GameplayModel.UnPauseGame(GameState.Menu);

@@ -1,4 +1,5 @@
-﻿using Assets.Codebase.Presenter.Base;
+﻿using Assets.Codebase.Models.Progress;
+using Assets.Codebase.Presenter.Base;
 
 namespace Assets.Codebase.Presenters.Pause
 {
@@ -7,5 +8,6 @@ namespace Assets.Codebase.Presenters.Pause
         public void ContinueClicked();
         public void QuitClicked();
         public void RestartClicked();
+        public void SoundButtonClicked();
     }
 }

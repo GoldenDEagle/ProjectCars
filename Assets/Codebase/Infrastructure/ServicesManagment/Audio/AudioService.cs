@@ -2,6 +2,7 @@
 using Assets.Codebase.Infrastructure.ServicesManagment.Assets;
 using Assets.Codebase.Models.Progress;
 using System.Collections.Generic;
+using UniRx;
 using UnityEngine;
 
 namespace Assets.Codebase.Infrastructure.ServicesManagment.Audio
@@ -27,6 +28,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Audio
             _effectsSource = effectsSource;
 
             InitData();
+            progressModel.SessionProgress.SFXVolume.Subscribe(value => SetSFXVolume(value));
         }
 
         private void InitData()

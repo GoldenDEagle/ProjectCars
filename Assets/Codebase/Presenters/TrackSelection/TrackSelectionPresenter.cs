@@ -57,4 +57,8 @@ public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
 
         SelectedTrackIcon.Value = _availableTracks[_selectedTrackIndex].TrackIcon;
     }
+    public void SoundButtonClicked()
+    {
+        ProgressModel.SwitchSound();
+    }
 }
