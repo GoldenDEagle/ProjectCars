@@ -89,6 +89,11 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
         UpdateButtonStates();
     }
 
+    public void SoundButtonClicked()
+    {
+        ProgressModel.SwitchSound();
+    }
+
     private void UpdateButtonStates()
     {
         if (ProgressModel.SessionProgress.UnlockedCars.Contains(DisplayedCar.Value))

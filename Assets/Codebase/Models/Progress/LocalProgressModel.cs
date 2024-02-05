@@ -88,5 +88,17 @@ namespace Assets.Codebase.Models.Progress
 
             SessionProgress.UnlockedCars.Add(carId);
         }
+
+        public void SwitchSound()
+        {
+            if (SessionProgress.SFXVolume.Value > 0.5f)
+            {
+                SessionProgress.SFXVolume.Value = 0f;
+            }
+            else
+            {
+                SessionProgress.SFXVolume.Value = 1f;
+            }
+        }
     }
 }

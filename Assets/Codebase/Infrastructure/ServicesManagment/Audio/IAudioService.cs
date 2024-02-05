@@ -30,13 +30,13 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Audio
         public void UnmuteAll();
 
         /// <summary>
-        /// Changes SFX volume in model.
+        /// Changes SFX volume.
         /// </summary>
         /// <param name="value"></param>
         public void SetSFXVolume(float value);
 
         /// <summary>
-        /// Changes music volume in model.
+        /// Changes music volume.
         /// </summary>
         /// <param name="value"></param>
         public void SetMusicVolume(float value);

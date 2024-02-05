@@ -15,14 +15,16 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Audio
 
         private IAssetProvider _assets;
         private IProgressModel _progress;
+        private AudioSource _effectsSource;
 
         // All clips loaded from container
         private Dictionary<SoundId, AudioClip> _clips;
 
-        public AudioService(IAssetProvider assetProvider, IProgressModel progressModel)
+        public AudioService(IAssetProvider assetProvider, IProgressModel progressModel, AudioSource effectsSource)
         {
             _assets = assetProvider;
             _progress = progressModel;
+            _effectsSource = effectsSource;
 
             InitData();
         }
@@ -42,12 +44,12 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Audio
 
         public void SetMusicVolume(float value)
         {
-            _progress.SessionProgress.MusicVolume.Value = value;
+            AudioListener.volume = value;
         }
 
         public void SetSFXVolume(float value)
         {
-            _progress.SessionProgress.SFXVolume.Value = value;
+            AudioListener.volume = value;
         }
 
         // Next logic depends on project specifications.
@@ -59,17 +61,17 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Audio
 
         public void PlaySfxSound(SoundId soundId)
         {
-            throw new System.NotImplementedException();
+            _effectsSource.PlayOneShot(_clips[soundId]);
         }
 
         public void MuteAll()
         {
-            throw new System.NotImplementedException();
+            AudioListener.pause = true;
         }
 
         public void UnmuteAll()
         {
-            throw new System.NotImplementedException();
+            AudioListener.pause = false;
         }
     }
 }

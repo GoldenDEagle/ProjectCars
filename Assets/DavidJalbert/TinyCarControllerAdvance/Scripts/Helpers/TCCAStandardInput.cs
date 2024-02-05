@@ -91,6 +91,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
                     {
                         t.Clear();
                     }
+                    return;
                 }
 
                 carController.setMotor(motorDelta);

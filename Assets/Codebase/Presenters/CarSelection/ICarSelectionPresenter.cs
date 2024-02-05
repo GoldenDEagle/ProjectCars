@@ -16,5 +16,6 @@ namespace Assets.Codebase.Presenters.CarSelection
         public void RightArrowClicked();
         public void LeftArrowClicked();
         public void BuyButtonClicked();
+        public void SoundButtonClicked();
     }
 }

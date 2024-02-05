@@ -26,8 +26,8 @@ namespace Assets.Codebase.Models.Progress.Data
         public SessionProgress()
         {
             SampleValue = new ReactiveProperty<int>(0);
-            MusicVolume = new ReactiveProperty<float>(0.5f);
-            SFXVolume = new ReactiveProperty<float>(0.5f);
+            MusicVolume = new ReactiveProperty<float>(1f);
+            SFXVolume = new ReactiveProperty<float>(1f);
             SelectedCar = new ReactiveProperty<PlayerCarId>(PlayerCarId.Haumea);
             TotalCoins = new ReactiveProperty<int>(200);
             UnlockedCars = new List<PlayerCarId> { PlayerCarId.Haumea };

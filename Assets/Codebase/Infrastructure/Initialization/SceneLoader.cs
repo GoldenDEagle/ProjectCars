@@ -1,4 +1,6 @@
-﻿using Cysharp.Threading.Tasks;
+﻿using Assets.Codebase.Infrastructure.ServicesManagment;
+using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
+using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -21,6 +23,7 @@ namespace Assets.Codebase.Infrastructure.Initialization
                 await UniTask.DelayFrame(1);
             }
 
+            AudioListener.volume = ServiceLocator.Container.Single<IModelAccessService>().ProgressModel.SessionProgress.SFXVolume.Value;
             onLoaded?.Invoke();
         }
     }

@@ -34,5 +34,9 @@ namespace Assets.Codebase.Models.Progress
         /// </summary>
         /// <param name="carId"></param>
         public void UnlockNewCar(PlayerCarId carId);
+        /// <summary>
+        /// Turn sound on and off
+        /// </summary>
+        public void SwitchSound();
     }
 }

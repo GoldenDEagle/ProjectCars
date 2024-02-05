@@ -3,6 +3,7 @@
     public enum SoundId
     {
         // List all sounds:
-        None = 0,
+        None,
+        ButtonClick,
     }
 }

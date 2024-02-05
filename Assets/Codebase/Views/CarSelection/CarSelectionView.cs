@@ -2,6 +2,7 @@
 using Assets.Codebase.Presenter.Base;
 using Assets.Codebase.Presenters.CarSelection;
 using Assets.Codebase.Utils.Extensions;
+using Assets.Codebase.Utils.UI;
 using Assets.Codebase.Views.Base;
 using Cysharp.Threading.Tasks;
 using TMPro;
@@ -19,6 +20,7 @@ namespace Assets.Codebase.Views.CarSelection
         [SerializeField] private Button _confirmSelectionButton;
         [SerializeField] private Button _leftArrowButton;
         [SerializeField] private Button _rightArrowButton;
+        [SerializeField] private SoundButton _soundButton;
 
         private ICarSelectionPresenter _presenter;
 
@@ -44,6 +46,13 @@ namespace Assets.Codebase.Views.CarSelection
             _leftArrowButton.OnClickAsObservable().Subscribe(_ => _presenter.LeftArrowClicked()).AddTo(CompositeDisposable);
             _rightArrowButton.OnClickAsObservable().Subscribe(_ => _presenter.RightArrowClicked()).AddTo(CompositeDisposable);
             _buyButton.OnClickAsObservable().Subscribe(_ => _presenter.BuyButtonClicked()).AddTo(CompositeDisposable);
+            _soundButton.Button.OnClickAsObservable().Subscribe(_ => SoundButtonClicked()).AddTo(CompositeDisposable);
+        }
+
+        private void SoundButtonClicked()
+        {
+            _presenter.SoundButtonClicked();
+            _soundButton.SetIcon();
         }
     }
 }
