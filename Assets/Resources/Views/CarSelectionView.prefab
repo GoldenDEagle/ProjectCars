@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 137988911183137253}
   - component: {fileID: 1122041062565124640}
   - component: {fileID: 2144783215289774596}
+  - component: {fileID: 7277241020275312371}
   m_Layer: 5
   m_Name: Buy
   m_TagString: Untagged
@@ -407,6 +408,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7277241020275312371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603693030717092269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24d3ab0953749b4bb505753761b4afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: buy_button
 --- !u!1 &1285664934759153592
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +432,7 @@ GameObject:
   - component: {fileID: 3507535607059018288}
   - component: {fileID: 3060309961390591546}
   - component: {fileID: 5591541034183919491}
+  - component: {fileID: 5018463777748563517}
   m_Layer: 5
   m_Name: Text_Ok
   m_TagString: Untagged
@@ -542,6 +557,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &5018463777748563517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285664934759153592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24d3ab0953749b4bb505753761b4afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: select_button
 --- !u!1 &1664926106716010694
 GameObject:
   m_ObjectHideFlags: 0
@@ -6822,6 +6850,7 @@ GameObject:
   - component: {fileID: 7435005185657824253}
   - component: {fileID: 2127041624826829425}
   - component: {fileID: 176073087909711794}
+  - component: {fileID: 3158530266605412418}
   m_Layer: 5
   m_Name: Title_Text
   m_TagString: Untagged
@@ -6945,6 +6974,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3158530266605412418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7723815337421856385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24d3ab0953749b4bb505753761b4afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: selectCar_menuName
 --- !u!1 &8372053952727333729
 GameObject:
   m_ObjectHideFlags: 0

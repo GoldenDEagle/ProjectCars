@@ -1,2 +1,4 @@
 Key,English,Russian
-SelectCar_menuName,Select Car,Выбери Машину
+selectCar_menuName,Choose A Car,Выбери Машину
+buy_button,BUY,КУПИТЬ
+select_button,SELECT,ВЫБРАТЬ
