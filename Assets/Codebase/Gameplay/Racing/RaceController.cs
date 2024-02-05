@@ -1,6 +1,8 @@
 ﻿using Assets.Codebase.Gameplay.Cars;
 using Assets.Codebase.Infrastructure.ServicesManagment;
+using Assets.Codebase.Infrastructure.ServicesManagment.Localization;
 using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
+using Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation;
 using Assets.Codebase.Views.Base;
 using DavidJalbert.TinyCarControllerAdvance;
 using System.Collections;
@@ -13,6 +15,8 @@ namespace Assets.Codebase.Gameplay.Racing
 {
     public class RaceController : MonoBehaviour
     {
+        private const string CountdownEndKey = "countdown_go";
+
         [SerializeField] private CarSpawner _carSpawner;
         [SerializeField] private WaypointCircuit _waypointCircuit;
         [SerializeField] private TCCACamera _camera;
@@ -28,10 +32,12 @@ namespace Assets.Codebase.Gameplay.Racing
         private int _playerPosition;
 
         private IModelAccessService _models;
+        private IViewProvider _viewProvider;
 
         private void Awake()
         {
             _models = ServiceLocator.Container.Single<IModelAccessService>();
+            _viewProvider = ServiceLocator.Container.Single<IViewProvider>();
         }
 
         private void Start()
@@ -78,18 +84,20 @@ namespace Assets.Codebase.Gameplay.Racing
         private IEnumerator RacingCountdown()
         {
             int time = 3;
+            _viewProvider.Countdown.Activate(true);
 
             while (time > 0)
             {
-                Debug.Log($"Race in {time}");
+                _viewProvider.Countdown.ShowText(time.ToString());
                 yield return new WaitForSeconds(1f);
                 time--;
             }
 
-            Debug.Log("Start!");
+            _viewProvider.Countdown.ShowText(ServiceLocator.Container.Single<ILocalizationService>().LocalizeTextByKey(CountdownEndKey)); ;
             StartRace();
 
             yield return new WaitForSeconds(1f);
+            _viewProvider.Countdown.Activate(false);
             // Remove counter
         }
 

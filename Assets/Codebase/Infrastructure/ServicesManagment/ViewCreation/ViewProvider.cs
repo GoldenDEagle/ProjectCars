@@ -1,6 +1,8 @@
 ﻿using Assets.Codebase.Infrastructure.ServicesManagment.Assets;
 using Assets.Codebase.Presenters.Base;
+using Assets.Codebase.Utils.UI;
 using Assets.Codebase.Views.Base;
+using DavidJalbert.TinyCarControllerAdvance;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -10,8 +12,35 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
     /// <summary>
     /// Creates new views using IAssetProvider.
     /// </summary>
-    public class ViewCreatorService : IViewCreatorService
+    public class ViewProvider : IViewProvider
     {
+        // Additional UI elements
+        private Countdown _countdown;
+        private TCCAMobileInput _mobileInput;
+        public Countdown Countdown
+        {
+            get
+            {
+                if (_countdown == null)
+                {
+                    _countdown = CreateCountdown();
+                }
+                return _countdown;
+            }
+        }
+
+        public TCCAMobileInput MobileInput
+        {
+            get
+            {
+                if (_mobileInput == null)
+                {
+                    _mobileInput = CreateMobileInput();
+                }
+                return _mobileInput;
+            }
+        }
+
         // All presenters
         private List<BasePresenter> _presenters;
 
@@ -26,10 +55,11 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
         private const string IngameViewPath = "Views/IngameView";
         private const string EndgameViewPath = "Views/EndgameView";
         private const string PauseViewPath = "Views/PauseView";
-
+        private const string CountdownPath = "UI/Countdown";
+        private const string MobileInputPath = "UI/MobileInput";
         private IAssetProvider _assets;
 
-        public ViewCreatorService(IAssetProvider assets, List<BasePresenter> presenters, RectTransform uiRoot)
+        public ViewProvider(IAssetProvider assets, List<BasePresenter> presenters, RectTransform uiRoot)
         {
             _assets = assets;
             _presenters = presenters;
@@ -82,6 +112,19 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
             var view = _assets.Instantiate(path).GetComponent<BaseView>();
             view.transform.SetParent(_uiRoot, false);
             return view;
+        }
+
+        private Countdown CreateCountdown()
+        {
+            var element = _assets.Instantiate(CountdownPath).GetComponent<Countdown>();
+            element.transform.SetParent(_uiRoot, false);
+            return element;
+        }
+
+        private TCCAMobileInput CreateMobileInput()
+        {
+            var element = _assets.Instantiate(MobileInputPath).GetComponent<TCCAMobileInput>();
+            return element;
         }
     }
 }

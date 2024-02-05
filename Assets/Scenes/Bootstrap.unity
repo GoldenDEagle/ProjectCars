@@ -249,6 +249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiRoot: {fileID: 935065085}
+  _effectsSource: {fileID: 0}
   _launchParams:
     ManualParamSet: 0
     Language: 0

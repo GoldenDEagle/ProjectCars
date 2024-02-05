@@ -78,7 +78,7 @@ namespace Assets.Codebase.Presenters.Base
         public virtual void CreateView()
         {
             _isViewActive = true;
-            var view = ServiceLocator.Container.Single<IViewCreatorService>().CreateView(CorrespondingViewId);
+            var view = ServiceLocator.Container.Single<IViewProvider>().CreateView(CorrespondingViewId);
             view.Init(this);
         }
 

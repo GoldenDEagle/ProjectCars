@@ -97,7 +97,7 @@ namespace Assets.Codebase.Infrastructure.Initialization
             var services = ServiceLocator.Container;
 
             services.RegisterSingle<IAssetProvider>(new AssetProvider());
-            services.RegisterSingle<IViewCreatorService>(new ViewCreatorService(services.Single<IAssetProvider>(), _presenters, _uiRoot));
+            services.RegisterSingle<IViewProvider>(new ViewProvider(services.Single<IAssetProvider>(), _presenters, _uiRoot));
             services.RegisterSingle<IAdsService>(new GamePushAdService());
             services.RegisterSingle<IAudioService>(new AudioService(services.Single<IAssetProvider>(), _progressModel, _effectsSource));
             services.RegisterSingle<IModelAccessService>(new ModelAccessService(_progressModel, _gameplayModel));
