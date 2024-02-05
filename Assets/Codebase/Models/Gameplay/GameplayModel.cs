@@ -41,6 +41,10 @@ namespace Assets.Codebase.Models.Gameplay
         private List<EnemyCarId> _availableEnemyIds;
         private bool _isMobile;
 
+        // Game config
+        int _lapsInRace = 2;
+        int _raceEnemyCount = 4;
+
         // Public properties
         public ReactiveProperty<GameState> State => _state;
         public ReactiveProperty<ViewId> ActiveViewId => _activeViewId;
@@ -136,7 +140,7 @@ namespace Assets.Codebase.Models.Gameplay
 
             _availableEnemyIds.Shuffle();
 
-            _activeRace.Value = new Race(trackId, 1, _availableEnemyIds.Take(5).ToList());
+            _activeRace.Value = new Race(trackId, _lapsInRace, _availableEnemyIds.Take(_raceEnemyCount).ToList());
         }
 
         public int CalculateReward()
@@ -146,7 +150,8 @@ namespace Assets.Codebase.Models.Gameplay
             if (race == null) { return 0; }
 
             int positionReward = (race.EnemiesList.Count - race.Result.Position + 2) * Calculations.RewardPerPosition;
-            int totalReward = positionReward + (int)(positionReward * 0.5f * (race.TotalLaps - 1));
+            //int lapCountReward = (int)(positionReward * 0.5f * (race.TotalLaps - 1));
+            int totalReward = positionReward;
             _currentReward.Value = totalReward;
 
             return totalReward;
