@@ -39,10 +39,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
                 return;
             }
 
-            if (CheckIfFullscreenIsAvailable())
-            {
-                GP_Ads.ShowFullscreen();
-            }
+            GP_Ads.ShowFullscreen();
         }
 
         public bool CheckIfRewardedIsAvailable()
@@ -72,7 +69,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
 
         public bool IsDeviceMobile()
         {
-            return GP_Device.IsMobile();
+            return !GP_Device.IsMobile();
         }
     }
 }
