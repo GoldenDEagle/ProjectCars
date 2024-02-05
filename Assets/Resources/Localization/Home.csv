@@ -4,3 +4,18 @@ buy_button,BUY,КУПИТЬ
 select_button,SELECT,ВЫБРАТЬ
 selectTrack_menuName,Choose a track,Выбери Трассу
 go_button,GO,ПОЕХАЛИ
+pause_title,PAUSED,ПАУЗА
+continue_button,Continue,Продолжить
+restart_button,Restart,Заново
+quit_button,Quit,Выход
+ingame_position,Position: ,Позиция: 
+ingame_lap,Lap: ,Круг: 
+placement_first,First Place!,Первое Место!
+placement_second,Second Place!,Второе Место!
+placement_third,Third Place!,Третье Место!
+placement_fourth,4th Place,4-ое Место
+placement_fifth,5th Place,5-ое Место
+placement_sixth,6th Place,6-ое Место
+placement_default,Nice Try!,Хорошая попытка!
+x2_reward_button,x2 Claim,Награда x2
+endRace_button,Continue,Продолжить
