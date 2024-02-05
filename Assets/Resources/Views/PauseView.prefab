@@ -744,6 +744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _continueButton: {fileID: 2620853998697716787}
+  _restartButton: {fileID: 3480291413786063628}
   _quitButton: {fileID: 3721126828856412268}
 --- !u!1 &6124001862174956868
 GameObject:

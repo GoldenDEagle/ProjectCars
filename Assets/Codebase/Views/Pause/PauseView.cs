@@ -10,6 +10,7 @@ namespace Assets.Codebase.Views.Pause
     public class PauseView : BaseView
     {
         [SerializeField] private Button _continueButton;
+        [SerializeField] private Button _restartButton;
         [SerializeField] private Button _quitButton;
 
         private IPausePresenter _presenter;
@@ -24,6 +25,7 @@ namespace Assets.Codebase.Views.Pause
         protected override void SubscribeToUserInput()
         {
             _continueButton.OnClickAsObservable().Subscribe(_ => _presenter.ContinueClicked()).AddTo(CompositeDisposable);
+            _restartButton.OnClickAsObservable().Subscribe(_ => _presenter.RestartClicked()).AddTo(CompositeDisposable);
             _quitButton.OnClickAsObservable().Subscribe(_ => _presenter.QuitClicked()).AddTo(CompositeDisposable);
         }
     }

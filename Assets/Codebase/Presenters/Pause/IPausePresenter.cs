@@ -6,5 +6,6 @@ namespace Assets.Codebase.Presenters.Pause
     {
         public void ContinueClicked();
         public void QuitClicked();
+        public void RestartClicked();
     }
 }

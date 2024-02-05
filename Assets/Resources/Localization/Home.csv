@@ -2,3 +2,5 @@ Key,English,Russian
 selectCar_menuName,Choose A Car,Выбери Машину
 buy_button,BUY,КУПИТЬ
 select_button,SELECT,ВЫБРАТЬ
+selectTrack_menuName,Choose a track,Выбери Трассу
+go_button,GO,ПОЕХАЛИ
