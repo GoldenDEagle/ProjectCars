@@ -10,6 +10,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
     {
         private bool _adsEnabled = true;
         public Subject<Unit> OnRewardedSuccess { get; private set; }
+        public Subject<Unit> OnFullscreenClosed { get; private set; }
         public Subject<Unit> OnAdStarted { get; private set; }
         public Subject<Unit> OnAdEnded { get; private set; }
 
@@ -20,8 +21,10 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
             OnAdStarted = new Subject<Unit>();
             OnAdEnded = new Subject<Unit>();
             OnRewardedSuccess = new Subject<Unit>();
+            OnFullscreenClosed = new Subject<Unit>();
             _audio = audio;
             GP_Ads.OnRewardedReward += RewardedSuccess;
+            GP_Ads.OnFullscreenClose += FullscreenClosed;
             GP_Game.OnPause += AdStarted;
             GP_Game.OnResume += AdEneded;
         }
@@ -61,6 +64,11 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
         {
             OnRewardedSuccess?.OnNext(Unit.Default);
             _audio.PlaySfxSound(SoundId.AdReward);
+        }
+
+        private void FullscreenClosed(bool correctly)
+        {
+            OnFullscreenClosed?.OnNext(Unit.Default);
         }
 
         private void AdStarted()

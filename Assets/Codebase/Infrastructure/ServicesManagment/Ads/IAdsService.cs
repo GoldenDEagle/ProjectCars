@@ -12,6 +12,10 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
         /// </summary>
         public Subject<Unit> OnRewardedSuccess { get; }
         /// <summary>
+        /// Fired when fullscreen ad closes
+        /// </summary>
+        public Subject<Unit> OnFullscreenClosed { get; }
+        /// <summary>
         /// Fired every time ad starts
         /// </summary>
         public Subject<Unit> OnAdStarted { get; }

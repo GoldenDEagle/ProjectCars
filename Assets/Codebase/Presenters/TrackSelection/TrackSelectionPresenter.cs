@@ -1,9 +1,10 @@
 using Assets.Codebase.Data.Tracks;
-using Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation;
 using Assets.Codebase.Infrastructure.ServicesManagment;
+using Assets.Codebase.Infrastructure.ServicesManagment.Ads;
+using Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation;
 using Assets.Codebase.Presenters.Base;
-using Assets.Codebase.Utils.Values;
 using Assets.Codebase.Views.Base;
+using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
 
     private List<TrackInfo> _availableTracks;
     private int _selectedTrackIndex;
+    private IDisposable _fullscreenSubscription;
 
     public TrackSelectionPresenter()
     {
@@ -41,7 +43,18 @@ public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
     public void GoButtonClicked()
     {
         GameplayModel.CreateNewRace(_availableTracks[_selectedTrackIndex].TrackId);
-        GameplayModel.LoadScene(_availableTracks[_selectedTrackIndex].TrackSceneName, () => GameplayModel.ActivateView(ViewId.Ingame));
+
+        var adService = ServiceLocator.Container.Single<IAdsService>();
+
+        if (adService.CheckIfFullscreenIsAvailable())
+        {
+            _fullscreenSubscription = adService.OnFullscreenClosed.Subscribe(_ => AfterFullscreenWatched()).AddTo(CompositeDisposable);
+            adService.ShowFullscreen();
+        }
+        else
+        {
+            GameplayModel.LoadScene(_availableTracks[_selectedTrackIndex].TrackSceneName, () => GameplayModel.ActivateView(ViewId.Ingame));
+        }
     }
 
     public void RightArrowClicked()
@@ -81,5 +94,12 @@ public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
     public void BackButtonClicked()
     {
         GameplayModel.ActivateView(ViewId.CarSelection);
+    }
+
+
+    private void AfterFullscreenWatched()
+    {
+        CompositeDisposable.Remove(_fullscreenSubscription);
+        GameplayModel.LoadScene(_availableTracks[_selectedTrackIndex].TrackSceneName, () => GameplayModel.ActivateView(ViewId.Ingame));
     }
 }
