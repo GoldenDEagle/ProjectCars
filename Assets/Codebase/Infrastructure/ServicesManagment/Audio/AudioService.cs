@@ -17,15 +17,17 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Audio
         private IAssetProvider _assets;
         private IProgressModel _progress;
         private AudioSource _effectsSource;
+        private AudioSource _musicSource;
 
         // All clips loaded from container
         private Dictionary<SoundId, AudioClip> _clips;
 
-        public AudioService(IAssetProvider assetProvider, IProgressModel progressModel, AudioSource effectsSource)
+        public AudioService(IAssetProvider assetProvider, IProgressModel progressModel, AudioSource effectsSource, AudioSource musicSource)
         {
             _assets = assetProvider;
             _progress = progressModel;
             _effectsSource = effectsSource;
+            _musicSource = musicSource;
 
             InitData();
             progressModel.SessionProgress.SFXVolume.Subscribe(value => SetSFXVolume(value));
@@ -56,9 +58,15 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Audio
 
         // Next logic depends on project specifications.
 
+        public void EnableMusic(bool isEnabled)
+        {
+            _musicSource.mute = !isEnabled;
+        }
+
         public void ChangeMusic(SoundId musicId)
         {
-            throw new System.NotImplementedException();
+            _musicSource.clip = _clips[musicId];
+            _musicSource.Play();
         }
 
         public void PlaySfxSound(SoundId soundId)

@@ -29,19 +29,26 @@ namespace Assets.Codebase.Infrastructure.Initialization
         // Needed from outside
         private RectTransform _uiRoot;
         private AudioSource _effectsSource;
+        private AudioSource _musicSource;
 
         // Created inside
         private IProgressModel _progressModel;
         private IGameplayModel _gameplayModel;
         private List<BasePresenter> _presenters;
+        private bool _isEditor = false;
 
-        public GameStructure(RectTransform uiRoot, AudioSource effectsSource, GameLaunchParams launchParams = null)
+        public GameStructure(RectTransform uiRoot, AudioSource effectsSource, AudioSource musicSource, GameLaunchParams launchParams = null)
         {
             if (IsGameInitialized) { return; }
             IsGameInitialized = true;
 
+#if UNITY_EDITOR
+            _isEditor = true;
+#endif
+
             _uiRoot = uiRoot;
             _effectsSource = effectsSource;
+            _musicSource = musicSource;
 
             GameLaunchParameters = launchParams ?? new GameLaunchParams();
 
@@ -53,6 +60,7 @@ namespace Assets.Codebase.Infrastructure.Initialization
             _gameplayModel.InitModel();
 
             ApplyAfterLoadParams();
+            _musicSource = musicSource;
         }
 
         // MVP structure
@@ -64,7 +72,15 @@ namespace Assets.Codebase.Infrastructure.Initialization
 
         private void CreateModels()
         {
-            _progressModel = new LocalProgressModel();
+            if (_isEditor)
+            {
+                _progressModel = new LocalProgressModel();
+            }
+            else
+            {
+                _progressModel = new ServerProgressModel();
+            }
+
             _gameplayModel = new GameplayModel();
         }
 
@@ -99,7 +115,7 @@ namespace Assets.Codebase.Infrastructure.Initialization
             services.RegisterSingle<IAssetProvider>(new AssetProvider());
             services.RegisterSingle<IViewProvider>(new ViewProvider(services.Single<IAssetProvider>(), _presenters, _uiRoot));
             services.RegisterSingle<IAdsService>(new GamePushAdService());
-            services.RegisterSingle<IAudioService>(new AudioService(services.Single<IAssetProvider>(), _progressModel, _effectsSource));
+            services.RegisterSingle<IAudioService>(new AudioService(services.Single<IAssetProvider>(), _progressModel, _effectsSource, _musicSource));
             services.RegisterSingle<IModelAccessService>(new ModelAccessService(_progressModel, _gameplayModel));
             services.RegisterSingle<ILocalizationService>(new GoogleSheetLocalizationService());
             services.RegisterSingle<IPresentersService>(new PresentersService(_presenters));

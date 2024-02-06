@@ -19,8 +19,9 @@ namespace Assets.Codebase.Utils.GOComponents
 
             var uiRoot = Instantiate(_uiRootPrefab);
             AudioSource effecsSource = new AudioSource();
+            AudioSource musicSource = new AudioSource();
 
-            GameStructure structure = new GameStructure(uiRoot, effecsSource);
+            GameStructure structure = new GameStructure(uiRoot, effecsSource, musicSource);
         }
 #endif
     }

@@ -12,12 +12,13 @@ namespace Assets.Codebase.Infrastructure
     {
         [SerializeField] private RectTransform _uiRoot;
         [SerializeField] private AudioSource _effectsSource;
+        [SerializeField] private AudioSource _musicSource;
         [SerializeField] private GameLaunchParams _launchParams;
 
         private void Awake()
         {
             // Create game structure
-            GameStructure structure = new GameStructure(_uiRoot, _effectsSource, _launchParams);
+            GameStructure structure = new GameStructure(_uiRoot, _effectsSource, _musicSource, _launchParams);
 
             // Start the game
             ServiceLocator.Container.Single<IModelAccessService>().GameplayModel.ActivateView(ViewId.Title);
