@@ -646,8 +646,8 @@ MonoBehaviour:
   steeringDamper: 20
   invertSteering: 0
   motorEnabled: 1
-  motorMaxSpeed: 10
-  motorAcceleration: 120
+  motorMaxSpeed: 11
+  motorAcceleration: 95
   motorAccelerationOverSpeed:
     serializedVersion: 2
     m_Curve:
@@ -1274,8 +1274,8 @@ MonoBehaviour:
   steeringDamper: 20
   invertSteering: 0
   motorEnabled: 1
-  motorMaxSpeed: 10
-  motorAcceleration: 120
+  motorMaxSpeed: 11
+  motorAcceleration: 95
   motorAccelerationOverSpeed:
     serializedVersion: 2
     m_Curve:
@@ -1384,7 +1384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82931e33ce0ac024aa8f814bb8653c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _carId: 0
+  _carId: 3
   _carController: {fileID: 4493070330471079265}
   _waypointTracker: {fileID: 2378881176821035204}
 --- !u!114 &4493070330471079265
