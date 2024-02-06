@@ -45,5 +45,13 @@ namespace Assets.Codebase.Gameplay.Racing
                 _contactCounter[car] = 0;
             }
         }
+
+        public void SetCollidersState(bool areEnabled)
+        {
+            foreach (var trigger in _carTriggers)
+            {
+                trigger.gameObject.SetActive(areEnabled);
+            }
+        }
     }
 }

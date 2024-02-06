@@ -30,6 +30,7 @@ namespace Assets.Codebase.Gameplay.Racing
         private bool _isRaceActive = false;
         private Coroutine _positionChecker;
         private TCCAMobileInput _mobileInput;
+        private WaitForSeconds _oneSecDelay = new WaitForSeconds(1f);
 
         private int _playerPosition;
 
@@ -94,7 +95,7 @@ namespace Assets.Codebase.Gameplay.Racing
             {
                 CheckPositions();
                 //Debug.Log($"Player position: {_playerPosition}, Lap: {_playerCar.LapNumber}");
-                yield return new WaitForSeconds(1f);
+                yield return _oneSecDelay;
             }
         }
 
@@ -107,7 +108,7 @@ namespace Assets.Codebase.Gameplay.Racing
             {
                 _audio.PlaySfxSound(SoundId.CountdownBeep);
                 _viewProvider.Countdown.ShowText(time.ToString());
-                yield return new WaitForSeconds(1f);
+                yield return _oneSecDelay;
                 time--;
             }
 
@@ -115,7 +116,7 @@ namespace Assets.Codebase.Gameplay.Racing
             _viewProvider.Countdown.ShowText(ServiceLocator.Container.Single<ILocalizationService>().LocalizeTextByKey(CountdownEndKey)); ;
             StartRace();
 
-            yield return new WaitForSeconds(1f);
+            yield return _oneSecDelay;
             _viewProvider.Countdown.Activate(false);
             // Remove counter
         }
@@ -131,6 +132,13 @@ namespace Assets.Codebase.Gameplay.Racing
                 enemy.StartCheckingMovement();
             }
             _positionChecker = StartCoroutine(PositionTracker());
+            StartCoroutine(ActivateFinishAfterDelay());
+        }
+
+        private IEnumerator ActivateFinishAfterDelay()
+        {
+            yield return new WaitForSeconds(10f);
+            _finish.SetCollidersState(true);
         }
 
         private void CheckPositions()
