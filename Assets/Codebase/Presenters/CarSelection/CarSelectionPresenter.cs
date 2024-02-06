@@ -36,9 +36,8 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
     {
         base.CreateView();
 
-        //TotalCoinsString.Value = "Coins: " + ProgressModel.SessionProgress.TotalCoins.Value;
         _availableCars = GameplayModel.GetListOfAvailablePlayerCars();
-        DisplayedCar.Value = ProgressModel.SessionProgress.SelectedCar.Value;
+        DisplayedCar.SetValueAndForceNotify(ProgressModel.SessionProgress.SelectedCar.Value);
         _selectedCarIndex = _availableCars.FindIndex(x => x.CarId == DisplayedCar.Value);
         UpdateButtonStates();
     }

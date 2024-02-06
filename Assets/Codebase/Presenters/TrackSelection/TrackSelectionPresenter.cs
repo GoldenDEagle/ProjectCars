@@ -9,6 +9,7 @@ using UnityEngine;
 public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
 {
     public ReactiveProperty<Sprite> SelectedTrackIcon { get; private set; }
+    public ReactiveProperty<string> TotalCoinsString { get; private set; }
 
     private List<TrackInfo> _availableTracks;
     private int _selectedTrackIndex;
@@ -17,6 +18,13 @@ public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
     {
         CorrespondingViewId = ViewId.TrackSelection;
         SelectedTrackIcon = new ReactiveProperty<Sprite>();
+        TotalCoinsString = new ReactiveProperty<string>();
+    }
+
+    protected override void SubscribeToModelChanges()
+    {
+        base.SubscribeToModelChanges();
+        ProgressModel.SessionProgress.TotalCoins.Subscribe(value => TotalCoinsString.Value = value.ToString()).AddTo(CompositeDisposable);
     }
 
     public override void CreateView()
@@ -57,8 +65,14 @@ public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
 
         SelectedTrackIcon.Value = _availableTracks[_selectedTrackIndex].TrackIcon;
     }
+
     public void SoundButtonClicked()
     {
         ProgressModel.SwitchSound();
+    }
+
+    public void BackButtonClicked()
+    {
+        GameplayModel.ActivateView(ViewId.CarSelection);
     }
 }
