@@ -1,9 +1,6 @@
 using Assets.Codebase.Presenters.Base;
 using Assets.Codebase.Views.Base;
-using Assets.SimpleLocalization.Scripts;
-using System;
 using UniRx;
-using UnityEditor.Localization.Editor;
 
 public class IngamePresenter : BasePresenter, IIngamePresenter
 {
