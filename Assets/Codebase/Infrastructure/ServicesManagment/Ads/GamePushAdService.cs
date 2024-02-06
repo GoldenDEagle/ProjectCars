@@ -1,4 +1,6 @@
-﻿using GamePush;
+﻿using Assets.Codebase.Data.Audio;
+using Assets.Codebase.Infrastructure.ServicesManagment.Audio;
+using GamePush;
 using UniRx;
 using UnityEngine;
 
@@ -11,11 +13,14 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
         public Subject<Unit> OnAdStarted { get; private set; }
         public Subject<Unit> OnAdEnded { get; private set; }
 
-        public GamePushAdService()
+        private IAudioService _audio;
+
+        public GamePushAdService(IAudioService audio)
         {
             OnAdStarted = new Subject<Unit>();
             OnAdEnded = new Subject<Unit>();
             OnRewardedSuccess = new Subject<Unit>();
+            _audio = audio;
             GP_Ads.OnRewardedReward += RewardedSuccess;
             GP_Game.OnPause += AdStarted;
             GP_Game.OnResume += AdEneded;
@@ -55,6 +60,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
         private void RewardedSuccess(string key)
         {
             OnRewardedSuccess?.OnNext(Unit.Default);
+            _audio.PlaySfxSound(SoundId.AdReward);
         }
 
         private void AdStarted()
@@ -69,7 +75,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
 
         public bool IsDeviceMobile()
         {
-            return !GP_Device.IsMobile();
+            return GP_Device.IsMobile();
         }
     }
 }

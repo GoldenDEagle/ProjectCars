@@ -1,4 +1,7 @@
+using Assets.Codebase.Data.Audio;
 using Assets.Codebase.Data.Cars.Player;
+using Assets.Codebase.Infrastructure.ServicesManagment;
+using Assets.Codebase.Infrastructure.ServicesManagment.Audio;
 using Assets.Codebase.Presenters.Base;
 using Assets.Codebase.Presenters.CarSelection;
 using Assets.Codebase.Views.Base;
@@ -85,6 +88,7 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
         ProgressModel.ModifyCoinAmount(-price);
         ProgressModel.UnlockNewCar(_availableCars[_selectedCarIndex].CarId);
         ProgressModel.SaveProgress();
+        ServiceLocator.Container.Single<IAudioService>().PlaySfxSound(SoundId.NewCarUnlocked);
         UpdateButtonStates();
     }
 

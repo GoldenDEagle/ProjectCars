@@ -23,13 +23,13 @@ namespace Assets.Codebase.Gameplay.Racing
         [SerializeField] private WaypointCircuit _waypointCircuit;
         [SerializeField] private TCCACamera _camera;
         [SerializeField] private TCCAStandardInput _standartInput;
-        [SerializeField] private TCCAMobileInput _mobileInput;
         [SerializeField] private Finish _finish;
 
         private List<EnemyCar> _enemyCars;
         private PlayerCar _playerCar;
         private bool _isRaceActive = false;
         private Coroutine _positionChecker;
+        private TCCAMobileInput _mobileInput;
 
         private int _playerPosition;
 
@@ -55,13 +55,25 @@ namespace Assets.Codebase.Gameplay.Racing
         private void SpawnCars()
         {
             _playerCar = _carSpawner.SpawnPlayer();
+
+            // Attach player car to camera and race events
             _playerCar.WaypointTracker.AttachCircuit(_waypointCircuit);
             _playerCar.OnLapCompleted.Subscribe(lap => PlayerPassedLap(lap));
             _camera.carController = _playerCar.CarController;
+            
+            // Input activation
             _standartInput.carController = _playerCar.CarController;
-            _mobileInput.carController = _playerCar.CarController;
+            if (_models.GameplayModel.IsMobile)
+            {
+                _mobileInput = _viewProvider.MobileInput;
+                _mobileInput.carController = _playerCar.CarController;
+                _mobileInput.gameObject.SetActive(true);
+            }
+
+            // Car activation
             _playerCar.gameObject.SetActive(true);
 
+            // Enemies spawn
             _enemyCars = _carSpawner.SpawnEnemies();
             foreach (var enemy in _enemyCars)
             {
@@ -198,7 +210,7 @@ namespace Assets.Codebase.Gameplay.Racing
         {
             if (_models.GameplayModel.IsMobile)
             {
-                _mobileInput.gameObject.SetActive(isEnabled);
+                _mobileInput.enabled = isEnabled;
             }
             else
             {

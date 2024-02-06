@@ -114,8 +114,8 @@ namespace Assets.Codebase.Infrastructure.Initialization
 
             services.RegisterSingle<IAssetProvider>(new AssetProvider());
             services.RegisterSingle<IViewProvider>(new ViewProvider(services.Single<IAssetProvider>(), _presenters, _uiRoot));
-            services.RegisterSingle<IAdsService>(new GamePushAdService());
             services.RegisterSingle<IAudioService>(new AudioService(services.Single<IAssetProvider>(), _progressModel, _effectsSource, _musicSource));
+            services.RegisterSingle<IAdsService>(new GamePushAdService(services.Single<IAudioService>()));
             services.RegisterSingle<IModelAccessService>(new ModelAccessService(_progressModel, _gameplayModel));
             services.RegisterSingle<ILocalizationService>(new GoogleSheetLocalizationService());
             services.RegisterSingle<IPresentersService>(new PresentersService(_presenters));

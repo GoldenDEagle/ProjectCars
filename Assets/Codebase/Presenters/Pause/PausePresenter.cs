@@ -1,4 +1,8 @@
-﻿using Assets.Codebase.Models.Gameplay.Data;
+﻿using Assets.Codebase.Gameplay.Cars;
+using Assets.Codebase.Infrastructure.ServicesManagment;
+using Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation;
+using Assets.Codebase.Models.Base;
+using Assets.Codebase.Models.Gameplay.Data;
 using Assets.Codebase.Presenters.Base;
 using Assets.Codebase.Utils.Values;
 using Assets.Codebase.Views.Base;
@@ -16,8 +20,25 @@ namespace Assets.Codebase.Presenters.Pause
             CorrespondingViewId = ViewId.Pause;
         }
 
+        public override void CreateView()
+        {
+            base.CreateView();
+
+            if (GameplayModel.IsMobile)
+            {
+                var mobileInput = ServiceLocator.Container.Single<IViewProvider>().MobileInput;
+                mobileInput.gameObject.SetActive(false);
+            }
+        }
+
         public void ContinueClicked()
         {
+            if (GameplayModel.IsMobile)
+            {
+                var mobileInput = ServiceLocator.Container.Single<IViewProvider>().MobileInput;
+                mobileInput.gameObject.SetActive(true);
+            }
+
             GameplayModel.UnPauseGame(GameState.Race);
             GameplayModel.ActivateView(ViewId.Ingame);
         }

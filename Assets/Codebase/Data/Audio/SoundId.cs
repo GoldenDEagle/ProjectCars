@@ -12,5 +12,6 @@
         CountdownBeep,
         CountdownEnd,
         LapPassed,
+        NewCarUnlocked,
     }
 }

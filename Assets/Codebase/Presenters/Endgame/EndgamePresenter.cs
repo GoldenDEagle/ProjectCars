@@ -1,6 +1,7 @@
 using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Infrastructure.ServicesManagment.Ads;
 using Assets.Codebase.Infrastructure.ServicesManagment.Localization;
+using Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation;
 using Assets.Codebase.Presenters.Base;
 using Assets.Codebase.Presenters.Endgame;
 using Assets.Codebase.Utils.Values;
@@ -44,6 +45,12 @@ public class EndgamePresenter : BasePresenter, IEndgamePresenter
         //CoinRewardString.Value = "Reward: " + GameplayModel.CurrentReward.Value;
         DoubleRewardButtonActiveState.Value = ServiceLocator.Container.Single<IAdsService>().CheckIfRewardedIsAvailable();
         PositionString.Value = CreatePlacementString(GameplayModel.ActiveRace.Value.Result.Position);
+
+        if (GameplayModel.IsMobile)
+        {
+            var mobileInput = ServiceLocator.Container.Single<IViewProvider>().MobileInput;
+            mobileInput.gameObject.SetActive(false);
+        }
     }
 
     public void ContinueButtonClicked()
