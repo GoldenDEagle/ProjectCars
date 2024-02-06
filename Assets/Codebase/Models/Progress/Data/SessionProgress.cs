@@ -27,7 +27,7 @@ namespace Assets.Codebase.Models.Progress.Data
             MusicVolume = new ReactiveProperty<float>(1f);
             SFXVolume = new ReactiveProperty<float>(1f);
             SelectedCar = new ReactiveProperty<PlayerCarId>(PlayerCarId.Haumea);
-            TotalCoins = new ReactiveProperty<int>(200);
+            TotalCoins = new ReactiveProperty<int>(0);
             UnlockedCars = new List<PlayerCarId> { PlayerCarId.Haumea };
         }
 
