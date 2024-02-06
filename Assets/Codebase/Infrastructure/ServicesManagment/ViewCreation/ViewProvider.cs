@@ -48,7 +48,6 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
         private RectTransform _uiRoot;
 
         // Paths to all view prefabs
-        private const string ExampleViewPath = "Views/ExampleView";
         private const string TitleViewPath = "Views/TitleView";
         private const string CarSelectionViewPath = "Views/CarSelectionView";
         private const string TrackSelectionViewPath = "Views/TrackSelectionView";
@@ -83,9 +82,6 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
             {
                 case ViewId.None:
                     new System.ArgumentException(nameof(viewId));
-                    break;
-                case ViewId.ExampleView:
-                    path = ExampleViewPath;
                     break;
                 case ViewId.Title:
                     path = TitleViewPath;

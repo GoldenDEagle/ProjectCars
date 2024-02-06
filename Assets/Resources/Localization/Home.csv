@@ -21,3 +21,7 @@ x2_reward_button,x2 Claim,Награда x2
 endRace_button,Continue,Продолжить
 countdown_go,GO,ВПЕРЕД
 back_button,BACK,НАЗАД
+adWindow_title,FREE COINS,Бесплатные Mонеты
+adWindow_text,"<size=90%>Click ""Claim"" to watch an ad and get <size=100%><color=""yellow""><b>50</b></color> <size=90%>coins of reward!","<size=90%>Нажми на кнопку ""ПОЛУЧИТЬ"" и забери <size=100%><color=""yellow""><b>50</b></color> <size=90%>монет прямо сейчас!"
+adWindow_adUnavailable,Ads aren't available at the moment :(,Реклама недоступна в данный момент :(
+adWindow_claim,CLAIM,ПОЛУЧИТЬ

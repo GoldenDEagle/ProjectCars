@@ -11,7 +11,6 @@ namespace Assets.Codebase.Models.Progress.Data
     {
         // All the properties that need to be saved...
 
-        public ReactiveProperty<int> SampleValue;
         public ReactiveProperty<float> MusicVolume;
         public ReactiveProperty<float> SFXVolume;
         public ReactiveProperty<PlayerCarId> SelectedCar;
@@ -25,7 +24,6 @@ namespace Assets.Codebase.Models.Progress.Data
         /// </summary>
         public SessionProgress()
         {
-            SampleValue = new ReactiveProperty<int>(0);
             MusicVolume = new ReactiveProperty<float>(1f);
             SFXVolume = new ReactiveProperty<float>(1f);
             SelectedCar = new ReactiveProperty<PlayerCarId>(PlayerCarId.Haumea);
@@ -39,9 +37,8 @@ namespace Assets.Codebase.Models.Progress.Data
         /// <param name="progress"></param> Progress to initialize from
         public SessionProgress(PersistantProgress progress)
         {
-            SampleValue = new ReactiveProperty<int>(progress.SampleValue);
-            MusicVolume = new ReactiveProperty<float>();
-            SFXVolume = new ReactiveProperty<float>();
+            MusicVolume = new ReactiveProperty<float>(progress.MusicVolume);
+            SFXVolume = new ReactiveProperty<float>(progress.SFXVolume);
             SelectedCar = new ReactiveProperty<PlayerCarId>(progress.SelectedCar);
             TotalCoins = new ReactiveProperty<int>(progress.TotalCoins);
             UnlockedCars = new List<PlayerCarId>(progress.UnlockedCars);

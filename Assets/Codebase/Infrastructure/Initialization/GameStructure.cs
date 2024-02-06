@@ -89,7 +89,6 @@ namespace Assets.Codebase.Infrastructure.Initialization
             // Create presenter for each view
             _presenters = new List<BasePresenter>
             {
-                new ExamplePresenter(),
                 new TitlePresenter(),
                 new CarSelectionPresenter(),
                 new TrackSelectionPresenter(),

@@ -521,7 +521,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4e0786a4788712243a66b1b29218f190, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -812,7 +812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 4718704168513021931}
   audioEngine: {fileID: 92946783483367581}
-  minEnginePitch: 0.25
+  minEnginePitch: 0.15
   maxEnginePitch: 1
   enginePitchInterpolation: 10
   audioScreeching: {fileID: 2246917317270466449}

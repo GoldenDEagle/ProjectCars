@@ -1,9 +1,7 @@
 ﻿using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Infrastructure.ServicesManagment.Ads;
 using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
-using Assets.Codebase.Models.Gameplay;
 using System;
-using System.Collections;
 using TMPro;
 using UniRx;
 using UnityEngine;

@@ -425,7 +425,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4e0786a4788712243a66b1b29218f190, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.75
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1133,7 +1133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 5235336172527752755}
   audioEngine: {fileID: 7632176241036024530}
-  minEnginePitch: 0.25
+  minEnginePitch: 0.15
   maxEnginePitch: 1
   enginePitchInterpolation: 10
   audioScreeching: {fileID: 5864164275886183557}
@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82931e33ce0ac024aa8f814bb8653c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _carId: 5
+  _carId: 0
   _carController: {fileID: 5235336172527752755}
   _waypointTracker: {fileID: 8419290198086463418}
 --- !u!114 &5235336172527752755
