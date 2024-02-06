@@ -9,6 +9,7 @@ namespace Assets.Codebase.Utils.UI.Editor
     {
         public override void OnInspectorGUI()
         {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_idleAnimation"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_playSoundOnClick"));
             EditorGUILayout.PropertyField(serializedObject.FindProperty("_soundId"));
             serializedObject.ApplyModifiedProperties();

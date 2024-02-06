@@ -322,5 +322,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  _idleAnimation: 1
   _playSoundOnClick: 0
   _soundId: 0
