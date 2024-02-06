@@ -1,4 +1,6 @@
 using Assets.Codebase.Data.Tracks;
+using Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation;
+using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Presenters.Base;
 using Assets.Codebase.Utils.Values;
 using Assets.Codebase.Views.Base;
@@ -69,6 +71,11 @@ public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
     public void SoundButtonClicked()
     {
         ProgressModel.SwitchSound();
+    }
+
+    public void FreeCoinsButtonClicked()
+    {
+        ServiceLocator.Container.Single<IViewProvider>().CreateAdPopupWindow();
     }
 
     public void BackButtonClicked()

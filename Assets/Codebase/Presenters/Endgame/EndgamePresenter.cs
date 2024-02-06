@@ -42,7 +42,6 @@ public class EndgamePresenter : BasePresenter, IEndgamePresenter
     public override void CreateView()
     {
         base.CreateView();
-        //CoinRewardString.Value = "Reward: " + GameplayModel.CurrentReward.Value;
         DoubleRewardButtonActiveState.Value = ServiceLocator.Container.Single<IAdsService>().CheckIfRewardedIsAvailable();
         PositionString.Value = CreatePlacementString(GameplayModel.ActiveRace.Value.Result.Position);
 

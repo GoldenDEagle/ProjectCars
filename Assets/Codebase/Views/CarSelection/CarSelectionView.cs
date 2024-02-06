@@ -21,6 +21,7 @@ namespace Assets.Codebase.Views.CarSelection
         [SerializeField] private Button _leftArrowButton;
         [SerializeField] private Button _rightArrowButton;
         [SerializeField] private SoundButton _soundButton;
+        [SerializeField] private Button _freeCoinsButton;
 
         private ICarSelectionPresenter _presenter;
 
@@ -47,6 +48,7 @@ namespace Assets.Codebase.Views.CarSelection
             _rightArrowButton.OnClickAsObservable().Subscribe(_ => _presenter.RightArrowClicked()).AddTo(CompositeDisposable);
             _buyButton.OnClickAsObservable().Subscribe(_ => _presenter.BuyButtonClicked()).AddTo(CompositeDisposable);
             _soundButton.Button.OnClickAsObservable().Subscribe(_ => SoundButtonClicked()).AddTo(CompositeDisposable);
+            _freeCoinsButton.OnClickAsObservable().Subscribe(_ => _presenter.FreeCoinsButtonClicked()).AddTo(CompositeDisposable);
         }
 
         private void SoundButtonClicked()

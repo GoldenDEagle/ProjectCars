@@ -57,6 +57,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
         private const string PauseViewPath = "Views/PauseView";
         private const string CountdownPath = "UI/Countdown";
         private const string MobileInputPath = "UI/MobileInput";
+        private const string AdPopupPath = "UI/AdPopupWindow";
         private IAssetProvider _assets;
 
         public ViewProvider(IAssetProvider assets, List<BasePresenter> presenters, RectTransform uiRoot)
@@ -118,6 +119,14 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
         {
             var element = _assets.Instantiate(CountdownPath).GetComponent<Countdown>();
             element.transform.SetParent(_uiRoot, false);
+            return element;
+        }
+
+        public AdPopupWindow CreateAdPopupWindow()
+        {
+            var element = _assets.Instantiate(AdPopupPath).GetComponent<AdPopupWindow>();
+            element.transform.SetParent(_uiRoot, false);
+            element.gameObject.SetActive(true);
             return element;
         }
 

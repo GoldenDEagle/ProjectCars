@@ -6836,6 +6836,7 @@ MonoBehaviour:
   _leftArrowButton: {fileID: 8562863762641401576}
   _rightArrowButton: {fileID: 903656750777996258}
   _soundButton: {fileID: 8224989839250250566}
+  _freeCoinsButton: {fileID: 5006013065662690924}
 --- !u!1 &7473829387433844448
 GameObject:
   m_ObjectHideFlags: 0

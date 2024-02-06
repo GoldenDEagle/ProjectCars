@@ -13,5 +13,6 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
         public TCCAMobileInput MobileInput { get; }
 
         public BaseView CreateView(ViewId viewId);
+        public AdPopupWindow CreateAdPopupWindow();
     }
 }

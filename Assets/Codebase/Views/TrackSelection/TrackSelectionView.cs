@@ -18,6 +18,7 @@ namespace Assets.Codebase.Views.TrackSelection
         [SerializeField] private Button _rightArrow;
         [SerializeField] private Button _leftArrow;
         [SerializeField] private SoundButton _soundButton;
+        [SerializeField] private Button _freeCoinsButton;
 
         private ITrackSelectionPresenter _presenter;
 
@@ -35,6 +36,7 @@ namespace Assets.Codebase.Views.TrackSelection
             _leftArrow.OnClickAsObservable().Subscribe(_ => _presenter.LeftArrowClicked()).AddTo(CompositeDisposable);
             _soundButton.Button.OnClickAsObservable().Subscribe(_ => SoundButtonClicked()).AddTo(CompositeDisposable);
             _backButton.OnClickAsObservable().Subscribe(_ => _presenter.BackButtonClicked()).AddTo(CompositeDisposable);
+            _freeCoinsButton.OnClickAsObservable().Subscribe(_ => _presenter.FreeCoinsButtonClicked()).AddTo(CompositeDisposable);
         }
 
         protected override void SubscribeToPresenterEvents()

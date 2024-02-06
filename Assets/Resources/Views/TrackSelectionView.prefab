@@ -1913,6 +1913,7 @@ MonoBehaviour:
   _rightArrow: {fileID: 2200677442670290407}
   _leftArrow: {fileID: 2945976968613808622}
   _soundButton: {fileID: 3215297091738922569}
+  _freeCoinsButton: {fileID: 384083026287865150}
 --- !u!114 &255781461772324881
 MonoBehaviour:
   m_ObjectHideFlags: 0

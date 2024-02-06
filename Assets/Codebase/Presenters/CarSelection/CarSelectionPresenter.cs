@@ -2,6 +2,7 @@ using Assets.Codebase.Data.Audio;
 using Assets.Codebase.Data.Cars.Player;
 using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Infrastructure.ServicesManagment.Audio;
+using Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation;
 using Assets.Codebase.Presenters.Base;
 using Assets.Codebase.Presenters.CarSelection;
 using Assets.Codebase.Views.Base;
@@ -95,6 +96,11 @@ public class CarSelectionPresenter : BasePresenter, ICarSelectionPresenter
     public void SoundButtonClicked()
     {
         ProgressModel.SwitchSound();
+    }
+
+    public void FreeCoinsButtonClicked()
+    {
+        ServiceLocator.Container.Single<IViewProvider>().CreateAdPopupWindow();
     }
 
     private void UpdateButtonStates()
