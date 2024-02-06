@@ -295,8 +295,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _uiRoot: {fileID: 935065085}
-  _effectsSource: {fileID: 0}
-  _musicSource: {fileID: 0}
+  _effectsSource: {fileID: 2017456377}
+  _musicSource: {fileID: 1395938792}
   _launchParams:
     ManualParamSet: 0
     Language: 0
@@ -552,7 +552,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4d8227186d31ae04789346a6d5a1d51b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

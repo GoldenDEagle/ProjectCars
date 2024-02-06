@@ -13,5 +13,19 @@ MonoBehaviour:
   m_Name: AudioDataContainer
   m_EditorClassIdentifier: 
   _audioClips:
-  - Id: 0
-    Clip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
+  - Id: 1
+    Clip: {fileID: 8300000, guid: 4d8227186d31ae04789346a6d5a1d51b, type: 3}
+  - Id: 2
+    Clip: {fileID: 8300000, guid: 91d160b8697c84c2e9ae7c8ee81089cc, type: 3}
+  - Id: 3
+    Clip: {fileID: 8300000, guid: 4f96b76389f444a24b9017be69f5efa7, type: 3}
+  - Id: 4
+    Clip: {fileID: 8300000, guid: 62475a76d24e24af1b94ed70f440e254, type: 3}
+  - Id: 5
+    Clip: {fileID: 8300000, guid: e89e980769e344db2a91056aa403a40e, type: 3}
+  - Id: 6
+    Clip: {fileID: 8300000, guid: 07f9bf9bc9409464b9b5e6465cec8c02, type: 3}
+  - Id: 7
+    Clip: {fileID: 8300000, guid: c27a49bd9b1dc4fe09b4b1766c197d74, type: 3}
+  - Id: 8
+    Clip: {fileID: 8300000, guid: b6d5a242997b54b12927e3a6b6091c6f, type: 3}

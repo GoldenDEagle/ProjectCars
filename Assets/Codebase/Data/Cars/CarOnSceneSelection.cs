@@ -1,6 +1,8 @@
-﻿using Assets.Codebase.Data.Cars.Player;
+﻿using Assets.Codebase.Data.Audio;
+using Assets.Codebase.Data.Cars.Player;
 using Assets.Codebase.Gameplay.Cars;
 using Assets.Codebase.Infrastructure.ServicesManagment;
+using Assets.Codebase.Infrastructure.ServicesManagment.Audio;
 using Assets.Codebase.Infrastructure.ServicesManagment.PresenterManagement;
 using Assets.Codebase.Presenters.CarSelection;
 using Assets.Codebase.Views.Base;
@@ -15,6 +17,7 @@ namespace Assets.Codebase.Data.Cars
         [SerializeField] private List<PlayerCar> _availableCars;
 
         private IPresentersService _presenterService;
+        private IAudioService _audio;
         private CompositeDisposable _disposables = new CompositeDisposable();
 
         public List<PlayerCar> AvailableCars => _availableCars;
@@ -22,6 +25,13 @@ namespace Assets.Codebase.Data.Cars
         private void Awake()
         {
             _presenterService = ServiceLocator.Container.Single<IPresentersService>();
+            _audio = ServiceLocator.Container.Single<IAudioService>();
+        }
+
+        private void Start()
+        {
+            _audio.ChangeMusic(SoundId.MainTheme);
+            _audio.EnableMusic(true);
         }
 
         private void OnEnable()

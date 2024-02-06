@@ -61,12 +61,20 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Audio
         public void EnableMusic(bool isEnabled)
         {
             _musicSource.mute = !isEnabled;
+
+            if (isEnabled)
+            {
+                _musicSource.Play();
+            }
+            else
+            { 
+                _musicSource.Stop();
+            }
         }
 
         public void ChangeMusic(SoundId musicId)
         {
             _musicSource.clip = _clips[musicId];
-            _musicSource.Play();
         }
 
         public void PlaySfxSound(SoundId soundId)

@@ -1,5 +1,7 @@
-﻿using Assets.Codebase.Gameplay.Cars;
+﻿using Assets.Codebase.Data.Audio;
+using Assets.Codebase.Gameplay.Cars;
 using Assets.Codebase.Infrastructure.ServicesManagment;
+using Assets.Codebase.Infrastructure.ServicesManagment.Audio;
 using Assets.Codebase.Infrastructure.ServicesManagment.Localization;
 using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
 using Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation;
@@ -33,15 +35,18 @@ namespace Assets.Codebase.Gameplay.Racing
 
         private IModelAccessService _models;
         private IViewProvider _viewProvider;
+        private IAudioService _audio;
 
         private void Awake()
         {
             _models = ServiceLocator.Container.Single<IModelAccessService>();
             _viewProvider = ServiceLocator.Container.Single<IViewProvider>();
+            _audio = ServiceLocator.Container.Single<IAudioService>();
         }
 
         private void Start()
         {
+            _audio.EnableMusic(false);
             SpawnCars();
             _camera.resetCamera();
             StartCoroutine(RacingCountdown());
@@ -88,11 +93,13 @@ namespace Assets.Codebase.Gameplay.Racing
 
             while (time > 0)
             {
+                _audio.PlaySfxSound(SoundId.CountdownBeep);
                 _viewProvider.Countdown.ShowText(time.ToString());
                 yield return new WaitForSeconds(1f);
                 time--;
             }
 
+            _audio.PlaySfxSound(SoundId.CountdownEnd);
             _viewProvider.Countdown.ShowText(ServiceLocator.Container.Single<ILocalizationService>().LocalizeTextByKey(CountdownEndKey)); ;
             StartRace();
 
@@ -152,6 +159,10 @@ namespace Assets.Codebase.Gameplay.Racing
             {
                 FinishRace();
             }
+            else
+            {
+                _audio.PlaySfxSound(SoundId.LapPassed);
+            }
 
             // Update Lap counter
             _models.GameplayModel.CurrentLap.Value = lapNumber;
@@ -168,7 +179,16 @@ namespace Assets.Codebase.Gameplay.Racing
 
             _models.GameplayModel.ActiveRace.Value.WriteRaceResult(_playerPosition);
             _models.GameplayModel.CalculateReward();
-            Debug.Log("Race Finished!");
+
+            if (_playerPosition <= 3)
+            {
+                _audio.ChangeMusic(SoundId.WinJingle);
+            }
+            else
+            {
+                _audio.ChangeMusic(SoundId.LoseJingle);
+            }
+            _audio.EnableMusic(true);
 
             _models.GameplayModel.ActivateView(ViewId.EndGame);
         }

@@ -4,6 +4,13 @@
     {
         // List all sounds:
         None,
+        MainTheme,
+        WinJingle,
+        LoseJingle,
         ButtonClick,
+        AdReward,
+        CountdownBeep,
+        CountdownEnd,
+        LapPassed,
     }
 }
