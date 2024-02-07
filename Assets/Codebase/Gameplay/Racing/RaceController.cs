@@ -1,5 +1,6 @@
 ﻿using Assets.Codebase.Data.Audio;
 using Assets.Codebase.Gameplay.Cars;
+using Assets.Codebase.Gameplay.Tutorial;
 using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Infrastructure.ServicesManagment.Audio;
 using Assets.Codebase.Infrastructure.ServicesManagment.Localization;
@@ -31,6 +32,7 @@ namespace Assets.Codebase.Gameplay.Racing
         private Coroutine _positionChecker;
         private TCCAMobileInput _mobileInput;
         private WaitForSeconds _oneSecDelay = new WaitForSeconds(1f);
+        private PCTutorial _pcTutorial;
 
         private int _playerPosition;
 
@@ -61,6 +63,8 @@ namespace Assets.Codebase.Gameplay.Racing
             else if (!_models.GameplayModel.IsMobile && !_models.ProgressModel.SessionProgress.PCTutorialCompleted.Value)
             {
                 // Show PC tutorial
+                _pcTutorial = _viewProvider.CreatePCTutorial();
+                _pcTutorial.OnTutorialClosed += TutorialWasClosed;
             }
             else
             {
@@ -244,8 +248,19 @@ namespace Assets.Codebase.Gameplay.Racing
 
         private void TutorialWasClosed()
         {
-            _mobileInput.tutorialObject.OnTutorialClosed -= TutorialWasClosed;
-            _models.ProgressModel.SessionProgress.MobileTutorialCompleted.Value = true;
+            if (_models.GameplayModel.IsMobile)
+            {
+                _mobileInput.tutorialObject.OnTutorialClosed -= TutorialWasClosed;
+                _models.ProgressModel.SessionProgress.MobileTutorialCompleted.Value = true;
+            }
+            else
+            {
+                if (_pcTutorial != null)
+                {
+                    _pcTutorial.OnTutorialClosed -= TutorialWasClosed;
+                }
+                _models.ProgressModel.SessionProgress.PCTutorialCompleted.Value = true;
+            }
 
             // Start the race
             StartCoroutine(RacingCountdown());

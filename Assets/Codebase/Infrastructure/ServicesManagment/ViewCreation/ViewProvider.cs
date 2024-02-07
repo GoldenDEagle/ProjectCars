@@ -1,4 +1,5 @@
-﻿using Assets.Codebase.Infrastructure.ServicesManagment.Assets;
+﻿using Assets.Codebase.Gameplay.Tutorial;
+using Assets.Codebase.Infrastructure.ServicesManagment.Assets;
 using Assets.Codebase.Presenters.Base;
 using Assets.Codebase.Utils.UI;
 using Assets.Codebase.Views.Base;
@@ -57,6 +58,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
         private const string CountdownPath = "UI/Countdown";
         private const string MobileInputPath = "UI/MobileInput";
         private const string AdPopupPath = "UI/AdPopupWindow";
+        private const string PCTutorialPath = "UI/PCTutorial";
         private IAssetProvider _assets;
 
         public ViewProvider(IAssetProvider assets, List<BasePresenter> presenters, RectTransform uiRoot)
@@ -123,6 +125,13 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
             var element = _assets.Instantiate(AdPopupPath).GetComponent<AdPopupWindow>();
             element.transform.SetParent(_uiRoot, false);
             element.gameObject.SetActive(true);
+            return element;
+        }
+
+        public PCTutorial CreatePCTutorial()
+        {
+            var element = _assets.Instantiate(PCTutorialPath).GetComponent<PCTutorial>();
+            element.transform.SetParent(_uiRoot, false);
             return element;
         }
 

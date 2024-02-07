@@ -1,4 +1,5 @@
-﻿using Assets.Codebase.Utils.UI;
+﻿using Assets.Codebase.Gameplay.Tutorial;
+using Assets.Codebase.Utils.UI;
 using Assets.Codebase.Views.Base;
 using DavidJalbert.TinyCarControllerAdvance;
 
@@ -14,5 +15,6 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
 
         public BaseView CreateView(ViewId viewId);
         public AdPopupWindow CreateAdPopupWindow();
+        public PCTutorial CreatePCTutorial();
     }
 }
