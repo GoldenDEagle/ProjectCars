@@ -16,6 +16,8 @@ namespace Assets.Codebase.Models.Progress.Data
         public PlayerCarId SelectedCar;
         public int TotalCoins;
         public List<PlayerCarId> UnlockedCars;
+        public bool MobileTutorialCompleted;
+        public bool PCTutorialCompleted;
 
         public void SetValues(SessionProgress progress)
         {
@@ -25,6 +27,8 @@ namespace Assets.Codebase.Models.Progress.Data
             SelectedCar = progress.SelectedCar.Value;
             TotalCoins = progress.TotalCoins.Value;
             UnlockedCars = progress.UnlockedCars;
+            MobileTutorialCompleted = progress.MobileTutorialCompleted.Value;
+            PCTutorialCompleted = progress.PCTutorialCompleted.Value;
         }
     }
 }

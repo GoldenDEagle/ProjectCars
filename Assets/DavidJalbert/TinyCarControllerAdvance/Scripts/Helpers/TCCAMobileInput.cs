@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Assets.Codebase.Gameplay.Tutorial;
 
 namespace DavidJalbert.TinyCarControllerAdvance
 {
@@ -45,6 +46,8 @@ namespace DavidJalbert.TinyCarControllerAdvance
         public ClickHandler respawnClickableObject;
         [Tooltip("Object which is clicked to trigger pause.")]
         public ClickHandler pauseClickableObject;
+        [Tooltip("Tutorial reference")]
+        public MobileTutorial tutorialObject;
 
         private GraphicRaycaster raycaster;
         private Graphic steeringWheelGraphic;

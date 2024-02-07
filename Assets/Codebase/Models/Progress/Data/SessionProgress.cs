@@ -15,6 +15,8 @@ namespace Assets.Codebase.Models.Progress.Data
         public ReactiveProperty<float> SFXVolume;
         public ReactiveProperty<PlayerCarId> SelectedCar;
         public ReactiveProperty<int> TotalCoins;
+        public ReactiveProperty<bool> MobileTutorialCompleted;
+        public ReactiveProperty<bool> PCTutorialCompleted;
         public List<PlayerCarId> UnlockedCars;
 
         // .
@@ -29,6 +31,8 @@ namespace Assets.Codebase.Models.Progress.Data
             SelectedCar = new ReactiveProperty<PlayerCarId>(PlayerCarId.Haumea);
             TotalCoins = new ReactiveProperty<int>(0);
             UnlockedCars = new List<PlayerCarId> { PlayerCarId.Haumea };
+            MobileTutorialCompleted = new ReactiveProperty<bool>(false);
+            PCTutorialCompleted = new ReactiveProperty<bool>(false);
         }
 
         /// <summary>
@@ -42,6 +46,8 @@ namespace Assets.Codebase.Models.Progress.Data
             SelectedCar = new ReactiveProperty<PlayerCarId>(progress.SelectedCar);
             TotalCoins = new ReactiveProperty<int>(progress.TotalCoins);
             UnlockedCars = new List<PlayerCarId>(progress.UnlockedCars);
+            MobileTutorialCompleted = new ReactiveProperty<bool>(progress.MobileTutorialCompleted);
+            PCTutorialCompleted = new ReactiveProperty<bool>(progress.PCTutorialCompleted);
         }
     }
 }

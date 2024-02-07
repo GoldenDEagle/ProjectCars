@@ -50,7 +50,22 @@ namespace Assets.Codebase.Gameplay.Racing
             _audio.EnableMusic(false);
             SpawnCars();
             _camera.resetCamera();
-            StartCoroutine(RacingCountdown());
+
+            if (_models.GameplayModel.IsMobile && !_models.ProgressModel.SessionProgress.MobileTutorialCompleted.Value)
+            {
+                // Show mobile tutorial
+                _mobileInput.tutorialObject.gameObject.SetActive(true);
+                _mobileInput.tutorialObject.OnTutorialClosed += TutorialWasClosed;
+                _mobileInput.tutorialObject.ActivateTutorial();
+            }
+            else if (!_models.GameplayModel.IsMobile && !_models.ProgressModel.SessionProgress.PCTutorialCompleted.Value)
+            {
+                // Show PC tutorial
+            }
+            else
+            {
+                StartCoroutine(RacingCountdown());
+            }
         }
 
         private void SpawnCars()
@@ -224,6 +239,16 @@ namespace Assets.Codebase.Gameplay.Racing
             {
                 _standartInput.enabled = isEnabled;
             }
+        }
+
+
+        private void TutorialWasClosed()
+        {
+            _mobileInput.tutorialObject.OnTutorialClosed -= TutorialWasClosed;
+            _models.ProgressModel.SessionProgress.MobileTutorialCompleted.Value = true;
+
+            // Start the race
+            StartCoroutine(RacingCountdown());
         }
     }
 }
