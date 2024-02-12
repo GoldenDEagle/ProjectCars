@@ -74,7 +74,7 @@ namespace Assets.Codebase.Gameplay.Racing
         {
             _viewProvider.WayWarning.gameObject.SetActive(true);
 
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
 
             carToRespawn.CarController.enabled = false;
             var closestWaypoint = carToRespawn.ClosestWaypoint;
