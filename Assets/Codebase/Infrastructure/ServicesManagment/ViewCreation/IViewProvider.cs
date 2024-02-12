@@ -12,6 +12,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
     {
         public Countdown Countdown { get; }
         public TCCAMobileInput MobileInput { get; }
+        public WrongWayWarning WayWarning {  get; }
 
         public BaseView CreateView(ViewId viewId);
         public AdPopupWindow CreateAdPopupWindow();

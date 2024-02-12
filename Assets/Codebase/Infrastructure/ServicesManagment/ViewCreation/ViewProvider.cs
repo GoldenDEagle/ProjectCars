@@ -18,6 +18,8 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
         // Additional UI elements
         private Countdown _countdown;
         private TCCAMobileInput _mobileInput;
+        private WrongWayWarning _wrongWayWarning;
+
         public Countdown Countdown
         {
             get
@@ -42,6 +44,20 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
             }
         }
 
+        public WrongWayWarning WayWarning
+        {
+            get
+            {
+                if (_wrongWayWarning == null)
+                {
+                    _wrongWayWarning = CreateWrongWayWarning();
+                }
+                return _wrongWayWarning;
+            }
+        }
+
+
+
         // All presenters
         private List<BasePresenter> _presenters;
 
@@ -59,6 +75,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
         private const string MobileInputPath = "UI/MobileInput";
         private const string AdPopupPath = "UI/AdPopupWindow";
         private const string PCTutorialPath = "UI/PCTutorial";
+        private const string WrongWayWarningPath = "UI/WrongWayWarning";
         private IAssetProvider _assets;
 
         public ViewProvider(IAssetProvider assets, List<BasePresenter> presenters, RectTransform uiRoot)
@@ -125,6 +142,13 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation
             var element = _assets.Instantiate(AdPopupPath).GetComponent<AdPopupWindow>();
             element.transform.SetParent(_uiRoot, false);
             element.gameObject.SetActive(true);
+            return element;
+        }
+
+        public WrongWayWarning CreateWrongWayWarning()
+        {
+            var element = _assets.Instantiate(WrongWayWarningPath).GetComponent<WrongWayWarning>();
+            element.transform.SetParent(_uiRoot, false);
             return element;
         }
 

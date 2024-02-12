@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Codebase.Gameplay.Racing
 {
-    public class RespawnTrigger : MonoBehaviour
+    public class EnemyRespawnTrigger : MonoBehaviour
     {
         private EnemyCar _lastContactedEnemy;
         private Coroutine _lastContactReseter;

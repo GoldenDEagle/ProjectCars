@@ -18887,6 +18887,7 @@ Transform:
   - {fileID: 1078570654}
   - {fileID: 423026825}
   - {fileID: 1261544354}
+  - {fileID: 1151449021}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &629850019
@@ -23917,6 +23918,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8855411051621952434, guid: 75519a20be4de8c4684fefc4c9b163f0, type: 3}
   m_PrefabInstance: {fileID: 797444473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &800378470 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1579544502739149535, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+  m_PrefabInstance: {fileID: 4991425534423954732}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &800851192
 PrefabInstance:
@@ -34905,6 +34911,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8855411051621952434, guid: 75519a20be4de8c4684fefc4c9b163f0, type: 3}
   m_PrefabInstance: {fileID: 1151390822}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1151449020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1151449021}
+  m_Layer: 0
+  m_Name: RespawnColliders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1151449021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151449020}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 800378470}
+  m_Father: {fileID: 629850018}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1152912993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63632,6 +63670,10 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 
+  textDPI: 1
+  wfaDPI: 1
+  lastWfaDPI: 1
+  lastPixelsPerUnit: 1
 --- !u!20 &1211942101194833298
 Camera:
   m_ObjectHideFlags: 0
@@ -63719,6 +63761,10 @@ MonoBehaviour:
   m_Text: 'Toggle
 
     Description Text'
+  textDPI: 1
+  wfaDPI: 1
+  lastWfaDPI: 1
+  lastPixelsPerUnit: 1
 --- !u!81 &1230581547107947191
 AudioListener:
   m_ObjectHideFlags: 0
@@ -65350,6 +65396,10 @@ MonoBehaviour:
   m_Text: 'Toggle
 
     Mobile Input'
+  textDPI: 1
+  wfaDPI: 1
+  lastWfaDPI: 1
+  lastPixelsPerUnit: 1
 --- !u!114 &4715074520092889360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65393,6 +65443,10 @@ MonoBehaviour:
 
     Click
     the top right buttons to toggle camera and input modes.'
+  textDPI: 1
+  wfaDPI: 1
+  lastWfaDPI: 1
+  lastPixelsPerUnit: 1
 --- !u!1001 &4780172216852928297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65454,6 +65508,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a56916363d50f774bafde061d53b1242, type: 3}
+--- !u!1001 &4991425534423954732
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1151449021}
+    m_Modifications:
+    - target: {fileID: 1579544502739149535, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.5881
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579544502739149535, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579544502739149535, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579544502739149535, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579544502739149535, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579544502739149535, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579544502739149535, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579544502739149535, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579544502739149535, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1579544502739149535, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6685033466999581384, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
+      propertyPath: m_Name
+      value: PlayerRespawnTrigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 706447a8d4f4dcd43b2d91d4245bd00d, type: 3}
 --- !u!4 &5007707973086436059 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3179907237353161458, guid: e0f29d63e71424443bf49ebd855cfeeb, type: 3}
@@ -66313,6 +66424,10 @@ MonoBehaviour:
   m_Text: 'Toggle
 
     Camera Angle'
+  textDPI: 1
+  wfaDPI: 1
+  lastWfaDPI: 1
+  lastPixelsPerUnit: 1
 --- !u!224 &6242001857581575828
 RectTransform:
   m_ObjectHideFlags: 0
@@ -67737,6 +67852,10 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Switch Cars
+  textDPI: 1
+  wfaDPI: 1
+  lastWfaDPI: 1
+  lastPixelsPerUnit: 1
 --- !u!4 &9095044404763251413 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6000199915465533617, guid: 559fdfa76e6897340a755135ffcfb58e, type: 3}
