@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2482292640275600307}
   - component: {fileID: 3551921259387447724}
   - component: {fileID: 3654094659627078229}
+  - component: {fileID: 7397830538230233192}
   m_Layer: 5
   m_Name: Text_Title
   m_TagString: Untagged
@@ -69,8 +70,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: MOVEMENT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
-  m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
+  m_sharedMaterial: {fileID: 4577691889196293816, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -156,6 +157,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &7397830538230233192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476330979122682454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24d3ab0953749b4bb505753761b4afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: tutorial_pc_movement
 --- !u!1 &1655835598719765065
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +182,7 @@ GameObject:
   - component: {fileID: 6727286687439480697}
   - component: {fileID: 6539098617483684348}
   - component: {fileID: 4269868166857955015}
+  - component: {fileID: 2641565056777659537}
   m_Layer: 5
   m_Name: Text_Title
   m_TagString: Untagged
@@ -225,8 +240,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: RESET POSITION
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
-  m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
+  m_sharedMaterial: {fileID: 4577691889196293816, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -312,6 +327,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &2641565056777659537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655835598719765065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24d3ab0953749b4bb505753761b4afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: tutorial_pc_reset
 --- !u!1 &1718467604178077868
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +351,7 @@ GameObject:
   - component: {fileID: 1475011376054214620}
   - component: {fileID: 5409179464071409078}
   - component: {fileID: 1451934791181668952}
+  - component: {fileID: 6450958033965103577}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -379,8 +408,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: OK, GO!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
-  m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
+  m_sharedMaterial: {fileID: 4577691889196293816, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -446,6 +475,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6450958033965103577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718467604178077868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24d3ab0953749b4bb505753761b4afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: tutorial_okButton
 --- !u!1 &2626525772183123838
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,8 +1108,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: SHIFT
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
-  m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
+  m_sharedMaterial: {fileID: 4577691889196293816, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1222,8 +1264,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: R
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
-  m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
+  m_sharedMaterial: {fileID: 4577691889196293816, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1828,6 +1870,7 @@ GameObject:
   - component: {fileID: 8839195927052532160}
   - component: {fileID: 3408507367900762156}
   - component: {fileID: 9007401533549892641}
+  - component: {fileID: 7335668641427082269}
   m_Layer: 5
   m_Name: Text_Title
   m_TagString: Untagged
@@ -1885,8 +1928,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: BOOST
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
-  m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
+  m_sharedMaterial: {fileID: 4577691889196293816, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1972,6 +2015,19 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &7335668641427082269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8935590965691990401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a24d3ab0953749b4bb505753761b4afa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalizationKey: tutorial_pc_boost
 --- !u!1 &9047873951104710545
 GameObject:
   m_ObjectHideFlags: 0
@@ -2137,8 +2193,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: WASD
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
-  m_sharedMaterial: {fileID: 2830636965969884548, guid: 605433b68313d491a8ab88bc03a41651, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
+  m_sharedMaterial: {fileID: 4577691889196293816, guid: 7ecff87b4ed33ce449ee8e56a587afaf, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

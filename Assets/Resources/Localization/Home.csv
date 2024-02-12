@@ -25,3 +25,13 @@ adWindow_title,FREE COINS,Бесплатные Mонеты
 adWindow_text,"<size=90%>Click ""Claim"" to watch an ad and get <size=100%><color=""yellow""><b>50</b></color> <size=90%>coins of reward!","<size=90%>Нажми на кнопку ""ПОЛУЧИТЬ"" и забери <size=100%><color=""yellow""><b>50</b></color> <size=90%>монет прямо сейчас!"
 adWindow_adUnavailable,Ads aren't available at the moment :(,Реклама недоступна в данный момент :(
 adWindow_claim,CLAIM,ПОЛУЧИТЬ
+tutorial_pc_movement,MOVEMENT,ДВИЖЕНИЕ
+tutorial_pc_boost,BOOST,УСКОРЕНИЕ
+tutorial_pc_reset,RESET POSITION,ВЕРНУТЬСЯ НА ТРАССУ
+tutorial_okButton,"OK, GO!","ЯСНО, ПОЕХАЛИ!"
+tutorial_mobile_steering,STEERING,ПОВОРОТ
+tutorial_mobile_gas,"GAS
+Double tap for BOOST","ГАЗ
+Нажми дважды для УСКОРЕНИЯ"
+tutorial_mobile_brake,BRAKE,ТОРМОЗ
+tutorial_mobile_reset,RESET CAR,ВЕРНУТЬСЯ НА ТРАССУ
