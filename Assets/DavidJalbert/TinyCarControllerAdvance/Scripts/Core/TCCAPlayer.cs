@@ -64,6 +64,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
                 recenter();
                 transform.position = _savedPosition;
                 transform.rotation = _savedRotation;
+                Camera.main.GetComponent<TCCACamera>().resetCamera();
                 return;
             }
 
