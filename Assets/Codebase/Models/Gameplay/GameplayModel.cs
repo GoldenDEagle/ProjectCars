@@ -43,7 +43,7 @@ namespace Assets.Codebase.Models.Gameplay
 
         // Game config
         int _lapsInRace = 2;
-        int _raceEnemyCount = 4;
+        int _raceEnemyCount = 3;
 
         // Public properties
         public ReactiveProperty<GameState> State => _state;
