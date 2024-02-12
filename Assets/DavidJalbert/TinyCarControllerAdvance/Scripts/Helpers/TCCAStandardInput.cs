@@ -84,14 +84,16 @@ namespace DavidJalbert.TinyCarControllerAdvance
 
                 if (respawn)
                 {
-                    carController.immobilize();
-                    carController.setPosition(carController.getRespawnPosition() + Vector3.up);
+                    //carController.immobilize();
+                    carController.enabled = false;
                     carController.setRotation(carController.getRespawnRotation());
+                    carController.setPosition(carController.getRespawnPosition() + Vector3.up);
 
                     foreach (TrailRenderer t in carController.GetComponentsInChildren<TrailRenderer>())
                     {
                         t.Clear();
                     }
+                    carController.enabled = true;
                     return;
                 }
 

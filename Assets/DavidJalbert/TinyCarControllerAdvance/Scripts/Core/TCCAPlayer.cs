@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityStandardAssets.Vehicles.Car;
 
 namespace DavidJalbert.TinyCarControllerAdvance
 {
@@ -14,6 +16,9 @@ namespace DavidJalbert.TinyCarControllerAdvance
         private GameObject tempContainer;
         private Vector3 initialPosition;
         private Quaternion initialRotation;
+        private bool _respawnOnNextUpdate = false;
+        private Vector3 _savedPosition;
+        private Quaternion _savedRotation;
 
         [Header("Behavior")]
         [Tooltip("How much torque to apply to the wheels. 1 is full speed forward, -1 is full speed backward, 0 is rest.")]
@@ -52,6 +57,16 @@ namespace DavidJalbert.TinyCarControllerAdvance
 
         private void FixedUpdate()
         {
+            if (_respawnOnNextUpdate)
+            {
+                _respawnOnNextUpdate = false;
+                immobilize();
+                recenter();
+                transform.position = _savedPosition;
+                transform.rotation = _savedRotation;
+                return;
+            }
+
             foreach (TCCAWheel wheel in wheels)
             {
                 wheel.setAccelerationMultiplier(Mathf.Lerp(1, boostAccelerationMultiplier, boostDelta));
@@ -219,14 +234,17 @@ namespace DavidJalbert.TinyCarControllerAdvance
 
         public void setPosition(Vector3 position)
         {
-            recenter();
-            transform.position = position;
+            //recenter();
+            //transform.position = position;
+            _savedPosition = position;
+            _respawnOnNextUpdate = true;
         }
 
         public void setRotation(Quaternion rotation)
         {
-            recenter();
-            transform.rotation = rotation;
+            //recenter();
+            //transform.rotation = rotation;
+            _savedRotation = rotation;
         }
 
         public Vector3 getPosition()
