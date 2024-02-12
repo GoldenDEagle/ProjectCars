@@ -51,6 +51,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
         private float respawnPreviousValue = 0;
         private float pausePreviousValue = 0;
 
+
         void Update()
         {
             if (enableInput && carController != null)

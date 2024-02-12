@@ -80,14 +80,14 @@ namespace DavidJalbert.TinyCarControllerAdvance
         private void OnEnable()
         {
             boostClickableObject.OnClick += BoostClicked;
-            respawnClickableObject.OnClick += RespawnClicked;
+            //respawnClickableObject.OnClick += RespawnClicked;
             pauseClickableObject.OnClick += PauseClicked;
         }
 
         private void OnDisable()
         {
             boostClickableObject.OnClick -= BoostClicked;
-            respawnClickableObject.OnClick -= RespawnClicked;
+            //respawnClickableObject.OnClick -= RespawnClicked;
             pauseClickableObject.OnClick -= PauseClicked;
         }
 
@@ -97,7 +97,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
             float steeringWheelDelta = 0;
             bool gasPedalTouched = false;
             bool brakePedalTouched = false;
-            bool boostButtonTouched = false;
+            bool respawnButtonTouched = false;
 
             List<PointerEventData> pointers = new List<PointerEventData>();
 
@@ -144,7 +144,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
                         }
                         else if (respawnButton != null && result.gameObject == respawnButton.gameObject)
                         {
-                            boostButtonTouched = true;
+                            respawnButtonTouched = true;
                         }
                     }
                 }
@@ -187,17 +187,34 @@ namespace DavidJalbert.TinyCarControllerAdvance
                     carController.setHandbrake(false);
                 }
 
-                //if (boostButtonTouched)
+                //if (respawnButtonTouched)
                 //{
-                //    if (boostButtonGraphic != null) boostButtonGraphic.color = colorTouched;
+                //    if (respawnButtonGraphic != null) respawnButtonGraphic.color = colorTouched;
                 //    carController.setBoost(1);
                 //    carController.setMotor(1);
                 //}
                 //else
                 //{
-                //    if (boostButtonGraphic != null) boostButtonGraphic.color = colorIdle;
+                //    if (respawnButtonGraphic != null) respawnButtonGraphic.color = colorIdle;
                 //    carController.setBoost(0);
                 //}
+
+                if (respawnButtonTouched)
+                {
+                    if (respawnButtonGraphic != null) respawnButtonGraphic.color = colorTouched;
+                    carController.immobilize();
+                    carController.setPosition(carController.getRespawnPosition() + Vector3.up);
+                    carController.setRotation(carController.getRespawnRotation());
+
+                    foreach (TrailRenderer t in carController.GetComponentsInChildren<TrailRenderer>())
+                    {
+                        t.Clear();
+                    }
+                }
+                else
+                {
+                    if (respawnButtonGraphic != null) respawnButtonGraphic.color = colorIdle;
+                }
             }
         }
 
