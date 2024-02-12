@@ -298,8 +298,8 @@ MonoBehaviour:
   _effectsSource: {fileID: 2017456377}
   _musicSource: {fileID: 1395938792}
   _launchParams:
-    ManualParamSet: 1
-    Language: 1
+    ManualParamSet: 0
+    Language: 0
     ClearPlayerPrefs: 0
     CheatsEnabled: 0
 --- !u!1 &935065080

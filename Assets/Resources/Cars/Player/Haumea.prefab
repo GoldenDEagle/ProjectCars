@@ -817,7 +817,7 @@ MonoBehaviour:
   enginePitchInterpolation: 10
   audioScreeching: {fileID: 2246917317270466449}
   screechingVolumeInterpolation: 5
-  skidMarkPrefab: {fileID: 3547306878058999833, guid: 61075efaa0771be45a806ec7877ccb36, type: 3}
+  skidMarkPrefab: {fileID: 0}
   smokePrefab: {fileID: 7258624066435577581, guid: 5658332c6c0682c4983e7e12e72d754b, type: 3}
   minVelocity: 1
   spinVelocityDifference: 1.5
