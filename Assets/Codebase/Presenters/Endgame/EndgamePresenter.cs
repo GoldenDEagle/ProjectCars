@@ -1,9 +1,11 @@
 using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Infrastructure.ServicesManagment.Ads;
+using Assets.Codebase.Infrastructure.ServicesManagment.Leaderboard;
 using Assets.Codebase.Infrastructure.ServicesManagment.Localization;
 using Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation;
 using Assets.Codebase.Presenters.Base;
 using Assets.Codebase.Presenters.Endgame;
+using Assets.Codebase.Utils.Helpers;
 using Assets.Codebase.Utils.Values;
 using Assets.Codebase.Views.Base;
 using System;
@@ -14,6 +16,7 @@ public class EndgamePresenter : BasePresenter, IEndgamePresenter
     public ReactiveProperty<bool> DoubleRewardButtonActiveState { get; private set; }
     public ReactiveProperty<string> PositionString { get; private set; }
     public ReactiveProperty<string> CoinRewardString { get; private set; }
+    public ReactiveProperty<string> TimeString { get; private set; }
 
     private const string FirstPlaceKey = "placement_first";
     private const string SecondPlaceKey = "placement_second";
@@ -31,6 +34,7 @@ public class EndgamePresenter : BasePresenter, IEndgamePresenter
         PositionString = new ReactiveProperty<string>();
         CoinRewardString = new ReactiveProperty<string>();
         DoubleRewardButtonActiveState = new ReactiveProperty<bool>();
+        TimeString = new ReactiveProperty<string>();
     }
 
     protected override void SubscribeToModelChanges()
@@ -44,6 +48,7 @@ public class EndgamePresenter : BasePresenter, IEndgamePresenter
         base.CreateView();
         DoubleRewardButtonActiveState.Value = ServiceLocator.Container.Single<IAdsService>().CheckIfRewardedIsAvailable();
         PositionString.Value = CreatePlacementString(GameplayModel.ActiveRace.Value.Result.Position);
+        TimeString.Value = TimeConverter.TimeWithMS(GameplayModel.ActiveRace.Value.Result.Time);
 
         if (GameplayModel.IsMobile)
         {
@@ -107,5 +112,10 @@ public class EndgamePresenter : BasePresenter, IEndgamePresenter
         }
 
         return placementString;
+    }
+
+    public void LeaderboardClicked()
+    {
+        ServiceLocator.Container.Single<ILeaderboardService>().OpenLeaderboard(GameplayModel.ActiveRace.Value.TrackId);
     }
 }

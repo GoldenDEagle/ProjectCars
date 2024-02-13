@@ -15,6 +15,7 @@ namespace Assets.Codebase.Gameplay.Cars
         private int _lapNumber = 1;
         private Coroutine _movementCheckRoutine;
         private Transform _closestWaypoint;
+        private WaitForSeconds _threeSecondWait = new WaitForSeconds(3f);
 
         public WaypointProgressTracker WaypointTracker => _waypointTracker;
         public CarAIControl AIControl => _aiControl;
@@ -56,7 +57,7 @@ namespace Assets.Codebase.Gameplay.Cars
             {
                 var initialPosition = transform.position;
 
-                yield return new WaitForSeconds(3f);
+                yield return _threeSecondWait;
                 
                 // if position didn't change significantly => reset position
                 if ((transform.position - initialPosition).magnitude < 1f)

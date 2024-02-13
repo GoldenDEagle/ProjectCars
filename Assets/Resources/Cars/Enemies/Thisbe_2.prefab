@@ -714,7 +714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea65b38d485c374caa584a03f1de571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CarDriveType: 2
+  m_CarDriveType: 0
   m_WheelColliders:
   - {fileID: 3468594981669256775}
   - {fileID: 7559956032291637656}
@@ -827,7 +827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76d51235865317d40ad714945d01237d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _carId: 7
+  _carId: 0
   _waypointTracker: {fileID: 1256175382830888775}
   _aiControl: {fileID: 4934550299063154850}
 --- !u!1 &2480193883693838930

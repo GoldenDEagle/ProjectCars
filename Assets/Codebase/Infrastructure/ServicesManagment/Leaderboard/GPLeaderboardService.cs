@@ -1,7 +1,6 @@
 ﻿using Assets.Codebase.Data.Tracks;
 using Assets.Codebase.Utils.Helpers;
 using GamePush;
-using System;
 
 namespace Assets.Codebase.Infrastructure.ServicesManagment.Leaderboard
 {

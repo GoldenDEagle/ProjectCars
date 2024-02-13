@@ -13,8 +13,10 @@ namespace Assets.Codebase.Views.Endgame
     {
         [SerializeField] private TMP_Text _positionText;
         [SerializeField] private TMP_Text _rewardText;
+        [SerializeField] private TMP_Text _timeText;
         [SerializeField] private Button _continueButton;
         [SerializeField] private Button _doubleRewardButton;
+        [SerializeField] private Button _leaderboardButton;
 
         private IEndgamePresenter _presenter;
 
@@ -28,8 +30,9 @@ namespace Assets.Codebase.Views.Endgame
         protected override void SubscribeToPresenterEvents()
         {
             base.SubscribeToPresenterEvents();
-            _presenter.PositionString.SubscribeToTMPText(_positionText);
-            _presenter.CoinRewardString.SubscribeToTMPText(_rewardText);
+            _presenter.PositionString.SubscribeToTMPText(_positionText).AddTo(CompositeDisposable);
+            _presenter.CoinRewardString.SubscribeToTMPText(_rewardText).AddTo(CompositeDisposable);
+            _presenter.TimeString.SubscribeToTMPText(_timeText).AddTo(CompositeDisposable);
             _presenter.DoubleRewardButtonActiveState.Subscribe(value => _doubleRewardButton.gameObject.SetActive(value)).AddTo(CompositeDisposable);
         }
 
@@ -37,6 +40,7 @@ namespace Assets.Codebase.Views.Endgame
         {
             _continueButton.OnClickAsObservable().Subscribe(_ => _presenter.ContinueButtonClicked()).AddTo(CompositeDisposable);
             _doubleRewardButton.OnClickAsObservable().Subscribe(_ => _presenter.DoubleRewardButtonClicked()).AddTo(CompositeDisposable);
+            _leaderboardButton.OnClickAsObservable().Subscribe(_ => _presenter.LeaderboardClicked()).AddTo(CompositeDisposable);
         }
     }
 }

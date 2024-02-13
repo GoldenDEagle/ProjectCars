@@ -58,6 +58,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
 
         private int _boostClickCounter = 0;
         private Coroutine _boostClickResetter;
+        private WaitForSeconds _halfSecondWait = new WaitForSeconds(0.5f);
 
         void Start()
         {
@@ -259,7 +260,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
 
         private IEnumerator ResetBoostClickCountAfterDelay()
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return _halfSecondWait;
             _boostClickCounter = 0;
         }
 
