@@ -6,6 +6,7 @@ using Assets.Codebase.Infrastructure.ServicesManagment.Audio;
 using Assets.Codebase.Infrastructure.ServicesManagment.Localization;
 using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
 using Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation;
+using Assets.Codebase.Utils.Helpers;
 using Assets.Codebase.Views.Base;
 using DavidJalbert.TinyCarControllerAdvance;
 using System.Collections;
@@ -33,8 +34,10 @@ namespace Assets.Codebase.Gameplay.Racing
         private TCCAMobileInput _mobileInput;
         private WaitForSeconds _oneSecDelay = new WaitForSeconds(1f);
         private PCTutorial _pcTutorial;
+        private Coroutine _timerRoutine;
 
         private int _playerPosition;
+        private float _elapsedTimeS;
 
         private IModelAccessService _models;
         private IViewProvider _viewProvider;
@@ -151,6 +154,7 @@ namespace Assets.Codebase.Gameplay.Racing
                 enemy.StartCheckingMovement();
             }
             _positionChecker = StartCoroutine(PositionTracker());
+            _timerRoutine = StartCoroutine(TimeCounter());
             StartCoroutine(ActivateFinishAfterDelay());
         }
 
@@ -210,14 +214,16 @@ namespace Assets.Codebase.Gameplay.Racing
         private void FinishRace()
         {
             StopCoroutine(_positionChecker);
+            StopCoroutine(_timerRoutine);
             _isRaceActive = false;
             SetInputState(false);
             _playerCar.CarController.setMotor(0f);
 
-            // Save race results in model
+            // Create result
 
-            _models.GameplayModel.ActiveRace.Value.WriteRaceResult(_playerPosition);
+            _models.GameplayModel.ActiveRace.Value.WriteRaceResult(_playerPosition, _elapsedTimeS);
             _models.GameplayModel.CalculateReward();
+            _models.ProgressModel.SyncBestResults(_models.GameplayModel.ActiveRace.Value.TrackId, _elapsedTimeS);
 
             if (_playerPosition <= 3)
             {
@@ -264,6 +270,17 @@ namespace Assets.Codebase.Gameplay.Racing
 
             // Start the race
             StartCoroutine(RacingCountdown());
+        }
+
+
+        private IEnumerator TimeCounter()
+        {
+            _elapsedTimeS = 0;
+            while (true)
+            {
+                yield return null;
+                _elapsedTimeS += Time.deltaTime;
+            }
         }
     }
 }

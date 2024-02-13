@@ -3,6 +3,7 @@ using Assets.Codebase.Infrastructure.ServicesManagment.Ads;
 using Assets.Codebase.Infrastructure.ServicesManagment.Assets;
 using Assets.Codebase.Infrastructure.ServicesManagment.Audio;
 using Assets.Codebase.Infrastructure.ServicesManagment.CarCreation;
+using Assets.Codebase.Infrastructure.ServicesManagment.Leaderboard;
 using Assets.Codebase.Infrastructure.ServicesManagment.Localization;
 using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
 using Assets.Codebase.Infrastructure.ServicesManagment.PresenterManagement;
@@ -119,6 +120,7 @@ namespace Assets.Codebase.Infrastructure.Initialization
             services.RegisterSingle<ILocalizationService>(new GoogleSheetLocalizationService());
             services.RegisterSingle<IPresentersService>(new PresentersService(_presenters));
             services.RegisterSingle<ICarFactory>(new CarFactory(services.Single<IAssetProvider>(), services.Single<IModelAccessService>()));
+            services.RegisterSingle<ILeaderboardService>(new GPLeaderboardService());
         }
 
 

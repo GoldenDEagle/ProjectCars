@@ -10,7 +10,7 @@ namespace Assets.Codebase.Gameplay.Racing
         public int Position => _position;
         public float Time => _time;
 
-        public RaceResult(int playerPosition, float time = 0)
+        public RaceResult(int playerPosition, float time = 999999999)
         {
             _position = playerPosition;
             _time = time;

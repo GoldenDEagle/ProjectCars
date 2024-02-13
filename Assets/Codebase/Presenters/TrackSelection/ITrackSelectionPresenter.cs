@@ -13,4 +13,5 @@ public interface ITrackSelectionPresenter : IPresenter
     public void SoundButtonClicked();
     public void BackButtonClicked();
     public void FreeCoinsButtonClicked();
+    public void LeaderBoardButtonClicked();
 }

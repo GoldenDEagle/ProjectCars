@@ -1,6 +1,7 @@
 using Assets.Codebase.Data.Tracks;
 using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Infrastructure.ServicesManagment.Ads;
+using Assets.Codebase.Infrastructure.ServicesManagment.Leaderboard;
 using Assets.Codebase.Infrastructure.ServicesManagment.ViewCreation;
 using Assets.Codebase.Presenters.Base;
 using Assets.Codebase.Views.Base;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
 {
@@ -94,6 +96,11 @@ public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
     public void BackButtonClicked()
     {
         GameplayModel.ActivateView(ViewId.CarSelection);
+    }
+
+    public void LeaderBoardButtonClicked()
+    {
+        ServiceLocator.Container.Single<ILeaderboardService>().OpenLeaderboard(_availableTracks[_selectedTrackIndex].TrackId);
     }
 
 

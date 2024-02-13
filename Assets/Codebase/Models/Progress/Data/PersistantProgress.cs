@@ -1,4 +1,6 @@
 ﻿using Assets.Codebase.Data.Cars.Player;
+using Assets.Codebase.Data.Tracks;
+using Assets.Codebase.Utils.CustomTypes;
 using System;
 using System.Collections.Generic;
 
@@ -18,6 +20,7 @@ namespace Assets.Codebase.Models.Progress.Data
         public List<PlayerCarId> UnlockedCars;
         public bool MobileTutorialCompleted;
         public bool PCTutorialCompleted;
+        public SerializableDictionary<TrackId, float> BestResults;
 
         public void SetValues(SessionProgress progress)
         {
@@ -29,6 +32,7 @@ namespace Assets.Codebase.Models.Progress.Data
             UnlockedCars = progress.UnlockedCars;
             MobileTutorialCompleted = progress.MobileTutorialCompleted.Value;
             PCTutorialCompleted = progress.PCTutorialCompleted.Value;
+            BestResults = progress.BestResults;
         }
     }
 }

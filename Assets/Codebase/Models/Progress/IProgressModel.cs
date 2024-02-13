@@ -1,4 +1,5 @@
 ﻿using Assets.Codebase.Data.Cars.Player;
+using Assets.Codebase.Data.Tracks;
 using Assets.Codebase.Models.Base;
 using Assets.Codebase.Models.Progress.Data;
 
@@ -38,5 +39,11 @@ namespace Assets.Codebase.Models.Progress
         /// Turn sound on and off
         /// </summary>
         public void SwitchSound();
+        /// <summary>
+        /// Writes new best result if neccesary
+        /// </summary>
+        /// <param name="trackId"></param>
+        /// <param name="time"></param>
+        public void SyncBestResults(TrackId trackId, float time);
     }
 }

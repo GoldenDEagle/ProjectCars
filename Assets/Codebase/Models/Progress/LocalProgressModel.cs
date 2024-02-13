@@ -1,4 +1,7 @@
 ﻿using Assets.Codebase.Data.Cars.Player;
+using Assets.Codebase.Data.Tracks;
+using Assets.Codebase.Infrastructure.ServicesManagment;
+using Assets.Codebase.Infrastructure.ServicesManagment.Leaderboard;
 using Assets.Codebase.Models.Base;
 using Assets.Codebase.Models.Progress.Data;
 using Assets.Codebase.Utils.Extensions;
@@ -99,6 +102,16 @@ namespace Assets.Codebase.Models.Progress
             {
                 SessionProgress.SFXVolume.Value = 1f;
             }
+        }
+
+        public void SyncBestResults(TrackId trackId, float time)
+        {
+            // Result isn't better
+            if (time >= SessionProgress.BestResults[trackId]) return;
+
+            SessionProgress.BestResults[trackId] = time;
+            ServiceLocator.Container.Single<ILeaderboardService>().PushNewResultToLeaderBoard(trackId, time);
+            SaveProgress();
         }
     }
 }

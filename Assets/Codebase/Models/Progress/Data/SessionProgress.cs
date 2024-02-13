@@ -1,4 +1,6 @@
 ﻿using Assets.Codebase.Data.Cars.Player;
+using Assets.Codebase.Data.Tracks;
+using Assets.Codebase.Utils.CustomTypes;
 using System.Collections.Generic;
 using UniRx;
 
@@ -18,6 +20,10 @@ namespace Assets.Codebase.Models.Progress.Data
         public ReactiveProperty<bool> MobileTutorialCompleted;
         public ReactiveProperty<bool> PCTutorialCompleted;
         public List<PlayerCarId> UnlockedCars;
+        /// <summary>
+        /// Best results for each track, time in ms
+        /// </summary>
+        public SerializableDictionary<TrackId, float> BestResults;
 
         // .
 
@@ -33,6 +39,13 @@ namespace Assets.Codebase.Models.Progress.Data
             UnlockedCars = new List<PlayerCarId> { PlayerCarId.Haumea };
             MobileTutorialCompleted = new ReactiveProperty<bool>(false);
             PCTutorialCompleted = new ReactiveProperty<bool>(false);
+            BestResults = new SerializableDictionary<TrackId, float>
+            {
+                { TrackId.City, 99999999f },
+                { TrackId.Mountains, 99999999f },
+                { TrackId.RedDesert, 99999999f }
+            };
+
         }
 
         /// <summary>
@@ -48,6 +61,12 @@ namespace Assets.Codebase.Models.Progress.Data
             UnlockedCars = new List<PlayerCarId>(progress.UnlockedCars);
             MobileTutorialCompleted = new ReactiveProperty<bool>(progress.MobileTutorialCompleted);
             PCTutorialCompleted = new ReactiveProperty<bool>(progress.PCTutorialCompleted);
+
+            BestResults = new SerializableDictionary<TrackId, float>();
+            foreach (var key in progress.BestResults.Keys)
+            {
+                BestResults.Add(key, progress.BestResults[key]);
+            }
         }
     }
 }

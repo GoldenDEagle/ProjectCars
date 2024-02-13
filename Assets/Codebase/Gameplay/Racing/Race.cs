@@ -24,9 +24,9 @@ namespace Assets.Codebase.Gameplay.Racing
             _enemiesList = enemies;
         }
 
-        public void WriteRaceResult(int playerPosition)
+        public void WriteRaceResult(int playerPosition, float time = 99999999f)
         {
-            _result = new RaceResult(playerPosition);
+            _result = new RaceResult(playerPosition, time);
         }
     }
 }
