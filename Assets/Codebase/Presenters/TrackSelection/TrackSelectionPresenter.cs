@@ -36,7 +36,7 @@ public class TrackSelectionPresenter : BasePresenter, ITrackSelectionPresenter
         base.CreateView();
 
         _availableTracks = GameplayModel.GetTracks();
-        _selectedTrackIndex = 1;
+        _selectedTrackIndex = 0;
         SelectedTrackIcon.Value = _availableTracks[_selectedTrackIndex].TrackIcon;
     }
 
