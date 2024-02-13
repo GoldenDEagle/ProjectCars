@@ -60,7 +60,7 @@ namespace DavidJalbert.TinyCarControllerAdvance
             cameraBody.angularDrag = 0;
         }
 
-        void FixedUpdate()
+        void LateUpdate()
         {
             if (carController == null) return;
 
