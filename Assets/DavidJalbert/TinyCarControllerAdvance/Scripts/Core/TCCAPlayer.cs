@@ -152,6 +152,17 @@ namespace DavidJalbert.TinyCarControllerAdvance
             return maxSpeed;
         }
 
+        public float getWheelsCurrentSpeed()
+        {
+            float currentSpeed = 0;
+            foreach (TCCAWheel w in wheels)
+            {
+                var wheelForwardVelocity = w.getForwardVelocity();
+                if (wheelForwardVelocity > currentSpeed) currentSpeed = wheelForwardVelocity;
+            }
+            return currentSpeed;
+        }
+
         public float getPitchAngle()
         {
             return getCarBody()?.getPitchAngle() ?? 0;

@@ -234,7 +234,7 @@ namespace WFA
       {
         obj.textDPI = textDPI;
         obj.wfaDPI = DPI.value;
-            obj.SetAllDirty();
+                obj.SetAllDirty();
       }
     }
 
