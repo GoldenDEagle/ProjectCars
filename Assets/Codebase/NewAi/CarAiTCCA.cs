@@ -228,7 +228,11 @@ namespace Assets.Codebase.NewAi
 
         public void SetPosition(Transform targetTransform)
         {
-            m_Rigidbody.Move(targetTransform.position, targetTransform.rotation);
+            //m_Rigidbody.Move(targetTransform.position, targetTransform.rotation);
+            m_CarController.enabled = false;
+            m_CarController.setRotation(targetTransform.rotation);
+            m_CarController.setPosition(targetTransform.position + Vector3.up);
+            m_CarController.enabled = true;
         }
 
         public void SetTarget(Transform target)

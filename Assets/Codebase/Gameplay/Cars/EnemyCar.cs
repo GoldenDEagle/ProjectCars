@@ -1,4 +1,5 @@
 ﻿using Assets.Codebase.Data.Cars.Enemy;
+using Assets.Codebase.NewAi;
 using System.Collections;
 using UnityEngine;
 using UnityStandardAssets.Utility;
@@ -10,7 +11,8 @@ namespace Assets.Codebase.Gameplay.Cars
     {
         [SerializeField] private EnemyCarId _carId;
         [SerializeField] private WaypointProgressTracker _waypointTracker;
-        [SerializeField] private CarAIControl _aiControl;
+        //[SerializeField] private CarAIControl _aiControl;
+        [SerializeField] private CarAiTCCA _aiControl;
 
         private int _lapNumber = 1;
         private Coroutine _movementCheckRoutine;
@@ -18,7 +20,8 @@ namespace Assets.Codebase.Gameplay.Cars
         private WaitForSeconds _threeSecondWait = new WaitForSeconds(3f);
 
         public WaypointProgressTracker WaypointTracker => _waypointTracker;
-        public CarAIControl AIControl => _aiControl;
+        //public CarAIControl AIControl => _aiControl;
+        public CarAiTCCA AIControl => _aiControl;
         public int LapNumber => _lapNumber;
 
         public void StartCheckingMovement()
@@ -55,16 +58,21 @@ namespace Assets.Codebase.Gameplay.Cars
         {
             while (true)
             {
-                var initialPosition = transform.position;
+                var initialPosition = _aiControl.transform.position;
 
                 yield return _threeSecondWait;
                 
                 // if position didn't change significantly => reset position
-                if ((transform.position - initialPosition).magnitude < 1f)
+                if ((_aiControl.transform.position - initialPosition).magnitude < 1f)
                 {
                     _aiControl.SetPosition(_closestWaypoint);
                 }
             }
+        }
+
+        public void SetPosition(Transform newPosition)
+        {
+            _aiControl.SetPosition(newPosition);
         }
 
         public void RespawnAtClosestWaypoint()

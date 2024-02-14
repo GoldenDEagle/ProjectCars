@@ -3,6 +3,7 @@ using Assets.Codebase.Infrastructure.ServicesManagment;
 using Assets.Codebase.Infrastructure.ServicesManagment.CarCreation;
 using Assets.Codebase.Infrastructure.ServicesManagment.ModelAccess;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Assets.Codebase.Gameplay.Racing
@@ -36,8 +37,11 @@ namespace Assets.Codebase.Gameplay.Racing
             foreach (var carId in _models.GameplayModel.ActiveRace.Value.EnemiesList)
             {
                 var enemy = _carFactory.CreateEnemyCar(carId);
-                enemy.transform.position = _carSpawnPoints[positionIndex].transform.position;
-                enemy.transform.forward = _carSpawnPoints[positionIndex].transform.forward;
+                //enemy.transform.position = _carSpawnPoints[positionIndex].transform.position;
+                //enemy.transform.forward = _carSpawnPoints[positionIndex].transform.forward;
+                enemy.transform.position = Vector3.zero;
+                enemy.transform.rotation = Quaternion.identity;
+                enemy.SetPosition(_carSpawnPoints[positionIndex].transform);
                 enemyCars.Add(enemy);
                 positionIndex++;
             }
