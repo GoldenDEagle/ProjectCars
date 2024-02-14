@@ -57495,14 +57495,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ded42668e09974a80ba830a29fe56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CautiousSpeedFactor: 0.05
+  m_CautiousSpeedFactor: 0.5
   m_CautiousMaxAngle: 50
-  m_CautiousMaxDistance: 100
-  m_CautiousAngularVelocityFactor: 30
-  m_SteerSensitivity: 0.05
-  m_AccelSensitivity: 1
+  m_CautiousMaxDistance: 25
+  m_CautiousAngularVelocityFactor: 5
+  m_SteerSensitivity: 0.025
+  m_AccelSensitivity: 0.1
   m_BrakeSensitivity: 1
-  m_LateralWanderDistance: 3
+  m_LateralWanderDistance: 1
   m_LateralWanderSpeed: 0.1
   m_AccelWanderAmount: 0.1
   m_AccelWanderSpeed: 0.1
@@ -57526,7 +57526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   circuit: {fileID: 1078570655}
-  lookAheadForTargetOffset: 5
+  lookAheadForTargetOffset: 10
   lookAheadForTargetFactor: 0.1
   lookAheadForSpeedOffset: 10
   lookAheadForSpeedFactor: 0.2
@@ -76812,7 +76812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8523319879115436702 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2254361519740267351, guid: 7a217ce6a8eda0f4f921817fab44224b, type: 3}

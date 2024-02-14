@@ -152,7 +152,7 @@ namespace Assets.Codebase.NewAi
                 }
 
                 //float currentSpeed = m_CarController.getForwardVelocity();
-                float currentSpeed = m_CarController.getWheelsCurrentSpeed();
+                float currentSpeed = m_CarController.getForwardVelocity();
 
                 // use different sensitivity depending on whether accelerating or braking:
                 float accelBrakeSensitivity = (desiredSpeed < currentSpeed)
