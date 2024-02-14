@@ -83,7 +83,7 @@ MonoBehaviour:
   steeringDamper: 20
   invertSteering: 0
   motorEnabled: 1
-  motorMaxSpeed: 25
+  motorMaxSpeed: 22.5
   motorAcceleration: 125
   motorAccelerationOverSpeed:
     serializedVersion: 2
@@ -648,7 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ded42668e09974a80ba830a29fe56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CautiousSpeedFactor: 0.5
+  m_CautiousSpeedFactor: 0.25
   m_CautiousMaxAngle: 50
   m_CautiousMaxDistance: 25
   m_CautiousAngularVelocityFactor: 5
@@ -928,7 +928,7 @@ MonoBehaviour:
   steeringDamper: 20
   invertSteering: 0
   motorEnabled: 1
-  motorMaxSpeed: 25
+  motorMaxSpeed: 22.5
   motorAcceleration: 125
   motorAccelerationOverSpeed:
     serializedVersion: 2

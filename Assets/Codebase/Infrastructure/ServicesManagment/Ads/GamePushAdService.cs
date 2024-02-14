@@ -83,7 +83,7 @@ namespace Assets.Codebase.Infrastructure.ServicesManagment.Ads
 
         public bool IsDeviceMobile()
         {
-            return !GP_Device.IsMobile();
+            return GP_Device.IsMobile();
         }
     }
 }
