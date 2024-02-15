@@ -14,18 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _carsList:
   - _carId: 0
-    _prefab: {fileID: -4673264923415412183, guid: 9a0580d536f920249b78e1019b28bc4f, type: 3}
+    _prefab: {fileID: 7139873198147146015, guid: 38dc6bace69a0dd4b857324c59593797, type: 3}
   - _carId: 1
-    _prefab: {fileID: 9139851111230693748, guid: bb42190d9569a084bb20a97e61a5847a, type: 3}
+    _prefab: {fileID: 6595896939722943164, guid: 92fec303c7dffa646bb82d03fdbfd08f, type: 3}
   - _carId: 2
-    _prefab: {fileID: 6877698027775619626, guid: ff750aaa488520844ba416ea8a7cbccf, type: 3}
+    _prefab: {fileID: 3511893929683373057, guid: 910b2c382f6973241aaa6a93c11e05e0, type: 3}
   - _carId: 3
-    _prefab: {fileID: 4732610017976318371, guid: 0a341d39cb25d8b4f8196df95905d32c, type: 3}
+    _prefab: {fileID: 753153524764661269, guid: 82b819dcdc959414db64e1530c3c66d9, type: 3}
   - _carId: 4
-    _prefab: {fileID: 6207272068000198829, guid: 8d0b8cdc38abd7a4793b09a6039721e5, type: 3}
+    _prefab: {fileID: 7059178522495240457, guid: 04074de8d22a4cc4a9744b5d7421bcaf, type: 3}
   - _carId: 5
-    _prefab: {fileID: 1798516171937908723, guid: c7eb8454f45e43a4080601ef4f8a88f4, type: 3}
+    _prefab: {fileID: 7595533934840329582, guid: 80f1a9ca1a22f77489d0212a66874c2f, type: 3}
   - _carId: 6
-    _prefab: {fileID: 8704698280542621277, guid: 7dd1fb798a08f1f43bf3c3b05722ae17, type: 3}
+    _prefab: {fileID: 262527160915129067, guid: 19eea01ba47f5b34cb1f2cfd6f372436, type: 3}
   - _carId: 7
-    _prefab: {fileID: 8428585314340785144, guid: ffdad4b3fae18274fbd006d888838de8, type: 3}
+    _prefab: {fileID: 5762142931046875767, guid: f5c0baa76b0d4a14c89d4037fbdace72, type: 3}

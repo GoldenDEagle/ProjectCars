@@ -141,8 +141,8 @@ namespace Assets.Codebase.Models.Gameplay
             _availableEnemyIds.Shuffle();
 
             _currentLap.Value = 1;
-            //_activeRace.Value = new Race(trackId, _lapsInRace, _availableEnemyIds.Take(_raceEnemyCount).ToList());
-            _activeRace.Value = new Race(trackId, _lapsInRace, new List<EnemyCarId> { EnemyCarId.First, EnemyCarId.First, EnemyCarId.First });
+            _activeRace.Value = new Race(trackId, _lapsInRace, _availableEnemyIds.Take(_raceEnemyCount).ToList());
+            //_activeRace.Value = new Race(trackId, _lapsInRace, new List<EnemyCarId> { EnemyCarId.First, EnemyCarId.First, EnemyCarId.First });
         }
 
         public int CalculateReward()
