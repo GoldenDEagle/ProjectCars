@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 6754132883166109550}
   - component: {fileID: 4700648553030014342}
   - component: {fileID: 3527577094817025074}
+  - component: {fileID: 4628394791169931380}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -372,6 +373,27 @@ MonoBehaviour:
   progressStyle: 0
   pointToPointThreshold: 4
   target: {fileID: 8300793309278141377}
+--- !u!65 &4628394791169931380
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296322877648563917}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2, y: 0.7754729, z: 4.56}
+  m_Center: {x: 0.0000000012041022, y: 0.9598562, z: -0.028760232}
 --- !u!1 &2445877291384862219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1344,7 +1366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f529d23ea4dd248a6002f0175f6461, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bodyMass: 10
+  bodyMass: 12
   rigidbodyInterpolation: 1
   collisionDetectionMode: 2
   centerOfMass: {x: 0, y: 0.02, z: 0}
