@@ -83,8 +83,8 @@ MonoBehaviour:
   steeringDamper: 20
   invertSteering: 0
   motorEnabled: 1
-  motorMaxSpeed: 22.5
-  motorAcceleration: 125
+  motorMaxSpeed: 24
+  motorAcceleration: 140
   motorAccelerationOverSpeed:
     serializedVersion: 2
     m_Curve:
@@ -1181,8 +1181,8 @@ MonoBehaviour:
   steeringDamper: 20
   invertSteering: 0
   motorEnabled: 1
-  motorMaxSpeed: 22.5
-  motorAcceleration: 125
+  motorMaxSpeed: 24
+  motorAcceleration: 140
   motorAccelerationOverSpeed:
     serializedVersion: 2
     m_Curve:
